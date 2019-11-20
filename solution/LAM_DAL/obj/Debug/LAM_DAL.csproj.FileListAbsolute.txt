@@ -1,0 +1,5 @@
+C:\Users\huyla\Desktop\project\solution\LAM_DAL\bin\Debug\LAM_DAL.dll
+C:\Users\huyla\Desktop\project\solution\LAM_DAL\bin\Debug\LAM_DAL.pdb
+C:\Users\huyla\Desktop\project\solution\LAM_DAL\obj\Debug\LAM_DAL.csprojAssemblyReference.cache
+C:\Users\huyla\Desktop\project\solution\LAM_DAL\obj\Debug\LAM_DAL.dll
+C:\Users\huyla\Desktop\project\solution\LAM_DAL\obj\Debug\LAM_DAL.pdb

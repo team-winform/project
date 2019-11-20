@@ -1,0 +1,14 @@
+C:\Users\huyla\Desktop\project\solution\LAM_GUI\bin\Debug\LAM_GUI.exe.config
+C:\Users\huyla\Desktop\project\solution\LAM_GUI\bin\Debug\LAM_GUI.exe
+C:\Users\huyla\Desktop\project\solution\LAM_GUI\bin\Debug\LAM_GUI.pdb
+C:\Users\huyla\Desktop\project\solution\LAM_GUI\bin\Debug\LAM_DAL.dll
+C:\Users\huyla\Desktop\project\solution\LAM_GUI\bin\Debug\LAM_DAL.pdb
+C:\Users\huyla\Desktop\project\solution\LAM_GUI\obj\Debug\LAM_GUI.csprojAssemblyReference.cache
+C:\Users\huyla\Desktop\project\solution\LAM_GUI\obj\Debug\LAM_GUI.Properties.Resources.resources
+C:\Users\huyla\Desktop\project\solution\LAM_GUI\obj\Debug\LAM_GUI.csproj.GenerateResource.cache
+C:\Users\huyla\Desktop\project\solution\LAM_GUI\obj\Debug\LAM_GUI.csproj.CopyComplete
+C:\Users\huyla\Desktop\project\solution\LAM_GUI\obj\Debug\LAM_GUI.exe
+C:\Users\huyla\Desktop\project\solution\LAM_GUI\obj\Debug\LAM_GUI.pdb
+C:\Users\huyla\Desktop\project\solution\LAM_GUI\obj\Debug\LAM_GUI.GUI_KhoaHoc.resources
+C:\Users\huyla\Desktop\project\solution\LAM_GUI\bin\Debug\LAM_BLL.dll
+C:\Users\huyla\Desktop\project\solution\LAM_GUI\bin\Debug\LAM_BLL.pdb
