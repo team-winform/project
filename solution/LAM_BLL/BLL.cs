@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data;
+using System.Data.SqlClient;
 using LAM_DAL;
 
 namespace LAM_BLL
@@ -38,6 +39,11 @@ namespace LAM_BLL
         public int deleteKhoaHoc(String ma)
         {
             return dal.deleteKhoaHoc(ma);
+        }
+
+        public Dictionary<String,String> findKhoaHoc(String ma)
+        {
+            return dal.findKhoaHocByMa(ma);
         }
     }
 }

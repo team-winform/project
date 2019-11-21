@@ -77,5 +77,26 @@ namespace LAM_DAL
             conn.Close();
             return result;
         }
+
+        public Dictionary<String,String> findKhoaHocByMa(String ma)
+        {
+            Dictionary<String, String> result = new Dictionary<string, string>();
+            String connectString = ConfigurationManager.ConnectionStrings["connectString"].ToString();
+            SqlConnection conn = new SqlConnection(connectString);
+            conn.Open();
+
+            String sql = "select * from KHOAHOC where id_KH=@ma";
+            SqlCommand command = new SqlCommand(sql, conn);
+            command.Parameters.AddWithValue("ma", ma);
+            SqlDataReader rd = command.ExecuteReader();
+            while (rd.Read())
+            {
+                result.Add("ten_KH", rd["ten_KH"].ToString());
+                result.Add("gia_KH", rd["gia_KH"].ToString());
+                result.Add("ghichu_KH", rd["ghichu_KH"].ToString());
+            }
+            conn.Close();
+            return result;
+        }
     }
 }
