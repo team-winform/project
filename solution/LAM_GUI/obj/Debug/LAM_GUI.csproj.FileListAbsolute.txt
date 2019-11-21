@@ -13,3 +13,4 @@ C:\Users\huyla\Desktop\project\solution\LAM_GUI\obj\Debug\LAM_GUI.GUI_KhoaHoc.re
 C:\Users\huyla\Desktop\project\solution\LAM_GUI\bin\Debug\LAM_BLL.dll
 C:\Users\huyla\Desktop\project\solution\LAM_GUI\bin\Debug\LAM_BLL.pdb
 C:\Users\huyla\Desktop\project\solution\LAM_GUI\obj\Debug\LAM_GUI.Dialog_KhoaHOC.resources
+C:\Users\huyla\Desktop\project\solution\LAM_GUI\obj\Debug\LAM_GUI.GUI_DiemDanh.resources

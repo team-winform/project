@@ -45,5 +45,25 @@ namespace LAM_BLL
         {
             return dal.findKhoaHocByMa(ma);
         }
+
+        public DataTable getDiemDanh(String maLop)
+        {
+            return dal.getDiemDanh(maLop);
+        }
+
+        public DataTable getAllLopHoc()
+        {
+            return dal.getAllLopHoc();
+        }
+
+        public int diemDanh(String maHV,String maLH)
+        {
+            return dal.diemDanh(maHV, maLH, DateTime.Now);
+        }
+
+        public bool checkLopHocDaDiemDanh(String maLop)
+        {
+            return dal.checkLopHocDaDiemDanh(DateTime.Now, maLop);
+        }
     }
 }

@@ -52,6 +52,12 @@
     <Compile Include="Dialog_KhoaHOC.Designer.cs">
       <DependentUpon>Dialog_KhoaHOC.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI_DiemDanh.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI_DiemDanh.Designer.cs">
+      <DependentUpon>GUI_DiemDanh.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI_KhoaHoc.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -62,6 +68,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Dialog_KhoaHOC.resx">
       <DependentUpon>Dialog_KhoaHOC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI_DiemDanh.resx">
+      <DependentUpon>GUI_DiemDanh.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI_KhoaHoc.resx">
       <DependentUpon>GUI_KhoaHoc.cs</DependentUpon>
