@@ -42,6 +42,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classxyzz.cs" />
+    <Compile Include="DiemDanhBLL.cs" />
+    <Compile Include="KhoaHocBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

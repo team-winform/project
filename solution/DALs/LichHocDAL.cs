@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DTOs;
 using System.Configuration;
 using System.Data.SqlClient;
 
@@ -19,9 +18,9 @@ namespace DALs
             conn = new SqlConnection(conString);
         }
 
-        public String insertLichHoc(LichH)
+        public String insertLichHoc()
         {
-
+            return null;
         }
     }
 }

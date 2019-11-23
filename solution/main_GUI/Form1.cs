@@ -19,6 +19,7 @@ namespace main_GUI
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            
             tabControl1.TabPages.Remove(tabPage2);
         }
     }
