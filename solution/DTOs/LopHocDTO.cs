@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DTOs
 {
-    public class LopHoc
+    public class LopHocDTO
     {
         public string id_LH { get; set; }
         public string id_KH { get; set; }

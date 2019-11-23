@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DTOs
 {
-    class LichHoc
+    public class LichHocDTO
     {
         public string id_LIH { get; set; }
         public string id_LH { get; set; }
