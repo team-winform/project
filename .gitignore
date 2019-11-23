@@ -11,6 +11,9 @@
 #app.config
 App.config
 
+# program.cs
+# Program.cs
+
 
 # User-specific files
 *.rsuser

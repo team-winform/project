@@ -7,11 +7,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DTOs;
+using BLLs;
 
 namespace main_GUI
 {
     public partial class LoginForm : Form
     {
+        LoginBLL loginBLL = new LoginBLL();
+
         public LoginForm()
         {
             InitializeComponent();
@@ -19,15 +23,47 @@ namespace main_GUI
 
         private void LoginForm_Load(object sender, EventArgs e)
         {
-            dateTimePicker1.Format = DateTimePickerFormat.Custom;
-            dateTimePicker1.CustomFormat = "dd-MM-yyyy";
-
+            lbLoginErr.Hide();
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            txtUsername.Text = dateTimePicker1.Value.ToString();
-            dateTimePicker2.Value = DateTime.Parse( txtUsername.Text);
+            string username = txtUsername.Text;
+            string password = Utils.MD5Hash(txtPassword.Text);
+
+            GlobalInfo.accountGlobal = loginBLL.login(username, password);
+            if (GlobalInfo.accountGlobal == null)
+            {
+                lbLoginErr.Show();
+            }
+            else
+            {
+                clearTextBox();
+                this.Hide();
+                new MainForm().Show();
+            }
+        }
+
+        private void txtUsername_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnLogin_Click(this, new EventArgs());
+            }
+        }
+
+        private void txtPassword_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnLogin_Click(this, new EventArgs());
+            }
+        }
+
+        private void clearTextBox()
+        {
+            txtPassword.Text = "";
+            txtUsername.Text = "";
         }
     }
 }
