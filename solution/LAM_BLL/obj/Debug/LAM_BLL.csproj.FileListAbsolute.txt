@@ -6,3 +6,12 @@ C:\Users\huyla\Desktop\project\solution\LAM_BLL\obj\Debug\LAM_BLL.csprojAssembly
 C:\Users\huyla\Desktop\project\solution\LAM_BLL\obj\Debug\LAM_BLL.csproj.CopyComplete
 C:\Users\huyla\Desktop\project\solution\LAM_BLL\obj\Debug\LAM_BLL.dll
 C:\Users\huyla\Desktop\project\solution\LAM_BLL\obj\Debug\LAM_BLL.pdb
+C:\Users\Drahan\Desktop\CSharp\project\solution\LAM_BLL\bin\Debug\LAM_BLL.dll
+C:\Users\Drahan\Desktop\CSharp\project\solution\LAM_BLL\bin\Debug\LAM_BLL.pdb
+C:\Users\Drahan\Desktop\CSharp\project\solution\LAM_BLL\bin\Debug\LAM_DAL.dll
+C:\Users\Drahan\Desktop\CSharp\project\solution\LAM_BLL\bin\Debug\LAM_DAL.pdb
+C:\Users\Drahan\Desktop\CSharp\project\solution\LAM_BLL\obj\Debug\LAM_BLL.csprojAssemblyReference.cache
+C:\Users\Drahan\Desktop\CSharp\project\solution\LAM_BLL\obj\Debug\LAM_BLL.csproj.CoreCompileInputs.cache
+C:\Users\Drahan\Desktop\CSharp\project\solution\LAM_BLL\obj\Debug\LAM_BLL.csproj.CopyComplete
+C:\Users\Drahan\Desktop\CSharp\project\solution\LAM_BLL\obj\Debug\LAM_BLL.dll
+C:\Users\Drahan\Desktop\CSharp\project\solution\LAM_BLL\obj\Debug\LAM_BLL.pdb
