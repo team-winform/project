@@ -19,12 +19,15 @@ namespace main_GUI
 
         private void LoginForm_Load(object sender, EventArgs e)
         {
+            dateTimePicker1.Format = DateTimePickerFormat.Custom;
+            dateTimePicker1.CustomFormat = "dd-MM-yyyy";
 
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-
+            txtUsername.Text = dateTimePicker1.Value.ToString();
+            dateTimePicker2.Value = DateTime.Parse( txtUsername.Text);
         }
     }
 }
