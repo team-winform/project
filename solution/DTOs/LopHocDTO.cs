@@ -12,7 +12,7 @@ namespace DTOs
         {
         }
 
-        public LopHocDTO(string id_LH, string id_KH, string id_GV, string ten_LH, string tenLopHoc, string id_PH, int siSo, DateTime ngayBatDau, DateTime ngayKetThuc)
+        public LopHocDTO(string id_LH, string id_KH, string id_GV, string ten_LH, string tenLopHoc, string id_PH, int siSo, DateTime ngayBatDau, DateTime ngayKetThuc, string ghiChu_LH)
         {
             this.id_LH = id_LH;
             this.id_KH = id_KH;
@@ -23,6 +23,7 @@ namespace DTOs
             this.siSo = siSo;
             this.ngayBatDau = ngayBatDau;
             this.ngayKetThuc = ngayKetThuc;
+            this.ghiChu_LH = ghiChu_LH;
         }
 
         public string id_LH { get; set; }
@@ -36,6 +37,8 @@ namespace DTOs
 
         public DateTime ngayBatDau { get; set; }
         public DateTime ngayKetThuc { get; set; }
+
+        public string ghiChu_LH { get; set; }
 
     }
 }

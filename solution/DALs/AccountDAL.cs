@@ -98,6 +98,30 @@ namespace DALs
             conn.Close();
         }
 
+        public void changeInfo(AccountDTO account, string fullname, string phone)
+        {
+            conn.Open();
+            string query = "update account set " +
+                "fullname = @fullname," +
+                "phone = @phone " +
+                "where username = @username";
+            SqlCommand cmd = new SqlCommand(query, conn);
+            cmd.Parameters.AddWithValue("fullname", fullname);
+            cmd.Parameters.AddWithValue("phone", phone);
+            cmd.Parameters.AddWithValue("username", account.username);
+
+            try
+            {
+                cmd.ExecuteNonQuery();
+            }
+            catch (SqlException e)
+            {
+                conn.Close();
+                throw e;
+            }
+            conn.Close();
+        }
+
         public void changePassword(AccountDTO account, string newPassword)
         {
             conn.Open();
@@ -158,7 +182,8 @@ namespace DALs
                     account.fullname = rd["fullname"].ToString();
                     account.phone = rd["phone"].ToString();
                 }
-            }catch(SqlException e)
+            }
+            catch (SqlException e)
             {
                 conn.Close();
                 throw e;
