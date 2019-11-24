@@ -46,6 +46,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dialog_ChiTietDiemDanh.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialog_ChiTietDiemDanh.Designer.cs">
+      <DependentUpon>Dialog_ChiTietDiemDanh.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialog_ChiTietKhoaHoc.cs" />
     <Compile Include="Dialog_KhoaHOC.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -58,11 +65,17 @@
     <Compile Include="DiemGUI.Designer.cs">
       <DependentUpon>DiemGUI.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form1.cs">
+    <Compile Include="Dialog_ThongTinKhoaHoc.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Dialog_ThongTinKhoaHoc.Designer.cs">
+      <DependentUpon>Dialog_ThongTinKhoaHoc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="GiangVienDialog_InsertUpdate.cs">
       <SubType>Form</SubType>
@@ -120,13 +133,19 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Dialog_ChiTietDiemDanh.resx">
+      <DependentUpon>Dialog_ChiTietDiemDanh.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Dialog_KhoaHOC.resx">
       <DependentUpon>Dialog_KhoaHOC.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DiemGUI.resx">
       <DependentUpon>DiemGUI.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
+    <EmbeddedResource Include="Dialog_ThongTinKhoaHoc.resx">
+      <DependentUpon>Dialog_ThongTinKhoaHoc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GiangVienDialog_InsertUpdate.resx">
@@ -176,7 +195,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BLLs\BLLs.csproj">

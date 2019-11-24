@@ -36,5 +36,10 @@ namespace BLLs
         {
             return this.diemDanhDAL.checkLopHocDaDiemDanh(DateTime.Now, maLop);
         }
+
+        public DataTable getDayOF(String maHV,String maLop)
+        {
+            return this.diemDanhDAL.getDayOF(maHV, maLop);
+        }
     }
 }

@@ -45,6 +45,9 @@
     <Compile Include="GiangVienMapper.cs" />
     <Compile Include="PhongHocDTO.cs" />
     <Compile Include="PhongHocMapper.cs" />
+    <Compile Include="AccountDTO.cs" />
+    <Compile Include="LichHocDTO.cs" />
+    <Compile Include="LopHocDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
