@@ -53,6 +53,12 @@
       <DependentUpon>Dialog_ChiTietDiemDanh.cs</DependentUpon>
     </Compile>
     <Compile Include="Dialog_ChiTietKhoaHoc.cs" />
+    <Compile Include="Dialog_ChonGiangVien_LopHoc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialog_ChonGiangVien_LopHoc.Designer.cs">
+      <DependentUpon>Dialog_ChonGiangVien_LopHoc.cs</DependentUpon>
+    </Compile>
     <Compile Include="Dialog_KhoaHOC.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -18,7 +18,7 @@ namespace main_GUI
         TaiKhoanCuaToiBLL taiKhoanCuaToiBLL = new TaiKhoanCuaToiBLL();
         QuanLyLopHocBLL quanLyLopHocBLL = new QuanLyLopHocBLL();
         KhoaHocBLL khoaHocBLL = new KhoaHocBLL();
-
+        List<LopHocDTO> currentListLopHoc;
 
         public MainForm()
         {
@@ -149,6 +149,7 @@ namespace main_GUI
 
         private void hienThiGrdLopHoc(List<LopHocDTO> lstLopHocs)
         {
+            currentListLopHoc = lstLopHocs;
             grdLopHoc.Rows.Clear();
             int index = 0;
             foreach (LopHocDTO dto in lstLopHocs)
@@ -224,11 +225,13 @@ namespace main_GUI
         private void grdLopHoc_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             int index = grdLopHoc.SelectedCells[0].RowIndex;
+            txtChonGiangVien.Text = currentListLopHoc.ElementAt(index).id_GV +"-";
+
             DataGridViewRow row = grdLopHoc.Rows[index];
             lbMaLop.Text = Convert.ToString(row.Cells[0].Value).Trim();
             txtTenLopHoc.Text = row.Cells[1].Value.ToString();
             cbKhoaHoc.SelectedText = Convert.ToString(row.Cells[2].Value).Trim();
-            txtChonGiangVien.Text = Convert.ToString(row.Cells[3].Value).Trim();
+            txtChonGiangVien.Text += Convert.ToString(row.Cells[3].Value).Trim();
             cbPhongHoc.SelectedText = Convert.ToString(row.Cells[4].Value).Trim();
             datePickerNgayBatDauHoc.Value = DateTime.Parse(row.Cells[5].Value.ToString().Trim());
             datePickerNgayKetThucHoc.Value = DateTime.Parse(row.Cells[6].Value.ToString().Trim());
