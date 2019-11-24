@@ -69,7 +69,6 @@ namespace DALs
 
         public int deleteKhoaHoc(String ma)
         {
-            String connectString = ConfigurationManager.ConnectionStrings["connectString"].ToString();
             SqlConnection conn = new SqlConnection(connectString);
             conn.Open();
 
@@ -99,6 +98,21 @@ namespace DALs
             }
             conn.Close();
             return result;
+        }
+
+        public DataTable getLopHocOfKhoaHoc(String ma)
+        {
+            SqlConnection conn = new SqlConnection(connectString);
+            conn.Open();
+
+            String sql = "select lh.id_LH,lh.ten_LH,gv.ten_GV,lh.siso_LH,lh.ngaybatdau,lh.ngayketthuc,lh.ghichu_LH from LopHoc lh inner join GiangVien gv on gv.id_GV=lh.id_GV where id_KH=@ma";
+            SqlCommand command = new SqlCommand(sql, conn);
+            command.Parameters.AddWithValue("ma", ma);
+            SqlDataReader rd = command.ExecuteReader();
+            DataTable tb = new DataTable();
+            tb.Load(rd);
+            conn.Close();
+            return tb;
         }
     }
 }

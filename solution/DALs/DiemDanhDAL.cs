@@ -23,7 +23,7 @@ namespace DALs
             SqlConnection conn = new SqlConnection(connectString);
             conn.Open();
 
-            String sql = "select hv.id_HV,hv.ten_HV,hv.sodt_HV,count(dd.id) as 'nghi' from HOCVIEN as hv inner join HOCVIEN_LOPHOC as hl on hl.id_HV = hv.id_HV left join DiemDanh as dd on dd.id_HV = hv.id_HV where hl.id_LH = @maLop group by hv.id_HV,hv.ten_HV,hv.sodt_HV";
+            String sql = "select hv.id_HV,hv.ten_HV,hv.sodt_HV,count(dd.id) as 'nghi' from HOCVIEN as hv inner join HOCVIEN_LOPHOC as hl on hl.id_HV = hv.id_HV left join DiemDanh as dd on dd.id_HV = hv.id_HV and dd.id_LH=@maLop where hl.id_LH = @maLop group by hv.id_HV,hv.ten_HV,hv.sodt_HV";
             SqlCommand command = new SqlCommand(sql, conn);
             command.Parameters.AddWithValue("maLop", maLop);
             SqlDataReader rd = command.ExecuteReader();
@@ -77,6 +77,21 @@ namespace DALs
             Boolean result = rd.HasRows;
             conn.Close();
             return result;
+        }
+
+        public DataTable getDayOF(String maHV,String maLH)
+        {
+            SqlConnection conn = new SqlConnection(connectString);
+            conn.Open();
+
+            String sql = "select hv.ten_HV,hv.id_HV,lh.ten_LH,dd.ngayDiemDanh from HOCVIEN hv inner join DiemDanh dd on dd.id_HV = hv.id_HV and dd.id_LH = @maLop inner join LOPHOC lh on lh.id_LH = dd.id_LH where hv.id_HV = @maHV";
+            SqlCommand command = new SqlCommand(sql, conn);
+            command.Parameters.AddWithValue("maLop", maLH);
+            command.Parameters.AddWithValue("maHV", maHV);
+            SqlDataReader rd = command.ExecuteReader();
+            DataTable tb = new DataTable();
+            tb.Load(rd);
+            return tb;
         }
     }
 }

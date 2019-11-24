@@ -65,5 +65,17 @@ namespace main_GUI
             new Dialog_KhoaHOC(0, ma).ShowDialog();
             this.dataGridView1.DataSource = this.khoaHocBLL.getAllKhoaHoc();
         }
+
+        private void cellClickEvent(object sender, DataGridViewCellEventArgs e)
+        {
+            
+        }
+
+        private void cellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int index = dataGridView1.CurrentCell.RowIndex;
+            String ma = dataGridView1.Rows[index].Cells["id_KH"].Value.ToString();
+            new Dialog_ThongTinKhoaHoc(ma).ShowDialog();
+        }
     }
 }

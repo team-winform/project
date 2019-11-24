@@ -27,14 +27,28 @@ namespace main_GUI
             comboBox1.DisplayMember = "ten_LH";
             comboBox1.ValueMember = "id_LH";
 
-            String ma = comboBox1.SelectedValue.ToString();
-            dataGridView1.DataSource = this.diemDanhBLL.getDiemDanh(ma);
+            try
+            {
+                String ma = comboBox1.SelectedValue.ToString();
+                dataGridView1.DataSource = this.diemDanhBLL.getDiemDanh(ma);
+            }
+            catch
+            {
+
+            }
         }
 
         private void change(object sender, EventArgs e)
         {
-            String ma = comboBox1.SelectedValue.ToString();
-            dataGridView1.DataSource = this.diemDanhBLL.getDiemDanh(ma);
+            try
+            {
+                String ma = comboBox1.SelectedValue.ToString();
+                dataGridView1.DataSource = this.diemDanhBLL.getDiemDanh(ma);
+            }
+            catch
+            {
+
+            }
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -65,6 +79,14 @@ namespace main_GUI
                 dataGridView1.DataSource = this.diemDanhBLL.getDiemDanh(ma);
             }
             
+        }
+
+        private void cellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int index = dataGridView1.CurrentCell.RowIndex;
+            String maHV = dataGridView1.Rows[index].Cells["id_HV"].Value.ToString();
+            String maLop = comboBox1.SelectedValue.ToString();
+            new Dialog_ChiTietDiemDanh(maHV,maLop).ShowDialog();
         }
     }
 }

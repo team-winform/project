@@ -183,6 +183,7 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panelBottom);
             this.Controls.Add(this.panelTitle);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "Dialog_KhoaHOC";
             this.Text = "Dialog_KhoaHOC";
             this.Load += new System.EventHandler(this.Dialog_KhoaHOC_Load);
