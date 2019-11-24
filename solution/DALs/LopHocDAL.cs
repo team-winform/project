@@ -4,8 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
-using DTOs;
 using System.Configuration;
+using DTOs;
 
 namespace DALs
 {

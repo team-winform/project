@@ -44,6 +44,8 @@
   <ItemGroup>
     <Compile Include="AccountDAL.cs" />
     <Compile Include="LopHocDAL.cs" />
+    <Compile Include="DiemDanhDAL.cs" />
+    <Compile Include="KhoaHocDAL.cs" />
     <Compile Include="LichHocDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

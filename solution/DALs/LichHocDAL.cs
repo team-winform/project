@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DTOs;
 using System.Configuration;
 using System.Data.SqlClient;
+using DTOs;
 
 namespace DALs
 {
