@@ -19,19 +19,47 @@ namespace DALs
             conn = new SqlConnection(constring);
         }
 
+        public int getSoLuongLop()
+        {
+            conn.Open();
+            int soLuong = 0;
+            string query = "select count(*)as sl from LopHoc";
+            SqlCommand cmd = new SqlCommand(query, conn);
+            try
+            {
+                SqlDataReader rd = cmd.ExecuteReader();
+                while (rd.Read())
+                {
+                    soLuong = int.Parse(rd["sl"].ToString());
+                }
+            }
+            catch (SqlException e)
+            {
+                conn.Close();
+                throw e;
+            }
+            conn.Close();
+            return soLuong;
+        }
+
         public List<LopHocDTO> readLopHoc(int row_start, int row_end)
         {
             conn.Open();
             List<LopHocDTO> lstLopHocs = new List<LopHocDTO>();
-            string query = "select * from ( select *, ROW_NUMBER() over (order by ngaybatdau DESC) as "
-                + "rownum from LOPHOC) as lh where lh.rownum BETWEEN @row_start and @row_end";
+            string query = "select * from ( " +
+                    "select LOPHOC.id_LH, LOPHOC.id_GV, LOPHOC.id_KH, LOPHOC.id_PH, LOPHOC.ten_LH, LOPHOC.ngaybatdau, LOPHOC.ngayketthuc, LOPHOC.siso_LH, LOPHOC.ghichu_LH, KHOAHOC.ten_KH, PHONGHOC.ten_PH, GIANGVIEN.ten_GV, " +
+                            "ROW_NUMBER() over(order by LOPHOC.ngaybatdau DESC) as rownum " +
+                            "from LOPHOC left join KHOAHOC on LOPHOC.id_KH = KHOAHOC.id_KH " +
+                            "left join GIANGVIEN on LOPHOC.id_GV = GIANGVIEN.id_GV " +
+                            "left join PHONGHOC on PHONGHOC.id_PH = LOPHOC.id_PH " +
+                    ") as lh where lh.rownum BETWEEN @row_start and @row_end";
             SqlCommand cmd = new SqlCommand(query, conn);
             cmd.Parameters.AddWithValue("row_start", row_start);
             cmd.Parameters.AddWithValue("row_end", row_end);
             try
             {
                 SqlDataReader rd = cmd.ExecuteReader();
-                lstLopHocs = getLopHocDTO(rd);
+                lstLopHocs = getLopHocFullInfo(rd);
             }
             catch (SqlException e)
             {
@@ -126,13 +154,20 @@ namespace DALs
             conn.Open();
             List<LopHocDTO> lstLopHocs = new List<LopHocDTO>();
 
-            string query = "select * from LOPHOC where id_LH like concat('%',@id_LH, '%') order by ngaybatdau DESC";
-            SqlCommand cmd = new SqlCommand(query, conn);
+            //string query = "select * from LOPHOC where id_LH like concat('%',@id_LH, '%') order by ngaybatdau DESC";
+            string query2 = "select * from ( " +
+                    "select LOPHOC.id_LH, LOPHOC.id_GV, LOPHOC.id_KH, LOPHOC.id_PH, LOPHOC.ten_LH, LOPHOC.ngaybatdau, LOPHOC.ngayketthuc, LOPHOC.siso_LH, LOPHOC.ghichu_LH, KHOAHOC.ten_KH, PHONGHOC.ten_PH, GIANGVIEN.ten_GV, " +
+                            "ROW_NUMBER() over(order by LOPHOC.ngaybatdau DESC) as rownum " +
+                            "from LOPHOC left join KHOAHOC on LOPHOC.id_KH = KHOAHOC.id_KH " +
+                            "left join GIANGVIEN on LOPHOC.id_GV = GIANGVIEN.id_GV " +
+                            "left join PHONGHOC on PHONGHOC.id_PH = LOPHOC.id_PH " +
+                    ") as lh where id_LH like concat('%',@id_LH, '%')";
+            SqlCommand cmd = new SqlCommand(query2, conn);
             cmd.Parameters.AddWithValue("id_LH", maLopHoc);
             try
             {
                 SqlDataReader rd = cmd.ExecuteReader();
-                lstLopHocs = getLopHocDTO(rd);
+                lstLopHocs = getLopHocFullInfo(rd);
             }
             catch (SqlException ee)
             {
@@ -148,13 +183,20 @@ namespace DALs
             conn.Open();
             List<LopHocDTO> lstLopHocs = new List<LopHocDTO>();
 
-            string query = "select * from LOPHOC where ten_LH like concat('%',@ten_LH, '%') order by ngaybatdau DESC";
-            SqlCommand cmd = new SqlCommand(query, conn);
+            //string query = "select * from LOPHOC where ten_LH like concat('%',@ten_LH, '%') order by ngaybatdau DESC";
+            string query2 = "select * from ( " +
+                    "select LOPHOC.id_LH, LOPHOC.id_GV, LOPHOC.id_KH, LOPHOC.id_PH, LOPHOC.ten_LH, LOPHOC.ngaybatdau, LOPHOC.ngayketthuc, LOPHOC.siso_LH, LOPHOC.ghichu_LH, KHOAHOC.ten_KH, PHONGHOC.ten_PH, GIANGVIEN.ten_GV, " +
+                            "ROW_NUMBER() over(order by LOPHOC.ngaybatdau DESC) as rownum " +
+                            "from LOPHOC left join KHOAHOC on LOPHOC.id_KH = KHOAHOC.id_KH " +
+                            "left join GIANGVIEN on LOPHOC.id_GV = GIANGVIEN.id_GV " +
+                            "left join PHONGHOC on PHONGHOC.id_PH = LOPHOC.id_PH " +
+                    ") as lh where ten_LH like concat('%',@ten_LH, '%')";
+            SqlCommand cmd = new SqlCommand(query2, conn);
             cmd.Parameters.AddWithValue("ten_LH", tenLopHoc);
             try
             {
                 SqlDataReader rd = cmd.ExecuteReader();
-                lstLopHocs = getLopHocDTO(rd);
+                lstLopHocs = getLopHocFullInfo(rd);
             }
             catch (SqlException ee)
             {
@@ -176,10 +218,34 @@ namespace DALs
                 dto.ngayBatDau = DateTime.Parse(rd["ngaybatdau"].ToString());
                 dto.ngayKetThuc = DateTime.Parse(rd["ngayketthuc"].ToString());
                 dto.id_GV = rd["id_GV"].ToString();
-                dto.tenLopHoc = rd["id_LH"].ToString();
+                dto.tenLopHoc = rd["ten_LH"].ToString();
                 dto.id_PH = rd["id_LH"].ToString();
                 dto.ghiChu_LH = rd["ghichu_LH"].ToString();
-                dto.siSo = int.Parse(rd["sisho_LH"].ToString());
+                dto.siSo = int.Parse(rd["siso_LH"].ToString());
+
+                lstLopHocDTOs.Add(dto);
+            }
+            return lstLopHocDTOs;
+        }
+
+        private List<LopHocDTO> getLopHocFullInfo(SqlDataReader rd)
+        {
+            List<LopHocDTO> lstLopHocDTOs = new List<LopHocDTO>();
+            while (rd.Read())
+            {
+                LopHocDTO dto = new LopHocDTO();
+                dto.id_LH = rd["id_LH"].ToString();
+                dto.id_KH = rd["id_KH"].ToString();
+                dto.ngayBatDau = DateTime.Parse(rd["ngaybatdau"].ToString());
+                dto.ngayKetThuc = DateTime.Parse(rd["ngayketthuc"].ToString());
+                dto.id_GV = rd["id_GV"].ToString();
+                dto.tenLopHoc = rd["ten_LH"].ToString();
+                dto.id_PH = rd["id_LH"].ToString();
+                dto.ghiChu_LH = rd["ghichu_LH"].ToString();
+                dto.siSo = int.Parse(rd["siso_LH"].ToString());
+                dto.tenGiangVien = rd["ten_GV"].ToString();
+                dto.tenPhongHoc = rd["ten_PH"].ToString();
+                dto.tenKhoaHoc = rd["ten_KH"].ToString();
 
                 lstLopHocDTOs.Add(dto);
             }

@@ -10,9 +10,10 @@ namespace BLLs
 {
     public class QuanLyLopHocBLL
     {
+        private const int row_per_page = 30;
+
         LopHocDAL lopHocDAL = new LopHocDAL();
 
-        private const int row_per_page = 30;
         public List<LopHocDTO> getLopHoc(int page)
         {
             int start_row = row_per_page * (page - 1);
@@ -26,7 +27,7 @@ namespace BLLs
         /// <param name="tuKhoa"></param>
         /// <param name="tieuChi">0: Tìm theo mã; 1: Tìm theo tên</param>
         /// <returns></returns>
-        private List<LopHocDTO> searchLopHoc(string tuKhoa, int tieuChi)
+        public List<LopHocDTO> searchLopHoc(string tuKhoa, int tieuChi)
         {
             List<LopHocDTO> lstLopHocs = new List<LopHocDTO>();
             switch (tieuChi)
@@ -39,6 +40,23 @@ namespace BLLs
                     break;
             }
             return lstLopHocs;
+        }
+
+        public void insertLopHoc(LopHocDTO lopHocDTO)
+        {
+            lopHocDTO.id_LH = getNewID_LH();
+            lopHocDAL.insertLopHoc(lopHocDTO);
+        }
+
+        private string getNewID_LH()
+        {
+            int soLuongLop = lopHocDAL.getSoLuongLop();
+            return "LH" + soLuongLop.ToString().PadLeft(4, '0');
+        }
+
+        public void deleteLopHoc(string maLop)
+        {
+            lopHocDAL.deleteLopHoc(maLop);
         }
     }
 }

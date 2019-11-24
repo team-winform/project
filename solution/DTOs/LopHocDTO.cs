@@ -40,5 +40,9 @@ namespace DTOs
 
         public string ghiChu_LH { get; set; }
 
+        public string tenPhongHoc { get; set; }
+
+        public string tenGiangVien { get; set; }
+        public string tenKhoaHoc { get; set; }
     }
 }

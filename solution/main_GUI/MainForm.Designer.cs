@@ -60,7 +60,7 @@
             this.lbSiSo = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.datePickerNgayKetThucHoc = new System.Windows.Forms.DateTimePicker();
-            this.label12 = new System.Windows.Forms.Label();
+            this.lbMaLop = new System.Windows.Forms.Label();
             this.datePickerNgayBatDauHoc = new System.Windows.Forms.DateTimePicker();
             this.label16 = new System.Windows.Forms.Label();
             this.cbPhongHoc = new System.Windows.Forms.ComboBox();
@@ -79,13 +79,13 @@
             this.label5 = new System.Windows.Forms.Label();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.id_LH = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tenLop = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tenKhoaHoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tenGianVien = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tenPhongHoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ngaybatdau = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ngayketthuc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.siso = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ghichu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPageTaiKhoanCuaToi.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -340,20 +340,25 @@
             // 
             // grdLopHoc
             // 
+            this.grdLopHoc.AllowUserToAddRows = false;
+            this.grdLopHoc.AllowUserToDeleteRows = false;
             this.grdLopHoc.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grdLopHoc.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.id_LH,
+            this.tenLop,
             this.tenKhoaHoc,
             this.tenGianVien,
             this.tenPhongHoc,
             this.ngaybatdau,
             this.ngayketthuc,
-            this.siso,
-            this.ghichu});
+            this.siso});
             this.grdLopHoc.Location = new System.Drawing.Point(18, 256);
             this.grdLopHoc.Name = "grdLopHoc";
+            this.grdLopHoc.ReadOnly = true;
             this.grdLopHoc.Size = new System.Drawing.Size(822, 236);
             this.grdLopHoc.TabIndex = 27;
+            this.grdLopHoc.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdLopHoc_CellClick);
+            this.grdLopHoc.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdLopHoc_CellDoubleClick);
             // 
             // groupBox4
             // 
@@ -365,7 +370,7 @@
             this.groupBox4.Controls.Add(this.lbSiSo);
             this.groupBox4.Controls.Add(this.label10);
             this.groupBox4.Controls.Add(this.datePickerNgayKetThucHoc);
-            this.groupBox4.Controls.Add(this.label12);
+            this.groupBox4.Controls.Add(this.lbMaLop);
             this.groupBox4.Controls.Add(this.datePickerNgayBatDauHoc);
             this.groupBox4.Controls.Add(this.label16);
             this.groupBox4.Controls.Add(this.cbPhongHoc);
@@ -406,6 +411,7 @@
             this.btReloadLopHoc.TabIndex = 25;
             this.btReloadLopHoc.Text = "Load lại";
             this.btReloadLopHoc.UseVisualStyleBackColor = true;
+            this.btReloadLopHoc.Click += new System.EventHandler(this.btReloadLopHoc_Click);
             // 
             // label6
             // 
@@ -434,6 +440,7 @@
             this.lbSiSo.Size = new System.Drawing.Size(37, 13);
             this.lbSiSo.TabIndex = 23;
             this.lbSiSo.Text = "lbSiSo";
+            this.lbSiSo.Visible = false;
             // 
             // label10
             // 
@@ -452,14 +459,15 @@
             this.datePickerNgayKetThucHoc.Size = new System.Drawing.Size(133, 20);
             this.datePickerNgayKetThucHoc.TabIndex = 22;
             // 
-            // label12
+            // lbMaLop
             // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(145, 38);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(48, 13);
-            this.label12.TabIndex = 5;
-            this.label12.Text = "lbMaLop";
+            this.lbMaLop.AutoSize = true;
+            this.lbMaLop.Location = new System.Drawing.Point(145, 38);
+            this.lbMaLop.Name = "lbMaLop";
+            this.lbMaLop.Size = new System.Drawing.Size(48, 13);
+            this.lbMaLop.TabIndex = 5;
+            this.lbMaLop.Text = "lbMaLop";
+            this.lbMaLop.Visible = false;
             // 
             // datePickerNgayBatDauHoc
             // 
@@ -539,6 +547,7 @@
             this.btXoaLopHoc.TabIndex = 16;
             this.btXoaLopHoc.Text = "Xoá";
             this.btXoaLopHoc.UseVisualStyleBackColor = true;
+            this.btXoaLopHoc.Click += new System.EventHandler(this.btXoaLopHoc_Click);
             // 
             // btThemLopHoc
             // 
@@ -548,6 +557,7 @@
             this.btThemLopHoc.TabIndex = 14;
             this.btThemLopHoc.Text = "Thêm";
             this.btThemLopHoc.UseVisualStyleBackColor = true;
+            this.btThemLopHoc.Click += new System.EventHandler(this.btThemLopHoc_Click);
             // 
             // btSuaLopHoc
             // 
@@ -623,42 +633,50 @@
             // 
             this.id_LH.HeaderText = "Mã lớp";
             this.id_LH.Name = "id_LH";
+            this.id_LH.ReadOnly = true;
+            // 
+            // tenLop
+            // 
+            this.tenLop.HeaderText = "Tên lớp";
+            this.tenLop.Name = "tenLop";
+            this.tenLop.ReadOnly = true;
             // 
             // tenKhoaHoc
             // 
             this.tenKhoaHoc.HeaderText = "Khoá học";
             this.tenKhoaHoc.Name = "tenKhoaHoc";
+            this.tenKhoaHoc.ReadOnly = true;
             // 
             // tenGianVien
             // 
             this.tenGianVien.HeaderText = "Giảng viên";
             this.tenGianVien.Name = "tenGianVien";
+            this.tenGianVien.ReadOnly = true;
             // 
             // tenPhongHoc
             // 
             this.tenPhongHoc.HeaderText = "Phòng Học";
             this.tenPhongHoc.Name = "tenPhongHoc";
+            this.tenPhongHoc.ReadOnly = true;
             // 
             // ngaybatdau
             // 
             this.ngaybatdau.HeaderText = "Ngày bắt đầu";
             this.ngaybatdau.Name = "ngaybatdau";
+            this.ngaybatdau.ReadOnly = true;
             // 
             // ngayketthuc
             // 
             this.ngayketthuc.HeaderText = "Ngày kết thúc";
             this.ngayketthuc.Name = "ngayketthuc";
+            this.ngayketthuc.ReadOnly = true;
             // 
             // siso
             // 
             this.siso.HeaderText = "Sĩ số";
             this.siso.Name = "siso";
+            this.siso.ReadOnly = true;
             this.siso.Width = 60;
-            // 
-            // ghichu
-            // 
-            this.ghichu.HeaderText = "Ghi chú";
-            this.ghichu.Name = "ghichu";
             // 
             // MainForm
             // 
@@ -710,7 +728,7 @@
         private System.Windows.Forms.TabPage tabQuanLyLopHoc;
         private System.Windows.Forms.TabControl tabControl;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label lbMaLop;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label6;
@@ -740,13 +758,13 @@
         private System.Windows.Forms.TextBox txtTrangLopHoc;
         private System.Windows.Forms.Button btTrangSauLopHoc;
         private System.Windows.Forms.DataGridViewTextBoxColumn id_LH;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tenLop;
         private System.Windows.Forms.DataGridViewTextBoxColumn tenKhoaHoc;
         private System.Windows.Forms.DataGridViewTextBoxColumn tenGianVien;
         private System.Windows.Forms.DataGridViewTextBoxColumn tenPhongHoc;
         private System.Windows.Forms.DataGridViewTextBoxColumn ngaybatdau;
         private System.Windows.Forms.DataGridViewTextBoxColumn ngayketthuc;
         private System.Windows.Forms.DataGridViewTextBoxColumn siso;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ghichu;
     }
 }
 
