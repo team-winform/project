@@ -46,5 +46,10 @@ namespace BLLs
         {
             return this.khoaHocDAL.findKhoaHocByMa(ma);
         }
+
+        public DataTable getLopHocOfKhoaHoc(String ma)
+        {
+            return this.khoaHocDAL.getLopHocOfKhoaHoc(ma);
+        }
     }
 }
