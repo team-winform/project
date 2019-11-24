@@ -15,3 +15,9 @@ C:\Users\Drahan\Downloads\project\solution\LAM_DAL\obj\Debug\LAM_DAL.csprojAssem
 C:\Users\Drahan\Downloads\project\solution\LAM_DAL\obj\Debug\LAM_DAL.csproj.CoreCompileInputs.cache
 C:\Users\Drahan\Downloads\project\solution\LAM_DAL\obj\Debug\LAM_DAL.dll
 C:\Users\Drahan\Downloads\project\solution\LAM_DAL\obj\Debug\LAM_DAL.pdb
+E:\LTWindows\project\solution\LAM_DAL\bin\Debug\LAM_DAL.dll
+E:\LTWindows\project\solution\LAM_DAL\bin\Debug\LAM_DAL.pdb
+E:\LTWindows\project\solution\LAM_DAL\obj\Debug\LAM_DAL.csprojAssemblyReference.cache
+E:\LTWindows\project\solution\LAM_DAL\obj\Debug\LAM_DAL.csproj.CoreCompileInputs.cache
+E:\LTWindows\project\solution\LAM_DAL\obj\Debug\LAM_DAL.dll
+E:\LTWindows\project\solution\LAM_DAL\obj\Debug\LAM_DAL.pdb
