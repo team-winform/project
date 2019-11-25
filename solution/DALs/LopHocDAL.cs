@@ -23,7 +23,7 @@ namespace DALs
         {
             conn.Open();
             int soLuong = 0;
-            string query = "select count(*)as sl from LopHoc";
+            string query = "select count(*) as sl from LopHoc";
             SqlCommand cmd = new SqlCommand(query, conn);
             try
             {
@@ -40,6 +40,30 @@ namespace DALs
             }
             conn.Close();
             return soLuong;
+        }
+
+        public int getSiSo(string maLop)
+        {
+            conn.Open();
+            int siSo = 0;
+            string query = "select  siso_LH from LopHoc where id_LH = @id_LH ";
+            SqlCommand cmd = new SqlCommand(query, conn);
+            cmd.Parameters.AddWithValue("id_LH", maLop);
+            try
+            {
+                SqlDataReader rd = cmd.ExecuteReader();
+                while (rd.Read())
+                {
+                    siSo = int.Parse(rd["siSo_LH"].ToString());
+                }
+            }
+            catch (SqlException e)
+            {
+                conn.Close();
+                throw e;
+            }
+            conn.Close();
+            return siSo;
         }
 
         public List<LopHocDTO> readLopHoc(int row_start, int row_end)
@@ -116,7 +140,7 @@ namespace DALs
             cmd.Parameters.AddWithValue("ngaybatdau", lopHocDTO.ngayBatDau);
             cmd.Parameters.AddWithValue("ngayketthuc", lopHocDTO.ngayKetThuc);
             cmd.Parameters.AddWithValue("id_GV", lopHocDTO.id_GV);
-            cmd.Parameters.AddWithValue("tenLH", lopHocDTO.ten_LH);
+            cmd.Parameters.AddWithValue("ten_LH", lopHocDTO.ten_LH);
             cmd.Parameters.AddWithValue("id_PH", lopHocDTO.id_PH);
             cmd.Parameters.AddWithValue("ghichu_LH", lopHocDTO.ghiChu_LH);
             try
@@ -218,7 +242,7 @@ namespace DALs
                 dto.ngayBatDau = DateTime.Parse(rd["ngaybatdau"].ToString());
                 dto.ngayKetThuc = DateTime.Parse(rd["ngayketthuc"].ToString());
                 dto.id_GV = rd["id_GV"].ToString();
-                dto.tenLopHoc = rd["ten_LH"].ToString();
+                dto.ten_LH = rd["ten_LH"].ToString();
                 dto.id_PH = rd["id_LH"].ToString();
                 dto.ghiChu_LH = rd["ghichu_LH"].ToString();
                 dto.siSo = int.Parse(rd["siso_LH"].ToString());
@@ -239,8 +263,8 @@ namespace DALs
                 dto.ngayBatDau = DateTime.Parse(rd["ngaybatdau"].ToString());
                 dto.ngayKetThuc = DateTime.Parse(rd["ngayketthuc"].ToString());
                 dto.id_GV = rd["id_GV"].ToString();
-                dto.tenLopHoc = rd["ten_LH"].ToString();
-                dto.id_PH = rd["id_LH"].ToString();
+                dto.ten_LH = rd["ten_LH"].ToString();
+                dto.id_PH = rd["id_PH"].ToString();
                 dto.ghiChu_LH = rd["ghichu_LH"].ToString();
                 dto.siSo = int.Parse(rd["siso_LH"].ToString());
                 dto.tenGiangVien = rd["ten_GV"].ToString();

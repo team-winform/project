@@ -33,6 +33,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -49,6 +50,7 @@
     <Compile Include="PhongHocBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QuanLyLopHocBLL.cs" />
+    <Compile Include="QuanLyTaiKhoanBLL.cs" />
     <Compile Include="TaiKhoanCuaToiBLL.cs" />
     <Compile Include="Utils.cs" />
   </ItemGroup>

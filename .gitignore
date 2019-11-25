@@ -11,6 +11,7 @@
 #app.config
 App.config
 
+main_Gui/App.config
 Program.cs
 
 # program.cs

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using DALs;
 using DTOs;
 
@@ -44,19 +45,30 @@ namespace BLLs
 
         public void insertLopHoc(LopHocDTO lopHocDTO)
         {
-            lopHocDTO.id_LH = getNewID_LH();
-            lopHocDAL.insertLopHoc(lopHocDTO);
+            if (lopHocDTO != null)
+            {
+                lopHocDTO.id_LH = getNewID_LH();
+                lopHocDAL.insertLopHoc(lopHocDTO);
+            }
+        }
+
+        public void updateLopHoc(LopHocDTO lopHocDTO)
+        {
+            lopHocDAL.updateLopHoc(lopHocDTO);
         }
 
         private string getNewID_LH()
         {
             int soLuongLop = lopHocDAL.getSoLuongLop();
-            return "LH" + soLuongLop.ToString().PadLeft(4, '0');
+            return "LH" + (soLuongLop + 1).ToString().PadLeft(4, '0');
         }
 
         public void deleteLopHoc(string maLop)
         {
-            lopHocDAL.deleteLopHoc(maLop);
+            if (lopHocDAL.getSiSo(maLop) == 0)
+                lopHocDAL.deleteLopHoc(maLop);
+            else
+                MessageBox.Show("Lớp này không trống. Không được xoá!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
     }
 }

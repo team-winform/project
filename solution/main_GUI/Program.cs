@@ -16,7 +16,7 @@ namespace main_GUI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new PhongHocGUI());
+            Application.Run(new LoginForm());
         }
     }
 }

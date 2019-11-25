@@ -18,7 +18,12 @@ namespace main_GUI
         TaiKhoanCuaToiBLL taiKhoanCuaToiBLL = new TaiKhoanCuaToiBLL();
         QuanLyLopHocBLL quanLyLopHocBLL = new QuanLyLopHocBLL();
         KhoaHocBLL khoaHocBLL = new KhoaHocBLL();
+        PhongHocBLL phongHocBLL = new PhongHocBLL();
+        GiangVienBLL giangVienBLL = new GiangVienBLL();
+        QuanLyTaiKhoanBLL quanLyTaiKhoanBLL = new QuanLyTaiKhoanBLL();
+
         List<LopHocDTO> currentListLopHoc;
+        List<AccountDTO> currentListAccount;
 
         public MainForm()
         {
@@ -32,8 +37,10 @@ namespace main_GUI
             loadTabQuanLyLopHoc();
             loadTabTaiKhoanCuaToi();
 
-
-
+            if (accountGlobal != null && accountGlobal.level == 0)
+            {
+                loadTabQuanLyTaiKhoan();
+            }
 
         }
 
@@ -109,6 +116,8 @@ namespace main_GUI
         {
             tabControl.TabPages.Add(tabQuanLyLopHoc);
 
+            lbMaLop.Text = "";
+            lbSiSo.Text = "";
             lbMaLop.Show();
             lbSiSo.Show();
 
@@ -117,6 +126,14 @@ namespace main_GUI
             cbKhoaHoc.DataSource = khoaHocBLL.getAllKhoaHoc();
             cbKhoaHoc.DisplayMember = "ten_KH";
             cbKhoaHoc.ValueMember = "id_KH";
+
+            cbPhongHoc.DataSource = phongHocBLL.getAll();
+            cbPhongHoc.DisplayMember = "name";
+            cbPhongHoc.ValueMember = "id";
+
+            cbGiangVien.DataSource = giangVienBLL.getAll();
+            cbGiangVien.DisplayMember = "name";
+            cbGiangVien.ValueMember = "id";
 
             datePickerNgayBatDauHoc.Format = DateTimePickerFormat.Custom;
             datePickerNgayBatDauHoc.CustomFormat = "dd-MM-yyyy";
@@ -156,7 +173,7 @@ namespace main_GUI
             {
                 grdLopHoc.Rows.Add();
                 grdLopHoc.Rows[index].Cells[0].Value = dto.id_LH;
-                grdLopHoc.Rows[index].Cells[1].Value = dto.tenLopHoc;
+                grdLopHoc.Rows[index].Cells[1].Value = dto.ten_LH;
                 grdLopHoc.Rows[index].Cells[2].Value = dto.tenKhoaHoc;
                 grdLopHoc.Rows[index].Cells[3].Value = dto.tenGiangVien;
                 grdLopHoc.Rows[index].Cells[4].Value = dto.tenPhongHoc;
@@ -208,31 +225,52 @@ namespace main_GUI
         private void btReloadLopHoc_Click(object sender, EventArgs e)
         {
             hienThiGrdLopHoc();
-            clearForm();
+            ClearFormLopHoc();
         }
 
         private void btThemLopHoc_Click(object sender, EventArgs e)
         {
+            LopHocDTO lopHocDTO = getLopHocOnForm();
+            quanLyLopHocBLL.insertLopHoc(lopHocDTO);
+            hienThiGrdLopHoc();
+        }
 
+        private LopHocDTO getLopHocOnForm()
+        {
+            LopHocDTO dto = new LopHocDTO();
+            if (txtTenLopHoc.Text.Trim() == "")
+            {
+                hienThongBaoLoi("Tên lớp học không được để trống");
+                return null;
+            }
+
+            dto.id_LH = lbMaLop.Text;
+            dto.ten_LH = txtTenLopHoc.Text.Trim();
+            dto.id_GV = cbGiangVien.SelectedValue.ToString();
+            dto.id_PH = cbPhongHoc.SelectedValue.ToString();
+            dto.id_KH = cbKhoaHoc.SelectedValue.ToString();
+            dto.ngayBatDau = datePickerNgayBatDauHoc.Value;
+            dto.ngayKetThuc = datePickerNgayKetThucHoc.Value;
+
+            return dto;
         }
 
         private void btXoaLopHoc_Click(object sender, EventArgs e)
         {
             quanLyLopHocBLL.deleteLopHoc(lbMaLop.Text);
-
+            hienThiGrdLopHoc();
         }
 
         private void grdLopHoc_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             int index = grdLopHoc.SelectedCells[0].RowIndex;
-            txtChonGiangVien.Text = currentListLopHoc.ElementAt(index).id_GV +"-";
+            cbGiangVien.SelectedValue = currentListLopHoc.ElementAt(index).id_GV;
+            cbKhoaHoc.SelectedValue = currentListLopHoc.ElementAt(index).id_KH;
+            cbPhongHoc.SelectedValue = currentListLopHoc.ElementAt(index).id_PH;
 
             DataGridViewRow row = grdLopHoc.Rows[index];
-            lbMaLop.Text = Convert.ToString(row.Cells[0].Value).Trim();
+            lbMaLop.Text = row.Cells[0].Value.ToString().Trim();
             txtTenLopHoc.Text = row.Cells[1].Value.ToString();
-            cbKhoaHoc.SelectedText = Convert.ToString(row.Cells[2].Value).Trim();
-            txtChonGiangVien.Text += Convert.ToString(row.Cells[3].Value).Trim();
-            cbPhongHoc.SelectedText = Convert.ToString(row.Cells[4].Value).Trim();
             datePickerNgayBatDauHoc.Value = DateTime.Parse(row.Cells[5].Value.ToString().Trim());
             datePickerNgayKetThucHoc.Value = DateTime.Parse(row.Cells[6].Value.ToString().Trim());
             lbSiSo.Text = row.Cells[7].Value.ToString();
@@ -243,19 +281,136 @@ namespace main_GUI
 
         }
 
-        private void clearForm()
+        private void ClearFormLopHoc()
         {
             lbMaLop.Text = "";
             txtTenLopHoc.Text = "";
             cbKhoaHoc.SelectedIndex = 0;
             cbPhongHoc.SelectedIndex = 0;
-            txtChonGiangVien.Text = "";
+            cbGiangVien.SelectedIndex = 0;
             datePickerNgayBatDauHoc.Value = DateTime.Now;
             datePickerNgayKetThucHoc.Value = DateTime.Now;
             lbSiSo.Text = "";
             txtTenLopHoc.Focus();
         }
 
+        private void btSuaLopHoc_Click(object sender, EventArgs e)
+        {
+            LopHocDTO lopHocDTO = getLopHocOnForm();
+            quanLyLopHocBLL.updateLopHoc(lopHocDTO);
+            hienThiGrdLopHoc();
+        }
 
+        ////////////////////////////////////////////////
+        ///
+        ///         Quan ly tai khoan
+        ///
+        /////////////////////////////////////////////////
+
+        private void loadTabQuanLyTaiKhoan()
+        {
+            tabControl.TabPages.Add(tabQuanLyTaiKhoan);
+            cbLevel.SelectedIndex = 2;
+
+            hienThiGrdAccount();
+        }
+
+        private string castLevel(int level)
+        {
+            switch (level)
+            {
+                case 0:
+                    return "Quản trị viên";
+                case 1:
+                    return "Quản lý";
+                case 2:
+                default:
+                    return "Nhân viên";
+            }
+        }
+
+        private void hienThiGrdAccount()
+        {
+            List<AccountDTO> lstAccounts = quanLyTaiKhoanBLL.getAccountTable();
+            currentListAccount = lstAccounts;
+
+            grdTaiKhoan.Rows.Clear();
+            int index = 0;
+            foreach (AccountDTO dto in lstAccounts)
+            {
+                grdTaiKhoan.Rows.Add();
+                grdTaiKhoan.Rows[index].Cells[0].Value = dto.username;
+                grdTaiKhoan.Rows[index].Cells[1].Value = "********";
+                grdTaiKhoan.Rows[index].Cells[2].Value = castLevel(dto.level);
+                grdTaiKhoan.Rows[index].Cells[3].Value = dto.fullname;
+                grdTaiKhoan.Rows[index].Cells[4].Value = dto.phone;
+
+                index++;
+            }
+        }
+
+        private AccountDTO getTaiKhoanOnForm()
+        {
+            if (txtTaiKhoan.Text == "" || txtMatKhau.Text == "")
+            {
+                hienThongBaoLoi("Tài khoản, mật khẩu không được để trống");
+                return null;
+            }
+            else
+            {
+                AccountDTO acc = new AccountDTO();
+                acc.username = txtTaiKhoan.Text;
+                acc.password = txtMatKhau.Text;
+                acc.level = cbLevel.SelectedIndex;
+                return acc;
+            }
+        }
+
+        private void clearFormQLTaiKhoan()
+        {
+            txtTaiKhoan.Text = "";
+            txtMatKhau.Text = "";
+            cbLevel.SelectedIndex = 2;
+        }
+
+        private void btnClearAccount_Click(object sender, EventArgs e)
+        {
+            clearFormQLTaiKhoan();
+        }
+
+        private void btnReloadGrdAccount_Click(object sender, EventArgs e)
+        {
+            hienThiGrdAccount();
+        }
+
+        private void btThemTaiKhoan_Click(object sender, EventArgs e)
+        {
+            quanLyTaiKhoanBLL.addAccount(getTaiKhoanOnForm());
+            hienThiGrdAccount();
+            clearFormQLTaiKhoan();
+        }
+
+        private void btCapNhatTaiKhoan_Click(object sender, EventArgs e)
+        {
+            quanLyTaiKhoanBLL.updateAccount(getTaiKhoanOnForm());
+            hienThiGrdAccount();
+            clearFormQLTaiKhoan();
+        }
+
+        private void btXoaTaiKhoan_Click(object sender, EventArgs e)
+        {
+            quanLyTaiKhoanBLL.deleteAccount(txtTaiKhoan.Text);
+            hienThiGrdAccount();
+            clearFormQLTaiKhoan();
+        }
+
+        private void grdTaiKhoan_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int index = grdTaiKhoan.SelectedCells[0].RowIndex;
+            AccountDTO currentAccount = currentListAccount.ElementAt(index);
+
+            txtTaiKhoan.Text = currentAccount.username;
+            cbLevel.SelectedIndex = currentAccount.level;
+        }
     }
 }

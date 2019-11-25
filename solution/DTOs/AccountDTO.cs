@@ -10,6 +10,8 @@ namespace DTOs
     {
         public AccountDTO()
         {
+            fullname = "";
+            phone = "";
         }
 
         public AccountDTO(string username, string password, int level)
