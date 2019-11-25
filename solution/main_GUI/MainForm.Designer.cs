@@ -60,6 +60,7 @@
             this.ngayketthuc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.siso = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.cbGiangVien = new System.Windows.Forms.ComboBox();
             this.txtTenLopHoc = new System.Windows.Forms.TextBox();
             this.btReloadLopHoc = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
@@ -85,26 +86,26 @@
             this.txtTimKiemLop = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.tabControl = new System.Windows.Forms.TabControl();
-            this.cbGiangVien = new System.Windows.Forms.ComboBox();
             this.tabQuanLyTaiKhoan = new System.Windows.Forms.TabPage();
-            this.txtTaiKhoan = new System.Windows.Forms.TextBox();
-            this.txtMatKhau = new System.Windows.Forms.TextBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.cbLevel = new System.Windows.Forms.ComboBox();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.btThemTaiKhoan = new System.Windows.Forms.Button();
+            this.btnReloadGrdAccount = new System.Windows.Forms.Button();
             this.grdTaiKhoan = new System.Windows.Forms.DataGridView();
-            this.btCapNhatTaiKhoan = new System.Windows.Forms.Button();
-            this.btXoaTaiKhoan = new System.Windows.Forms.Button();
             this.username = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.password = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.level = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.hoten = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.phone = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.btnClearAccount = new System.Windows.Forms.Button();
-            this.btnReloadGrdAccount = new System.Windows.Forms.Button();
+            this.btXoaTaiKhoan = new System.Windows.Forms.Button();
+            this.btCapNhatTaiKhoan = new System.Windows.Forms.Button();
+            this.btThemTaiKhoan = new System.Windows.Forms.Button();
+            this.cbLevel = new System.Windows.Forms.ComboBox();
+            this.txtTaiKhoan = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.txtMatKhau = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.btLichHoc = new System.Windows.Forms.Button();
             this.tabPageTaiKhoanCuaToi.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -114,8 +115,8 @@
             this.groupBox3.SuspendLayout();
             this.tabControl.SuspendLayout();
             this.tabQuanLyTaiKhoan.SuspendLayout();
-            this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdTaiKhoan)).BeginInit();
+            this.groupBox5.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabPageTaiKhoanCuaToi
@@ -433,6 +434,7 @@
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.btLichHoc);
             this.groupBox4.Controls.Add(this.cbGiangVien);
             this.groupBox4.Controls.Add(this.txtTenLopHoc);
             this.groupBox4.Controls.Add(this.btReloadLopHoc);
@@ -460,6 +462,15 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Quản lý";
             // 
+            // cbGiangVien
+            // 
+            this.cbGiangVien.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbGiangVien.FormattingEnabled = true;
+            this.cbGiangVien.Location = new System.Drawing.Point(443, 35);
+            this.cbGiangVien.Name = "cbGiangVien";
+            this.cbGiangVien.Size = new System.Drawing.Size(133, 21);
+            this.cbGiangVien.TabIndex = 26;
+            // 
             // txtTenLopHoc
             // 
             this.txtTenLopHoc.Location = new System.Drawing.Point(148, 70);
@@ -469,7 +480,7 @@
             // 
             // btReloadLopHoc
             // 
-            this.btReloadLopHoc.Location = new System.Drawing.Point(72, 177);
+            this.btReloadLopHoc.Location = new System.Drawing.Point(23, 177);
             this.btReloadLopHoc.Name = "btReloadLopHoc";
             this.btReloadLopHoc.Size = new System.Drawing.Size(75, 23);
             this.btReloadLopHoc.TabIndex = 25;
@@ -605,7 +616,7 @@
             // 
             // btXoaLopHoc
             // 
-            this.btXoaLopHoc.Location = new System.Drawing.Point(459, 177);
+            this.btXoaLopHoc.Location = new System.Drawing.Point(410, 177);
             this.btXoaLopHoc.Name = "btXoaLopHoc";
             this.btXoaLopHoc.Size = new System.Drawing.Size(75, 23);
             this.btXoaLopHoc.TabIndex = 16;
@@ -615,7 +626,7 @@
             // 
             // btThemLopHoc
             // 
-            this.btThemLopHoc.Location = new System.Drawing.Point(201, 177);
+            this.btThemLopHoc.Location = new System.Drawing.Point(152, 177);
             this.btThemLopHoc.Name = "btThemLopHoc";
             this.btThemLopHoc.Size = new System.Drawing.Size(75, 23);
             this.btThemLopHoc.TabIndex = 14;
@@ -625,7 +636,7 @@
             // 
             // btSuaLopHoc
             // 
-            this.btSuaLopHoc.Location = new System.Drawing.Point(330, 177);
+            this.btSuaLopHoc.Location = new System.Drawing.Point(281, 177);
             this.btSuaLopHoc.Name = "btSuaLopHoc";
             this.btSuaLopHoc.Size = new System.Drawing.Size(75, 23);
             this.btSuaLopHoc.TabIndex = 15;
@@ -695,15 +706,6 @@
             this.tabControl.Size = new System.Drawing.Size(863, 524);
             this.tabControl.TabIndex = 0;
             // 
-            // cbGiangVien
-            // 
-            this.cbGiangVien.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbGiangVien.FormattingEnabled = true;
-            this.cbGiangVien.Location = new System.Drawing.Point(443, 35);
-            this.cbGiangVien.Name = "cbGiangVien";
-            this.cbGiangVien.Size = new System.Drawing.Size(133, 21);
-            this.cbGiangVien.TabIndex = 26;
-            // 
             // tabQuanLyTaiKhoan
             // 
             this.tabQuanLyTaiKhoan.Controls.Add(this.btnReloadGrdAccount);
@@ -717,94 +719,15 @@
             this.tabQuanLyTaiKhoan.Text = "Quản lý tài khoản";
             this.tabQuanLyTaiKhoan.UseVisualStyleBackColor = true;
             // 
-            // txtTaiKhoan
+            // btnReloadGrdAccount
             // 
-            this.txtTaiKhoan.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTaiKhoan.Location = new System.Drawing.Point(177, 29);
-            this.txtTaiKhoan.Name = "txtTaiKhoan";
-            this.txtTaiKhoan.Size = new System.Drawing.Size(193, 21);
-            this.txtTaiKhoan.TabIndex = 0;
-            // 
-            // txtMatKhau
-            // 
-            this.txtMatKhau.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMatKhau.Location = new System.Drawing.Point(177, 61);
-            this.txtMatKhau.Name = "txtMatKhau";
-            this.txtMatKhau.Size = new System.Drawing.Size(193, 21);
-            this.txtMatKhau.TabIndex = 1;
-            this.txtMatKhau.UseSystemPasswordChar = true;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(94, 29);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(61, 15);
-            this.label12.TabIndex = 2;
-            this.label12.Text = "Tài khoản";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(94, 61);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(58, 15);
-            this.label13.TabIndex = 3;
-            this.label13.Text = "Mật khẩu";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(94, 93);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(52, 15);
-            this.label14.TabIndex = 4;
-            this.label14.Text = "Cấp bậc";
-            // 
-            // cbLevel
-            // 
-            this.cbLevel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbLevel.FormattingEnabled = true;
-            this.cbLevel.Items.AddRange(new object[] {
-            "Quản trị viên",
-            "Quản lý",
-            "Nhân viên"});
-            this.cbLevel.Location = new System.Drawing.Point(177, 93);
-            this.cbLevel.Name = "cbLevel";
-            this.cbLevel.Size = new System.Drawing.Size(193, 21);
-            this.cbLevel.TabIndex = 5;
-            // 
-            // groupBox5
-            // 
-            this.groupBox5.Controls.Add(this.btnClearAccount);
-            this.groupBox5.Controls.Add(this.btXoaTaiKhoan);
-            this.groupBox5.Controls.Add(this.btCapNhatTaiKhoan);
-            this.groupBox5.Controls.Add(this.btThemTaiKhoan);
-            this.groupBox5.Controls.Add(this.cbLevel);
-            this.groupBox5.Controls.Add(this.txtTaiKhoan);
-            this.groupBox5.Controls.Add(this.label14);
-            this.groupBox5.Controls.Add(this.txtMatKhau);
-            this.groupBox5.Controls.Add(this.label13);
-            this.groupBox5.Controls.Add(this.label12);
-            this.groupBox5.Location = new System.Drawing.Point(175, 26);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(470, 175);
-            this.groupBox5.TabIndex = 6;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Quản lý tài khoản";
-            // 
-            // btThemTaiKhoan
-            // 
-            this.btThemTaiKhoan.Location = new System.Drawing.Point(83, 132);
-            this.btThemTaiKhoan.Name = "btThemTaiKhoan";
-            this.btThemTaiKhoan.Size = new System.Drawing.Size(70, 28);
-            this.btThemTaiKhoan.TabIndex = 6;
-            this.btThemTaiKhoan.Text = "Thêm";
-            this.btThemTaiKhoan.UseVisualStyleBackColor = true;
-            this.btThemTaiKhoan.Click += new System.EventHandler(this.btThemTaiKhoan_Click);
+            this.btnReloadGrdAccount.Location = new System.Drawing.Point(83, 199);
+            this.btnReloadGrdAccount.Name = "btnReloadGrdAccount";
+            this.btnReloadGrdAccount.Size = new System.Drawing.Size(75, 23);
+            this.btnReloadGrdAccount.TabIndex = 8;
+            this.btnReloadGrdAccount.Text = "Reload";
+            this.btnReloadGrdAccount.UseVisualStyleBackColor = true;
+            this.btnReloadGrdAccount.Click += new System.EventHandler(this.btnReloadGrdAccount_Click);
             // 
             // grdTaiKhoan
             // 
@@ -820,26 +743,6 @@
             this.grdTaiKhoan.Size = new System.Drawing.Size(691, 223);
             this.grdTaiKhoan.TabIndex = 7;
             this.grdTaiKhoan.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdTaiKhoan_CellClick);
-            // 
-            // btCapNhatTaiKhoan
-            // 
-            this.btCapNhatTaiKhoan.Location = new System.Drawing.Point(203, 132);
-            this.btCapNhatTaiKhoan.Name = "btCapNhatTaiKhoan";
-            this.btCapNhatTaiKhoan.Size = new System.Drawing.Size(70, 28);
-            this.btCapNhatTaiKhoan.TabIndex = 7;
-            this.btCapNhatTaiKhoan.Text = "Cập nhật";
-            this.btCapNhatTaiKhoan.UseVisualStyleBackColor = true;
-            this.btCapNhatTaiKhoan.Click += new System.EventHandler(this.btCapNhatTaiKhoan_Click);
-            // 
-            // btXoaTaiKhoan
-            // 
-            this.btXoaTaiKhoan.Location = new System.Drawing.Point(327, 132);
-            this.btXoaTaiKhoan.Name = "btXoaTaiKhoan";
-            this.btXoaTaiKhoan.Size = new System.Drawing.Size(70, 28);
-            this.btXoaTaiKhoan.TabIndex = 8;
-            this.btXoaTaiKhoan.Text = "Xoá";
-            this.btXoaTaiKhoan.UseVisualStyleBackColor = true;
-            this.btXoaTaiKhoan.Click += new System.EventHandler(this.btXoaTaiKhoan_Click);
             // 
             // username
             // 
@@ -869,6 +772,25 @@
             this.phone.Name = "phone";
             this.phone.Width = 150;
             // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.btnClearAccount);
+            this.groupBox5.Controls.Add(this.btXoaTaiKhoan);
+            this.groupBox5.Controls.Add(this.btCapNhatTaiKhoan);
+            this.groupBox5.Controls.Add(this.btThemTaiKhoan);
+            this.groupBox5.Controls.Add(this.cbLevel);
+            this.groupBox5.Controls.Add(this.txtTaiKhoan);
+            this.groupBox5.Controls.Add(this.label14);
+            this.groupBox5.Controls.Add(this.txtMatKhau);
+            this.groupBox5.Controls.Add(this.label13);
+            this.groupBox5.Controls.Add(this.label12);
+            this.groupBox5.Location = new System.Drawing.Point(175, 26);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(470, 175);
+            this.groupBox5.TabIndex = 6;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Quản lý tài khoản";
+            // 
             // btnClearAccount
             // 
             this.btnClearAccount.Location = new System.Drawing.Point(394, 29);
@@ -879,15 +801,105 @@
             this.btnClearAccount.UseVisualStyleBackColor = true;
             this.btnClearAccount.Click += new System.EventHandler(this.btnClearAccount_Click);
             // 
-            // btnReloadGrdAccount
+            // btXoaTaiKhoan
             // 
-            this.btnReloadGrdAccount.Location = new System.Drawing.Point(83, 199);
-            this.btnReloadGrdAccount.Name = "btnReloadGrdAccount";
-            this.btnReloadGrdAccount.Size = new System.Drawing.Size(75, 23);
-            this.btnReloadGrdAccount.TabIndex = 8;
-            this.btnReloadGrdAccount.Text = "Reload";
-            this.btnReloadGrdAccount.UseVisualStyleBackColor = true;
-            this.btnReloadGrdAccount.Click += new System.EventHandler(this.btnReloadGrdAccount_Click);
+            this.btXoaTaiKhoan.Location = new System.Drawing.Point(327, 132);
+            this.btXoaTaiKhoan.Name = "btXoaTaiKhoan";
+            this.btXoaTaiKhoan.Size = new System.Drawing.Size(70, 28);
+            this.btXoaTaiKhoan.TabIndex = 8;
+            this.btXoaTaiKhoan.Text = "Xoá";
+            this.btXoaTaiKhoan.UseVisualStyleBackColor = true;
+            this.btXoaTaiKhoan.Click += new System.EventHandler(this.btXoaTaiKhoan_Click);
+            // 
+            // btCapNhatTaiKhoan
+            // 
+            this.btCapNhatTaiKhoan.Location = new System.Drawing.Point(203, 132);
+            this.btCapNhatTaiKhoan.Name = "btCapNhatTaiKhoan";
+            this.btCapNhatTaiKhoan.Size = new System.Drawing.Size(70, 28);
+            this.btCapNhatTaiKhoan.TabIndex = 7;
+            this.btCapNhatTaiKhoan.Text = "Cập nhật";
+            this.btCapNhatTaiKhoan.UseVisualStyleBackColor = true;
+            this.btCapNhatTaiKhoan.Click += new System.EventHandler(this.btCapNhatTaiKhoan_Click);
+            // 
+            // btThemTaiKhoan
+            // 
+            this.btThemTaiKhoan.Location = new System.Drawing.Point(83, 132);
+            this.btThemTaiKhoan.Name = "btThemTaiKhoan";
+            this.btThemTaiKhoan.Size = new System.Drawing.Size(70, 28);
+            this.btThemTaiKhoan.TabIndex = 6;
+            this.btThemTaiKhoan.Text = "Thêm";
+            this.btThemTaiKhoan.UseVisualStyleBackColor = true;
+            this.btThemTaiKhoan.Click += new System.EventHandler(this.btThemTaiKhoan_Click);
+            // 
+            // cbLevel
+            // 
+            this.cbLevel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbLevel.FormattingEnabled = true;
+            this.cbLevel.Items.AddRange(new object[] {
+            "Quản trị viên",
+            "Quản lý",
+            "Nhân viên"});
+            this.cbLevel.Location = new System.Drawing.Point(177, 93);
+            this.cbLevel.Name = "cbLevel";
+            this.cbLevel.Size = new System.Drawing.Size(193, 21);
+            this.cbLevel.TabIndex = 5;
+            // 
+            // txtTaiKhoan
+            // 
+            this.txtTaiKhoan.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTaiKhoan.Location = new System.Drawing.Point(177, 29);
+            this.txtTaiKhoan.Name = "txtTaiKhoan";
+            this.txtTaiKhoan.Size = new System.Drawing.Size(193, 21);
+            this.txtTaiKhoan.TabIndex = 0;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(94, 93);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(52, 15);
+            this.label14.TabIndex = 4;
+            this.label14.Text = "Cấp bậc";
+            // 
+            // txtMatKhau
+            // 
+            this.txtMatKhau.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMatKhau.Location = new System.Drawing.Point(177, 61);
+            this.txtMatKhau.Name = "txtMatKhau";
+            this.txtMatKhau.Size = new System.Drawing.Size(193, 21);
+            this.txtMatKhau.TabIndex = 1;
+            this.txtMatKhau.UseSystemPasswordChar = true;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(94, 61);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(58, 15);
+            this.label13.TabIndex = 3;
+            this.label13.Text = "Mật khẩu";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(94, 29);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(61, 15);
+            this.label12.TabIndex = 2;
+            this.label12.Text = "Tài khoản";
+            // 
+            // btLichHoc
+            // 
+            this.btLichHoc.Location = new System.Drawing.Point(530, 177);
+            this.btLichHoc.Name = "btLichHoc";
+            this.btLichHoc.Size = new System.Drawing.Size(75, 23);
+            this.btLichHoc.TabIndex = 27;
+            this.btLichHoc.Text = "Lịch học";
+            this.btLichHoc.UseVisualStyleBackColor = true;
+            this.btLichHoc.Click += new System.EventHandler(this.btLichHoc_Click);
             // 
             // MainForm
             // 
@@ -913,9 +925,9 @@
             this.groupBox3.PerformLayout();
             this.tabControl.ResumeLayout(false);
             this.tabQuanLyTaiKhoan.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.grdTaiKhoan)).EndInit();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.grdTaiKhoan)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -999,6 +1011,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn phone;
         private System.Windows.Forms.Button btnReloadGrdAccount;
         private System.Windows.Forms.Button btnClearAccount;
+        private System.Windows.Forms.Button btLichHoc;
     }
 }
 

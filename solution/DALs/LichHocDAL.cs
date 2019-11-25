@@ -19,6 +19,31 @@ namespace DALs
             conn = new SqlConnection(conString);
         }
 
+        public List<LichHocDTO> readLichHocs(string maLop)
+        {
+            conn.Open();
+            List<LichHocDTO> lstLichHocs = new List<LichHocDTO>();
+
+            string query = "select * from LICHHOC where id_LH = @id_LH";
+            SqlCommand cmd = new SqlCommand(query, conn);
+            cmd.Parameters.AddWithValue("id_LH", maLop);
+            SqlDataReader rd = cmd.ExecuteReader();
+            while (rd.Read())
+            {
+                LichHocDTO lichHocDTO = new LichHocDTO();
+                
+                lichHocDTO.id_LIH = rd["id_LIH"].ToString();
+                lichHocDTO.id_LH = rd["id_LH"].ToString();
+                lichHocDTO.thu = int.Parse(rd["thu"].ToString());
+                lichHocDTO.tiet = rd["tiet"].ToString();
+
+                lstLichHocs.Add(lichHocDTO);
+            }
+            
+            conn.Close();
+            return lstLichHocs;
+        }
+
         public void insertLichHoc(LichHocDTO lichDTO)
         {
             conn.Open();

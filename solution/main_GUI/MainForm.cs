@@ -172,15 +172,15 @@ namespace main_GUI
             foreach (LopHocDTO dto in lstLopHocs)
             {
                 grdLopHoc.Rows.Add();
-                grdLopHoc.Rows[index].Cells[0].Value = dto.id_LH;
+                grdLopHoc.Rows[index].Cells["id_lh"].Value = dto.id_LH;
                 grdLopHoc.Rows[index].Cells[1].Value = dto.ten_LH;
                 grdLopHoc.Rows[index].Cells[2].Value = dto.tenKhoaHoc;
                 grdLopHoc.Rows[index].Cells[3].Value = dto.tenGiangVien;
                 grdLopHoc.Rows[index].Cells[4].Value = dto.tenPhongHoc;
-                //grdLopHoc.Rows[index].Cells[5].Value = dto.ngayBatDau.Day + "/" +(dto.ngayBatDau.Month+1)+"/" + dto.ngayBatDau.Year;
-                //grdLopHoc.Rows[index].Cells[6].Value = dto.ngayKetThuc.Day + "/" + (dto.ngayKetThuc.Month + 1) + "/" + dto.ngayKetThuc.Year; ;
-                grdLopHoc.Rows[index].Cells[5].Value = dto.ngayBatDau.ToShortDateString();
-                grdLopHoc.Rows[index].Cells[6].Value = dto.ngayKetThuc.ToShortDateString();
+                grdLopHoc.Rows[index].Cells[5].Value = dto.ngayBatDau.Day + "/" + dto.ngayBatDau.Month + "/" + dto.ngayBatDau.Year;
+                grdLopHoc.Rows[index].Cells[6].Value = dto.ngayKetThuc.Day + "/" + dto.ngayKetThuc.Month + "/" + dto.ngayKetThuc.Year; ;
+                //grdLopHoc.Rows[index].Cells[5].Value = dto.ngayBatDau.ToShortDateString();
+                //grdLopHoc.Rows[index].Cells[6].Value = dto.ngayKetThuc.ToShortDateString();
                 grdLopHoc.Rows[index].Cells[7].Value = dto.siSo;
                 index++;
             }
@@ -264,16 +264,22 @@ namespace main_GUI
         private void grdLopHoc_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             int index = grdLopHoc.SelectedCells[0].RowIndex;
-            cbGiangVien.SelectedValue = currentListLopHoc.ElementAt(index).id_GV;
-            cbKhoaHoc.SelectedValue = currentListLopHoc.ElementAt(index).id_KH;
-            cbPhongHoc.SelectedValue = currentListLopHoc.ElementAt(index).id_PH;
 
-            DataGridViewRow row = grdLopHoc.Rows[index];
-            lbMaLop.Text = row.Cells[0].Value.ToString().Trim();
-            txtTenLopHoc.Text = row.Cells[1].Value.ToString();
-            datePickerNgayBatDauHoc.Value = DateTime.Parse(row.Cells[5].Value.ToString().Trim());
-            datePickerNgayKetThucHoc.Value = DateTime.Parse(row.Cells[6].Value.ToString().Trim());
-            lbSiSo.Text = row.Cells[7].Value.ToString();
+            LopHocDTO currentLopHoc = currentListLopHoc.ElementAt(index);
+
+            cbGiangVien.SelectedValue = currentLopHoc.id_GV;
+            cbKhoaHoc.SelectedValue = currentLopHoc.id_KH;
+            cbPhongHoc.SelectedValue = currentLopHoc.id_PH;
+            datePickerNgayBatDauHoc.Value = currentLopHoc.ngayBatDau;
+            datePickerNgayKetThucHoc.Value = currentLopHoc.ngayKetThuc;
+
+            lbMaLop.Text = currentLopHoc.id_LH;
+            txtTenLopHoc.Text = currentLopHoc.ten_LH;
+            lbSiSo.Text = currentLopHoc.siSo.ToString();
+
+            //DataGridViewRow row = grdLopHoc.Rows[index];
+            //datePickerNgayBatDauHoc.Value = DateTime.Parse(row.Cells[5].Value.ToString().Trim());
+            //datePickerNgayKetThucHoc.Value = DateTime.Parse(row.Cells[6].Value.ToString().Trim());
         }
 
         private void grdLopHoc_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -299,6 +305,13 @@ namespace main_GUI
             LopHocDTO lopHocDTO = getLopHocOnForm();
             quanLyLopHocBLL.updateLopHoc(lopHocDTO);
             hienThiGrdLopHoc();
+        }
+
+        private void btLichHoc_Click(object sender, EventArgs e)
+        {
+            string maLop = lbMaLop.Text;
+            if (maLop.Trim() != "")
+                new Dialog_QuanLyLichHocLopHoc(maLop).ShowDialog();
         }
 
         ////////////////////////////////////////////////
@@ -412,5 +425,7 @@ namespace main_GUI
             txtTaiKhoan.Text = currentAccount.username;
             cbLevel.SelectedIndex = currentAccount.level;
         }
+
+        
     }
 }
