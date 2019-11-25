@@ -23,7 +23,7 @@ namespace DALs
             SqlConnection conn = new SqlConnection(connectString);
             conn.Open();
 
-            String sql = "select hv.id_HV,hv.ten_HV,hv.sodt_HV,count(dd.id) as 'nghi' from HOCVIEN as hv inner join HOCVIEN_LOPHOC as hl on hl.id_HV = hv.id_HV left join DiemDanh as dd on dd.id_HV = hv.id_HV and dd.id_LH=@maLop where hl.id_LH = @maLop group by hv.id_HV,hv.ten_HV,hv.sodt_HV";
+            String sql = "select hv.id_HV,hv.ten_HV,hv.sodt_HV from HOCVIEN as hv inner join HOCVIEN_LOPHOC as hl on hl.id_HV = hv.id_HV  where hl.id_LH = @maLop";
             SqlCommand command = new SqlCommand(sql, conn);
             command.Parameters.AddWithValue("maLop", maLop);
             SqlDataReader rd = command.ExecuteReader();
@@ -88,6 +88,20 @@ namespace DALs
             SqlCommand command = new SqlCommand(sql, conn);
             command.Parameters.AddWithValue("maLop", maLH);
             command.Parameters.AddWithValue("maHV", maHV);
+            SqlDataReader rd = command.ExecuteReader();
+            DataTable tb = new DataTable();
+            tb.Load(rd);
+            return tb;
+        }
+
+        public DataTable thongKeDiemDanh(String maLop)
+        {
+            SqlConnection conn = new SqlConnection(connectString);
+            conn.Open();
+
+            String sql = "select hv.ten_HV,hv.id_HV,hv.sodt_HV,count(dd.id) as 'nghi' from HOCVIEN hv inner join HOCVIEN_LOPHOC hvlh on hvlh.id_HV = hv.id_HV left join DiemDanh dd on dd.id_HV = hv.id_HV and dd.id_LH = @maLop where hvlh.id_LH = @maLop group by hv.ten_HV,hv.id_HV,hv.sodt_HV";
+            SqlCommand command = new SqlCommand(sql, conn);
+            command.Parameters.AddWithValue("maLop", maLop);
             SqlDataReader rd = command.ExecuteReader();
             DataTable tb = new DataTable();
             tb.Load(rd);
