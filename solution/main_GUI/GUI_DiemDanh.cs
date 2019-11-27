@@ -22,6 +22,9 @@ namespace main_GUI
 
         private void GUI_DiemDanh_Load(object sender, EventArgs e)
         {
+            DateTime now = DateTime.Now;
+            label1.Text += " ngày " + now.ToString("MM/dd/yyyy");
+
             dataGridView1.Font = new Font("Tahoma", 10);
             comboBox1.DataSource = this.diemDanhBLL.getAllLopHoc();
             comboBox1.DisplayMember = "ten_LH";
@@ -87,6 +90,13 @@ namespace main_GUI
             String maHV = dataGridView1.Rows[index].Cells["id_HV"].Value.ToString();
             String maLop = comboBox1.SelectedValue.ToString();
             new Dialog_ChiTietDiemDanh(maHV,maLop).ShowDialog();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            String maLop = comboBox1.SelectedValue.ToString();
+            String tenLop = comboBox1.Text;
+            new Dialog_ThongKeDiemDanh(maLop,tenLop).ShowDialog();
         }
     }
 }
