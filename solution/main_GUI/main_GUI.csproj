@@ -77,6 +77,24 @@
     <Compile Include="Dialog_ThongTinKhoaHoc.Designer.cs">
       <DependentUpon>Dialog_ThongTinKhoaHoc.cs</DependentUpon>
     </Compile>
+    <Compile Include="Gui_QuanLyLopHoc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Gui_QuanLyLopHoc.Designer.cs">
+      <DependentUpon>Gui_QuanLyLopHoc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Gui_QuanLyTaiKhoan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Gui_QuanLyTaiKhoan.Designer.cs">
+      <DependentUpon>Gui_QuanLyTaiKhoan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI_TaiKhoanCuaToi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI_TaiKhoanCuaToi.Designer.cs">
+      <DependentUpon>GUI_TaiKhoanCuaToi.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -153,6 +171,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Dialog_ThongTinKhoaHoc.resx">
       <DependentUpon>Dialog_ThongTinKhoaHoc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gui_QuanLyLopHoc.resx">
+      <DependentUpon>Gui_QuanLyLopHoc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gui_QuanLyTaiKhoan.resx">
+      <DependentUpon>Gui_QuanLyTaiKhoan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI_TaiKhoanCuaToi.resx">
+      <DependentUpon>GUI_TaiKhoanCuaToi.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>Form1.cs</DependentUpon>

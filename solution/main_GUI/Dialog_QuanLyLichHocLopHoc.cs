@@ -61,8 +61,12 @@ namespace main_GUI
         {
             if (currentLichHoc != null)
             {
-                lichHocBLL.deleteLichHoc(currentLichHoc.id_LIH);
-                hienThiGrdLichHoc();
+                DialogResult result = hienThongBao("Xác nhận xoá lịch học?");
+                if (result == DialogResult.OK)
+                {
+                    lichHocBLL.deleteLichHoc(currentLichHoc.id_LIH);
+                    hienThiGrdLichHoc();
+                }
             }
         }
 
@@ -94,6 +98,16 @@ namespace main_GUI
                 default:
                     return "Unknown";
             }
+        }
+
+        public void hienThongBaoLoi(string message)
+        {
+            MessageBox.Show(message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public DialogResult hienThongBao(string message)
+        {
+            return MessageBox.Show(message, "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
         }
     }
 }

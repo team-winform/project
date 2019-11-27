@@ -19,18 +19,18 @@ namespace DALs
             conn = new SqlConnection(constring);
         }
 
-        public int getSoLuongLop()
+        public string getLastID()
         {
             conn.Open();
-            int soLuong = 0;
-            string query = "select count(*) as sl from LopHoc";
+            string lastID = null;
+            string query = "select top 1 id_LH from LopHoc order by id_LH DESC";
             SqlCommand cmd = new SqlCommand(query, conn);
             try
             {
                 SqlDataReader rd = cmd.ExecuteReader();
                 while (rd.Read())
                 {
-                    soLuong = int.Parse(rd["sl"].ToString());
+                    lastID = rd["id_LH"].ToString();
                 }
             }
             catch (SqlException e)
@@ -39,7 +39,7 @@ namespace DALs
                 throw e;
             }
             conn.Close();
-            return soLuong;
+            return lastID;
         }
 
         public int getSiSo(string maLop)

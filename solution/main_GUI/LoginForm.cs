@@ -40,7 +40,8 @@ namespace main_GUI
             {
                 clearTextBox();
                 this.Hide();
-                new MainForm().Show();
+                new MainForm().ShowDialog();
+                //this.Close();
             }
         }
 

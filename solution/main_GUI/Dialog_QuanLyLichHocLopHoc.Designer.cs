@@ -154,7 +154,7 @@
             this.groupBox1.Size = new System.Drawing.Size(200, 82);
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Quản lý lịch học";
+            this.groupBox1.Text = "Hành động";
             // 
             // btXoa
             // 
