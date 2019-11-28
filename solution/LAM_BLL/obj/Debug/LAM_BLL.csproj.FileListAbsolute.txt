@@ -15,6 +15,17 @@ C:\Users\Drahan\Desktop\CSharp\project\solution\LAM_BLL\obj\Debug\LAM_BLL.csproj
 C:\Users\Drahan\Desktop\CSharp\project\solution\LAM_BLL\obj\Debug\LAM_BLL.csproj.CopyComplete
 C:\Users\Drahan\Desktop\CSharp\project\solution\LAM_BLL\obj\Debug\LAM_BLL.dll
 C:\Users\Drahan\Desktop\CSharp\project\solution\LAM_BLL\obj\Debug\LAM_BLL.pdb
+<<<<<<< HEAD
+C:\Users\Drahan\Downloads\project\solution\LAM_BLL\bin\Debug\LAM_BLL.dll
+C:\Users\Drahan\Downloads\project\solution\LAM_BLL\bin\Debug\LAM_BLL.pdb
+C:\Users\Drahan\Downloads\project\solution\LAM_BLL\bin\Debug\LAM_DAL.dll
+C:\Users\Drahan\Downloads\project\solution\LAM_BLL\bin\Debug\LAM_DAL.pdb
+C:\Users\Drahan\Downloads\project\solution\LAM_BLL\obj\Debug\LAM_BLL.csprojAssemblyReference.cache
+C:\Users\Drahan\Downloads\project\solution\LAM_BLL\obj\Debug\LAM_BLL.csproj.CoreCompileInputs.cache
+C:\Users\Drahan\Downloads\project\solution\LAM_BLL\obj\Debug\LAM_BLL.csproj.CopyComplete
+C:\Users\Drahan\Downloads\project\solution\LAM_BLL\obj\Debug\LAM_BLL.dll
+C:\Users\Drahan\Downloads\project\solution\LAM_BLL\obj\Debug\LAM_BLL.pdb
+=======
 C:\Users\huyla\Documents\C#\project\solution\LAM_BLL\bin\Debug\LAM_BLL.dll
 C:\Users\huyla\Documents\C#\project\solution\LAM_BLL\bin\Debug\LAM_BLL.pdb
 C:\Users\huyla\Documents\C#\project\solution\LAM_BLL\bin\Debug\LAM_DAL.dll
@@ -23,3 +34,4 @@ C:\Users\huyla\Documents\C#\project\solution\LAM_BLL\obj\Debug\LAM_BLL.csprojAss
 C:\Users\huyla\Documents\C#\project\solution\LAM_BLL\obj\Debug\LAM_BLL.csproj.CopyComplete
 C:\Users\huyla\Documents\C#\project\solution\LAM_BLL\obj\Debug\LAM_BLL.dll
 C:\Users\huyla\Documents\C#\project\solution\LAM_BLL\obj\Debug\LAM_BLL.pdb
+>>>>>>> c3690136c6d4b606424c63d7b057ac0bb22c7426

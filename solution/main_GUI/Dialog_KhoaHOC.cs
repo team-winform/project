@@ -7,8 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using BLLs;
 using System.Data.SqlClient;
+using BLLs;
 
 namespace main_GUI
 {
@@ -18,7 +18,7 @@ namespace main_GUI
         int type;
         String ma;
         KhoaHocBLL khoaHocBLL;
-        public Dialog_KhoaHOC(int type,String ma)
+        public Dialog_KhoaHOC(int type, String ma)
         {
             InitializeComponent();
             this.khoaHocBLL = new KhoaHocBLL();
@@ -59,26 +59,25 @@ namespace main_GUI
                     else result = this.khoaHocBLL.updateKhoaHoc(ma, txtTen.Text.Trim(), txtGia.Text.Trim(), txtGhiChu.Text.Trim());
                     if (result != 0)
                     {
-                        if(type==1) MessageBox.Show("Thêm khóa học thành công");
+                        if (type == 1) MessageBox.Show("Thêm khóa học thành công");
                         else MessageBox.Show("sửa khóa học thành công");
                     }
                     this.Close();
                 }
                 catch (Exception ex)
                 {
-                    if(type==1) MessageBox.Show("Không thể thêm khóa học: \n" + ex.Message);
+                    if (type == 1) MessageBox.Show("Không thể thêm khóa học: \n" + ex.Message);
                     else MessageBox.Show("Không thể sửa khóa học: \n" + ex.Message);
                 }
             }
-            catch(FormatException ex)
+            catch (FormatException ex)
             {
                 errorProvider1.SetError(txtGia, "giá phải là số");
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
 
             }
-
-            
         }
 
         private void btnCancel_Click(object sender, EventArgs e)

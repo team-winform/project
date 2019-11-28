@@ -31,6 +31,25 @@ C:\Users\Drahan\Desktop\CSharp\project\solution\LAM_GUI\obj\Debug\LAM_GUI.csproj
 C:\Users\Drahan\Desktop\CSharp\project\solution\LAM_GUI\obj\Debug\LAM_GUI.csproj.CopyComplete
 C:\Users\Drahan\Desktop\CSharp\project\solution\LAM_GUI\obj\Debug\LAM_GUI.exe
 C:\Users\Drahan\Desktop\CSharp\project\solution\LAM_GUI\obj\Debug\LAM_GUI.pdb
+<<<<<<< HEAD
+C:\Users\Drahan\Downloads\project\solution\LAM_GUI\bin\Debug\LAM_GUI.exe.config
+C:\Users\Drahan\Downloads\project\solution\LAM_GUI\bin\Debug\LAM_GUI.exe
+C:\Users\Drahan\Downloads\project\solution\LAM_GUI\bin\Debug\LAM_GUI.pdb
+C:\Users\Drahan\Downloads\project\solution\LAM_GUI\bin\Debug\LAM_BLL.dll
+C:\Users\Drahan\Downloads\project\solution\LAM_GUI\bin\Debug\LAM_DAL.dll
+C:\Users\Drahan\Downloads\project\solution\LAM_GUI\bin\Debug\LAM_BLL.pdb
+C:\Users\Drahan\Downloads\project\solution\LAM_GUI\bin\Debug\LAM_DAL.pdb
+C:\Users\Drahan\Downloads\project\solution\LAM_GUI\obj\Debug\LAM_GUI.csprojAssemblyReference.cache
+C:\Users\Drahan\Downloads\project\solution\LAM_GUI\obj\Debug\LAM_GUI.Dialog_KhoaHOC.resources
+C:\Users\Drahan\Downloads\project\solution\LAM_GUI\obj\Debug\LAM_GUI.GUI_DiemDanh.resources
+C:\Users\Drahan\Downloads\project\solution\LAM_GUI\obj\Debug\LAM_GUI.GUI_KhoaHoc.resources
+C:\Users\Drahan\Downloads\project\solution\LAM_GUI\obj\Debug\LAM_GUI.Properties.Resources.resources
+C:\Users\Drahan\Downloads\project\solution\LAM_GUI\obj\Debug\LAM_GUI.csproj.GenerateResource.cache
+C:\Users\Drahan\Downloads\project\solution\LAM_GUI\obj\Debug\LAM_GUI.csproj.CoreCompileInputs.cache
+C:\Users\Drahan\Downloads\project\solution\LAM_GUI\obj\Debug\LAM_GUI.csproj.CopyComplete
+C:\Users\Drahan\Downloads\project\solution\LAM_GUI\obj\Debug\LAM_GUI.exe
+C:\Users\Drahan\Downloads\project\solution\LAM_GUI\obj\Debug\LAM_GUI.pdb
+=======
 C:\Users\huyla\Documents\C#\project\solution\LAM_GUI\bin\Debug\LAM_GUI.exe.config
 C:\Users\huyla\Documents\C#\project\solution\LAM_GUI\bin\Debug\LAM_GUI.exe
 C:\Users\huyla\Documents\C#\project\solution\LAM_GUI\bin\Debug\LAM_GUI.pdb
@@ -47,3 +66,4 @@ C:\Users\huyla\Documents\C#\project\solution\LAM_GUI\obj\Debug\LAM_GUI.csproj.Ge
 C:\Users\huyla\Documents\C#\project\solution\LAM_GUI\obj\Debug\LAM_GUI.csproj.CopyComplete
 C:\Users\huyla\Documents\C#\project\solution\LAM_GUI\obj\Debug\LAM_GUI.exe
 C:\Users\huyla\Documents\C#\project\solution\LAM_GUI\obj\Debug\LAM_GUI.pdb
+>>>>>>> c3690136c6d4b606424c63d7b057ac0bb22c7426
