@@ -69,7 +69,7 @@ namespace DALs
             conn.Open();
 
             string query = "insert into HOCVIEN_LOPHOC" +
-                "(id_LH, id_HV, diem1, diem1, diem3, diem4, ghichu_HVLH) values" +
+                "(id_LH, id_HV, diem_1, diem_2, diem_3, diem_4, ghichu_HVLH) values" +
                 "(@id_LH, @id_HV, @diem1, @diem2, @diem3, @diem4, @ghichu_HVLH)";
             SqlCommand cmd = new SqlCommand(query, conn);
             cmd.Parameters.AddWithValue("id_LH", hvlh.id_LH);

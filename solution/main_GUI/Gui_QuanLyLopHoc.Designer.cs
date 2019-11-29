@@ -141,30 +141,35 @@
             this.id_LH.HeaderText = "Mã lớp";
             this.id_LH.Name = "id_LH";
             this.id_LH.ReadOnly = true;
+            this.id_LH.Width = 70;
             // 
             // tenLop
             // 
             this.tenLop.HeaderText = "Tên lớp";
             this.tenLop.Name = "tenLop";
             this.tenLop.ReadOnly = true;
+            this.tenLop.Width = 150;
             // 
             // tenKhoaHoc
             // 
             this.tenKhoaHoc.HeaderText = "Khoá học";
             this.tenKhoaHoc.Name = "tenKhoaHoc";
             this.tenKhoaHoc.ReadOnly = true;
+            this.tenKhoaHoc.Width = 90;
             // 
             // tenGianVien
             // 
             this.tenGianVien.HeaderText = "Giảng viên";
             this.tenGianVien.Name = "tenGianVien";
             this.tenGianVien.ReadOnly = true;
+            this.tenGianVien.Width = 120;
             // 
             // tenPhongHoc
             // 
             this.tenPhongHoc.HeaderText = "Phòng Học";
             this.tenPhongHoc.Name = "tenPhongHoc";
             this.tenPhongHoc.ReadOnly = true;
+            this.tenPhongHoc.Width = 90;
             // 
             // ngaybatdau
             // 
@@ -220,14 +225,14 @@
             this.cbGiangVien.FormattingEnabled = true;
             this.cbGiangVien.Location = new System.Drawing.Point(443, 35);
             this.cbGiangVien.Name = "cbGiangVien";
-            this.cbGiangVien.Size = new System.Drawing.Size(133, 24);
+            this.cbGiangVien.Size = new System.Drawing.Size(145, 24);
             this.cbGiangVien.TabIndex = 26;
             // 
             // txtTenLopHoc
             // 
-            this.txtTenLopHoc.Location = new System.Drawing.Point(148, 70);
+            this.txtTenLopHoc.Location = new System.Drawing.Point(137, 70);
             this.txtTenLopHoc.Name = "txtTenLopHoc";
-            this.txtTenLopHoc.Size = new System.Drawing.Size(121, 22);
+            this.txtTenLopHoc.Size = new System.Drawing.Size(157, 22);
             this.txtTenLopHoc.TabIndex = 17;
             // 
             // btReloadLopHoc
@@ -244,7 +249,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(55, 38);
+            this.label6.Location = new System.Drawing.Point(44, 38);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(49, 16);
             this.label6.TabIndex = 1;
@@ -254,7 +259,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(55, 70);
+            this.label9.Location = new System.Drawing.Point(44, 70);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(54, 16);
             this.label9.TabIndex = 2;
@@ -274,7 +279,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(55, 102);
+            this.label10.Location = new System.Drawing.Point(44, 102);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(64, 16);
             this.label10.TabIndex = 3;
@@ -285,14 +290,14 @@
             // 
             this.datePickerNgayKetThucHoc.Location = new System.Drawing.Point(443, 99);
             this.datePickerNgayKetThucHoc.Name = "datePickerNgayKetThucHoc";
-            this.datePickerNgayKetThucHoc.Size = new System.Drawing.Size(133, 22);
+            this.datePickerNgayKetThucHoc.Size = new System.Drawing.Size(145, 22);
             this.datePickerNgayKetThucHoc.TabIndex = 22;
             // 
             // lbMaLop
             // 
             this.lbMaLop.AutoSize = true;
             this.lbMaLop.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbMaLop.Location = new System.Drawing.Point(145, 38);
+            this.lbMaLop.Location = new System.Drawing.Point(134, 38);
             this.lbMaLop.Name = "lbMaLop";
             this.lbMaLop.Size = new System.Drawing.Size(61, 16);
             this.lbMaLop.TabIndex = 5;
@@ -303,7 +308,7 @@
             // 
             this.datePickerNgayBatDauHoc.Location = new System.Drawing.Point(443, 67);
             this.datePickerNgayBatDauHoc.Name = "datePickerNgayBatDauHoc";
-            this.datePickerNgayBatDauHoc.Size = new System.Drawing.Size(133, 22);
+            this.datePickerNgayBatDauHoc.Size = new System.Drawing.Size(145, 22);
             this.datePickerNgayBatDauHoc.TabIndex = 21;
             // 
             // label16
@@ -320,9 +325,9 @@
             // 
             this.cbPhongHoc.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbPhongHoc.FormattingEnabled = true;
-            this.cbPhongHoc.Location = new System.Drawing.Point(148, 133);
+            this.cbPhongHoc.Location = new System.Drawing.Point(137, 133);
             this.cbPhongHoc.Name = "cbPhongHoc";
-            this.cbPhongHoc.Size = new System.Drawing.Size(121, 24);
+            this.cbPhongHoc.Size = new System.Drawing.Size(157, 24);
             this.cbPhongHoc.TabIndex = 20;
             // 
             // label17
@@ -339,9 +344,9 @@
             // 
             this.cbKhoaHoc.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbKhoaHoc.FormattingEnabled = true;
-            this.cbKhoaHoc.Location = new System.Drawing.Point(148, 102);
+            this.cbKhoaHoc.Location = new System.Drawing.Point(137, 102);
             this.cbKhoaHoc.Name = "cbKhoaHoc";
-            this.cbKhoaHoc.Size = new System.Drawing.Size(121, 24);
+            this.cbKhoaHoc.Size = new System.Drawing.Size(157, 24);
             this.cbKhoaHoc.TabIndex = 19;
             // 
             // label18
@@ -358,7 +363,7 @@
             // 
             this.label19.AutoSize = true;
             this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(55, 133);
+            this.label19.Location = new System.Drawing.Point(44, 133);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(72, 16);
             this.label19.TabIndex = 12;
@@ -490,14 +495,6 @@
         private System.Windows.Forms.Button btTrangSauLopHoc;
         private System.Windows.Forms.Button btTrangTruocLopHoc;
         private System.Windows.Forms.DataGridView grdLopHoc;
-        private System.Windows.Forms.DataGridViewTextBoxColumn id_LH;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tenLop;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tenKhoaHoc;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tenGianVien;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tenPhongHoc;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ngaybatdau;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ngayketthuc;
-        private System.Windows.Forms.DataGridViewTextBoxColumn siso;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.ComboBox cbGiangVien;
         private System.Windows.Forms.TextBox txtTenLopHoc;
@@ -524,5 +521,13 @@
         private System.Windows.Forms.ComboBox cbTieuChiTimKiemLop;
         private System.Windows.Forms.TextBox txtTimKiemLop;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id_LH;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tenLop;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tenKhoaHoc;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tenGianVien;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tenPhongHoc;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ngaybatdau;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ngayketthuc;
+        private System.Windows.Forms.DataGridViewTextBoxColumn siso;
     }
 }

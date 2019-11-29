@@ -54,9 +54,14 @@ namespace main_GUI
 
         private void export()
         {
+            String exportPath = "C:/exportpdf/";
+            if (!System.IO.Directory.Exists(exportPath))
+            {
+                System.IO.Directory.CreateDirectory(exportPath);
+            }
             String fileName = "diemdanh_" + maLop + ".pdf";
             Document doc = new Document(iTextSharp.text.PageSize.A4, 10, 10, 20, 20);
-            PdfWriter writer = PdfWriter.GetInstance(doc, new FileStream("C://exportpdf/"+fileName, FileMode.Create));
+            PdfWriter writer = PdfWriter.GetInstance(doc, new FileStream(exportPath+fileName, FileMode.Create));
             doc.Open();
 
             BaseFont bf = BaseFont.CreateFont(Environment.GetEnvironmentVariable("windir") + @"\fonts\Tahoma.TTF", BaseFont.IDENTITY_H, true);

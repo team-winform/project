@@ -29,7 +29,7 @@ namespace main_GUI
             if (accountGlobal != null)
             {
                 lbTaiKhoanCuaToi.Text = accountGlobal.username;
-                txtHoTen.Text = accountGlobal.fullname;
+                lbHoTen.Text = accountGlobal.fullname;
                 txtSoDienThoai.Text = accountGlobal.phone;
             }
         }
@@ -44,7 +44,7 @@ namespace main_GUI
 
         private void btnDoiThongTinCaNhan_Click(object sender, EventArgs e)
         {
-            taiKhoanCuaToiBLL.doiThongTinCaNhan(accountGlobal, txtHoTen.Text, txtSoDienThoai.Text);
+            taiKhoanCuaToiBLL.doiThongTinCaNhan(accountGlobal, txtSoDienThoai.Text);
             hienThongBao("Đổi thông tin thành công");
         }
 

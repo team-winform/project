@@ -18,6 +18,7 @@ namespace main_GUI
     public partial class Gui_ChiTietLopHoc : Form
     {
         ChiTietLopHocBLL chiTietLopHocBLL = new ChiTietLopHocBLL();
+        HocVienBLL hocVienBLL = new HocVienBLL();
         LopHocDTO currentLopHoc;
         List<HocVienLopHocDTO> currentLstDSHV;
         string currentHV_maHV;
@@ -34,6 +35,22 @@ namespace main_GUI
             clearForm();
             loadLopInfo();
             hienThiGrdDSHV();
+            loadTabLichHoc();
+        }
+
+        private void loadTabLichHoc()
+        {
+            TabPage tabPage = new TabPage();
+            string tabName = "Quản lý lịch học";
+            Dialog_LichHoc gui = new Dialog_LichHoc(currentLopHoc.id_LH);
+
+            gui.TopLevel = false;
+            gui.FormBorderStyle = FormBorderStyle.None;
+            gui.Visible = true;
+            tabPage.Controls.Add(gui);
+            gui.Dock = DockStyle.Fill;
+            tabPage.Text = tabName;
+            tabControl1.TabPages.Add(tabPage);
         }
 
         private void loadLopInfo()
@@ -94,13 +111,32 @@ namespace main_GUI
 
         private void btTimKiem_Click(object sender, EventArgs e)
         {
-
+            int tieuChi = cbTieuChiTimKiem.SelectedIndex;
+            string keyWord = txtTimKiem.Text;
+            switch (tieuChi)
+            {
+                case 0:
+                    // Tìm theo mã
+                    grdTimKiem.DataSource = hocVienBLL.findHocVienById(keyWord);
+                    break;
+                case 1:
+                    // Tìm theo tên
+                    grdTimKiem.DataSource = hocVienBLL.findHocVienByTen(keyWord);
+                    break;
+                case 2:
+                    // Tìm theo SDT
+                    grdTimKiem.DataSource = hocVienBLL.findHocVienBySDT(keyWord);
+                    break;
+                default:
+                    break;
+            }
         }
 
         private void btThem_Click(object sender, EventArgs e)
         {
             chiTietLopHocBLL.addHV_LH(currentLstDSHV, currentLopHoc.id_LH, currentHV_maHV);
             hienThiGrdDSHV();
+            loadLopInfo();
         }
 
         private void grdDssv_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -116,8 +152,13 @@ namespace main_GUI
 
         private void btXoa_Click(object sender, EventArgs e)
         {
-            chiTietLopHocBLL.removeHocVienLopHoc(currentLstDSHV, currentLopHoc.id_LH, currentHV_maHV);
-            hienThiGrdDSHV();
+            DialogResult result = hienCanhBao("Xác nhận xoá học viên khỏi lớp?");
+            if (result == DialogResult.OK)
+            {
+                chiTietLopHocBLL.removeHocVienLopHoc(currentLstDSHV, currentLopHoc.id_LH, currentHV_maHV);
+                hienThiGrdDSHV();
+                loadLopInfo();
+            }
         }
 
         private void btExportPDF_Click(object sender, EventArgs e)
@@ -157,9 +198,9 @@ namespace main_GUI
             Paragraph paragraph = new Paragraph("Danh sách học viên \n" + currentLopHoc.ten_LH, fTitle);
             paragraph.Alignment = Element.ALIGN_CENTER;
 
-            Paragraph p_maLop = new Paragraph("Mã lớp: " + currentLopHoc.id_LH);
+            Paragraph p_maLop = new Paragraph("Mã lớp: " + currentLopHoc.id_LH, f2);
             p_maLop.Alignment = Element.ALIGN_LEFT;
-            Paragraph p_siSo = new Paragraph("Sĩ số: " + currentLopHoc.siSo);
+            Paragraph p_siSo = new Paragraph("Sĩ số: " + currentLopHoc.siSo, f2);
             p_maLop.Alignment = Element.ALIGN_LEFT;
 
 
@@ -187,6 +228,28 @@ namespace main_GUI
             doc.Add(new Paragraph("\n\n"));
             doc.Add(table);
             doc.Close();
+        }
+
+        private void txtTimKiem_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btTimKiem_Click(this, new EventArgs());
+            }
+        }
+
+        private void grdTimKiem_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int index = grdTimKiem.SelectedCells[0].RowIndex;
+            DataGridViewRow row = grdTimKiem.Rows[index];
+            currentHV_maHV = row.Cells[0].Value.ToString();
+            lbMaHocVien.Text = row.Cells[0].Value.ToString();
+            lbTenHocVien.Text = row.Cells[1].Value.ToString();
+        }
+
+        private DialogResult hienCanhBao(String message)
+        {
+            return MessageBox.Show(message, "Thông báo!", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
         }
     }
 }

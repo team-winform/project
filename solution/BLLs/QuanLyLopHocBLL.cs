@@ -22,6 +22,11 @@ namespace BLLs
             return lopHocDAL.readLopHoc(start_row, end_row);
         }
 
+        public LopHocDTO getLopHocExtraInfo(string maLop)
+        {
+            return lopHocDAL.getLopHocExtraInfo(maLop);
+        }
+
         /// <summary>
         /// 
         /// </summary>
@@ -54,14 +59,21 @@ namespace BLLs
 
         public void updateLopHoc(LopHocDTO lopHocDTO)
         {
-            lopHocDAL.updateLopHoc(lopHocDTO);
+            if (lopHocDTO != null)
+                lopHocDAL.updateLopHoc(lopHocDTO);
+        }
+
+        public void updateThoiGianHoc(string maLop, int thoiGian)
+        {
+            lopHocDAL.updateThoiGianHoc(maLop, thoiGian);
         }
 
         private string getNewID_LH()
         {
             string lastID = lopHocDAL.getLastID();
-
-            int id = int.Parse(lastID.Substring(2));
+            int id = 0;
+            if (lastID != null)
+                id = int.Parse(lastID.Substring(2));
             int new_id = id + 1;
             return "LH" + (new_id).ToString().PadLeft(3, '0');
             

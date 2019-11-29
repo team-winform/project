@@ -29,7 +29,7 @@ namespace BLLs
         {
             if (maLop != null && maHV != null && maLop.Trim() != "" && maHV.Trim() != "")
             {
-                if (findHocVienInDSHV(lstHVLH, maHV) != null)
+                if (findHocVienInDSHV(lstHVLH, maHV) == null)
                 {
                     HocVienLopHocDTO hvlh = new HocVienLopHocDTO();
                     hvlh.id_HV = maHV;

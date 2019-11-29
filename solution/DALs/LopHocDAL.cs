@@ -71,7 +71,7 @@ namespace DALs
             conn.Open();
             List<LopHocDTO> lstLopHocs = new List<LopHocDTO>();
             string query = "select * from ( " +
-                    "select LOPHOC.id_LH, LOPHOC.id_GV, LOPHOC.id_KH, LOPHOC.id_PH, LOPHOC.ten_LH, LOPHOC.ngaybatdau, LOPHOC.ngayketthuc, LOPHOC.siso_LH, LOPHOC.ghichu_LH, KHOAHOC.ten_KH, PHONGHOC.ten_PH, GIANGVIEN.ten_GV, " +
+                    "select LOPHOC.*, KHOAHOC.ten_KH, PHONGHOC.ten_PH, GIANGVIEN.ten_GV, " +
                             "ROW_NUMBER() over(order by LOPHOC.ngaybatdau DESC) as rownum " +
                             "from LOPHOC left join KHOAHOC on LOPHOC.id_KH = KHOAHOC.id_KH " +
                             "left join GIANGVIEN on LOPHOC.id_GV = GIANGVIEN.id_GV " +
@@ -127,17 +127,47 @@ namespace DALs
             return dto;
         }
 
+        public LopHocDTO getLopHocExtraInfo(string maLop)
+        {
+            conn.Open();
+            LopHocDTO dto = null;
+            string query = "select LOPHOC.*, GIANGVIEN.ten_GV, PHONGHOC.ten_PH, KHOAHOC.ten_KH  from " +
+                "LOPHOC inner join GIANGVIEN on LOPHOC.id_GV = GIANGVIEN.id_GV " +
+                "inner join PHONGHOC on LOPHOC.id_PH = PHONGHOC.id_PH " +
+                "inner join KHOAHOC on LOPHOC.id_KH = KHOAHOC.id_KH " +
+                "where id_LH = @id_LH";
+            SqlCommand cmd = new SqlCommand(query, conn);
+            cmd.Parameters.AddWithValue("id_LH", maLop);
+            try
+            {
+                SqlDataReader rd = cmd.ExecuteReader();
+                List<LopHocDTO> lst = getLopHocFullInfo(rd);
+                if (lst.Count != 0)
+                {
+                    dto = lst.ElementAt(0);
+                }
+            }
+            catch (SqlException e)
+            {
+                conn.Close();
+                throw e;
+            }
+            conn.Close();
+            return dto;
+        }
+
         public void insertLopHoc(LopHocDTO lopHocDTO)
         {
             conn.Open();
             string query = "insert into LOPHOC " +
-                "(id_LH, id_KH, ngaybatdau, ngayketthuc, id_GV, ten_LH, id_PH, ghichu_LH, siso_LH) values " +
-                "(@id_LH, @id_KH, @ngaybatdau, @ngayketthuc, @id_GV, @ten_LH, @id_PH, @ghichu_LH, @siso_LH) ";
+                "(id_LH, id_KH, ngaybatdau, ngayketthuc, thoigian, id_GV, ten_LH, id_PH, ghichu_LH, siso_LH) values " +
+                "(@id_LH, @id_KH, @ngaybatdau, @ngayketthuc, @thoigian, @id_GV, @ten_LH, @id_PH, @ghichu_LH, @siso_LH) ";
             SqlCommand cmd = new SqlCommand(query, conn);
             cmd.Parameters.AddWithValue("id_LH", lopHocDTO.id_LH);
             cmd.Parameters.AddWithValue("id_KH", lopHocDTO.id_KH);
             cmd.Parameters.AddWithValue("ngaybatdau", lopHocDTO.ngayBatDau);
             cmd.Parameters.AddWithValue("ngayketthuc", lopHocDTO.ngayKetThuc);
+            cmd.Parameters.AddWithValue("thoigian", lopHocDTO.thoiGian);
             cmd.Parameters.AddWithValue("id_GV", lopHocDTO.id_GV);
             cmd.Parameters.AddWithValue("ten_LH", lopHocDTO.ten_LH);
             cmd.Parameters.AddWithValue("id_PH", lopHocDTO.id_PH);
@@ -188,6 +218,27 @@ namespace DALs
             conn.Close();
         }
 
+        public void updateThoiGianHoc(string id_LH, int thoiGian)
+        {
+            conn.Open();
+            string query = "update LOPHOC set " +
+                "thoigian = @thoigian " +
+                "where id_LH = @id_LH";
+            SqlCommand cmd = new SqlCommand(query, conn);
+            cmd.Parameters.AddWithValue("id_LH", id_LH);
+            cmd.Parameters.AddWithValue("thoigian", thoiGian);
+            try
+            {
+                cmd.ExecuteNonQuery();
+            }
+            catch (SqlException ee)
+            {
+                conn.Close();
+                throw ee;
+            }
+            conn.Close();
+        }
+
         public void deleteLopHoc(string maLopHoc)
         {
             conn.Open();
@@ -213,7 +264,7 @@ namespace DALs
 
             //string query = "select * from LOPHOC where id_LH like concat('%',@id_LH, '%') order by ngaybatdau DESC";
             string query2 = "select * from ( " +
-                    "select LOPHOC.id_LH, LOPHOC.id_GV, LOPHOC.id_KH, LOPHOC.id_PH, LOPHOC.ten_LH, LOPHOC.ngaybatdau, LOPHOC.ngayketthuc, LOPHOC.siso_LH, LOPHOC.ghichu_LH, KHOAHOC.ten_KH, PHONGHOC.ten_PH, GIANGVIEN.ten_GV, " +
+                    "select LOPHOC.*, KHOAHOC.ten_KH, PHONGHOC.ten_PH, GIANGVIEN.ten_GV, " +
                             "ROW_NUMBER() over(order by LOPHOC.ngaybatdau DESC) as rownum " +
                             "from LOPHOC left join KHOAHOC on LOPHOC.id_KH = KHOAHOC.id_KH " +
                             "left join GIANGVIEN on LOPHOC.id_GV = GIANGVIEN.id_GV " +
@@ -242,7 +293,7 @@ namespace DALs
 
             //string query = "select * from LOPHOC where ten_LH like concat('%',@ten_LH, '%') order by ngaybatdau DESC";
             string query2 = "select * from ( " +
-                    "select LOPHOC.id_LH, LOPHOC.id_GV, LOPHOC.id_KH, LOPHOC.id_PH, LOPHOC.ten_LH, LOPHOC.ngaybatdau, LOPHOC.ngayketthuc, LOPHOC.siso_LH, LOPHOC.ghichu_LH, KHOAHOC.ten_KH, PHONGHOC.ten_PH, GIANGVIEN.ten_GV, " +
+                    "select LOPHOC.*, KHOAHOC.ten_KH, PHONGHOC.ten_PH, GIANGVIEN.ten_GV, " +
                             "ROW_NUMBER() over(order by LOPHOC.ngaybatdau DESC) as rownum " +
                             "from LOPHOC left join KHOAHOC on LOPHOC.id_KH = KHOAHOC.id_KH " +
                             "left join GIANGVIEN on LOPHOC.id_GV = GIANGVIEN.id_GV " +
@@ -295,14 +346,15 @@ namespace DALs
                 dto.id_KH = rd["id_KH"].ToString();
                 dto.ngayBatDau = DateTime.Parse(rd["ngaybatdau"].ToString());
                 dto.ngayKetThuc = DateTime.Parse(rd["ngayketthuc"].ToString());
+                dto.thoiGian = int.Parse(rd["thoigian"].ToString());
                 dto.id_GV = rd["id_GV"].ToString();
                 dto.ten_LH = rd["ten_LH"].ToString();
                 dto.id_PH = rd["id_PH"].ToString();
                 dto.ghiChu_LH = rd["ghichu_LH"].ToString();
                 dto.siSo = int.Parse(rd["siso_LH"].ToString());
-                dto.tenGiangVien = rd["ten_GV"].ToString();
-                dto.tenPhongHoc = rd["ten_PH"].ToString();
-                dto.tenKhoaHoc = rd["ten_KH"].ToString();
+                dto.ten_GV = rd["ten_GV"].ToString();
+                dto.ten_PH = rd["ten_PH"].ToString();
+                dto.ten_KH = rd["ten_KH"].ToString();
 
                 lstLopHocDTOs.Add(dto);
             }

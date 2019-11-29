@@ -39,12 +39,12 @@
             this.label8 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnDoiThongTinCaNhan = new System.Windows.Forms.Button();
-            this.txtHoTen = new System.Windows.Forms.TextBox();
             this.txtSoDienThoai = new System.Windows.Forms.TextBox();
             this.lbTaiKhoanCuaToi = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.lbHoTen = new System.Windows.Forms.Label();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -148,8 +148,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.lbHoTen);
             this.groupBox1.Controls.Add(this.btnDoiThongTinCaNhan);
-            this.groupBox1.Controls.Add(this.txtHoTen);
             this.groupBox1.Controls.Add(this.txtSoDienThoai);
             this.groupBox1.Controls.Add(this.lbTaiKhoanCuaToi);
             this.groupBox1.Controls.Add(this.label1);
@@ -173,14 +173,6 @@
             this.btnDoiThongTinCaNhan.Text = "Lưu thay đổi";
             this.btnDoiThongTinCaNhan.UseVisualStyleBackColor = true;
             this.btnDoiThongTinCaNhan.Click += new System.EventHandler(this.btnDoiThongTinCaNhan_Click);
-            // 
-            // txtHoTen
-            // 
-            this.txtHoTen.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtHoTen.Location = new System.Drawing.Point(219, 64);
-            this.txtHoTen.Name = "txtHoTen";
-            this.txtHoTen.Size = new System.Drawing.Size(157, 22);
-            this.txtHoTen.TabIndex = 0;
             // 
             // txtSoDienThoai
             // 
@@ -230,6 +222,16 @@
             this.label4.TabIndex = 3;
             this.label4.Text = "Số điện thoại";
             // 
+            // lbHoTen
+            // 
+            this.lbHoTen.AutoSize = true;
+            this.lbHoTen.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbHoTen.Location = new System.Drawing.Point(216, 67);
+            this.lbHoTen.Name = "lbHoTen";
+            this.lbHoTen.Size = new System.Drawing.Size(47, 16);
+            this.lbHoTen.TabIndex = 5;
+            this.lbHoTen.Text = "Họ tên";
+            // 
             // GUI_TaiKhoanCuaToi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -262,11 +264,11 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnDoiThongTinCaNhan;
-        private System.Windows.Forms.TextBox txtHoTen;
         private System.Windows.Forms.TextBox txtSoDienThoai;
         private System.Windows.Forms.Label lbTaiKhoanCuaToi;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lbHoTen;
     }
 }

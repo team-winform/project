@@ -89,9 +89,9 @@ namespace main_GUI
                 grdLopHoc.Rows.Add();
                 grdLopHoc.Rows[index].Cells["id_lh"].Value = dto.id_LH;
                 grdLopHoc.Rows[index].Cells[1].Value = dto.ten_LH;
-                grdLopHoc.Rows[index].Cells[2].Value = dto.tenKhoaHoc;
-                grdLopHoc.Rows[index].Cells[3].Value = dto.tenGiangVien;
-                grdLopHoc.Rows[index].Cells[4].Value = dto.tenPhongHoc;
+                grdLopHoc.Rows[index].Cells[2].Value = dto.ten_KH;
+                grdLopHoc.Rows[index].Cells[3].Value = dto.ten_GV;
+                grdLopHoc.Rows[index].Cells[4].Value = dto.ten_PH;
                 grdLopHoc.Rows[index].Cells[5].Value = dto.ngayBatDau.Day + "/" + dto.ngayBatDau.Month + "/" + dto.ngayBatDau.Year;
                 grdLopHoc.Rows[index].Cells[6].Value = dto.ngayKetThuc.Day + "/" + dto.ngayKetThuc.Month + "/" + dto.ngayKetThuc.Year; ;
                 //grdLopHoc.Rows[index].Cells[5].Value = dto.ngayBatDau.ToShortDateString();
@@ -147,8 +147,24 @@ namespace main_GUI
 
         private void btReloadLopHoc_Click(object sender, EventArgs e)
         {
+            reloadData();
             hienThiGrdLopHoc();
             ClearFormLopHoc();
+        }
+
+        private void reloadData()
+        {
+            cbKhoaHoc.DataSource = khoaHocBLL.getAllKhoaHoc();
+            cbKhoaHoc.DisplayMember = "ten_KH";
+            cbKhoaHoc.ValueMember = "id_KH";
+
+            cbPhongHoc.DataSource = phongHocBLL.getAll();
+            cbPhongHoc.DisplayMember = "name";
+            cbPhongHoc.ValueMember = "id";
+
+            cbGiangVien.DataSource = giangVienBLL.getAll();
+            cbGiangVien.DisplayMember = "name";
+            cbGiangVien.ValueMember = "id";
         }
 
         private void btThemLopHoc_Click(object sender, EventArgs e)
@@ -174,7 +190,11 @@ namespace main_GUI
             dto.id_KH = cbKhoaHoc.SelectedValue.ToString();
             dto.ngayBatDau = datePickerNgayBatDauHoc.Value;
             dto.ngayKetThuc = datePickerNgayKetThucHoc.Value;
-
+            if (dto.ngayBatDau > dto.ngayKetThuc)
+            {
+                hienThongBaoLoi("Ngày kết thúc phải sau ngày bắt đầu");
+                return null;
+            }
             return dto;
         }
 
@@ -219,15 +239,19 @@ namespace main_GUI
             LopHocDTO currentLopHoc = quanLyLopHocBLL.findLopHocInList(maLopHoc, currentListLopHoc);
 
             new Gui_ChiTietLopHoc(currentLopHoc.id_LH).ShowDialog();
+            hienThiGrdLopHoc();
         }
 
         private void ClearFormLopHoc()
         {
             lbMaLop.Text = "";
             txtTenLopHoc.Text = "";
-            cbKhoaHoc.SelectedIndex = 0;
-            cbPhongHoc.SelectedIndex = 0;
-            cbGiangVien.SelectedIndex = 0;
+            if (cbKhoaHoc.Items.Count > 0)
+                cbKhoaHoc.SelectedIndex = 0;
+            if (cbPhongHoc.Items.Count > 0)
+                cbPhongHoc.SelectedIndex = 0;
+            if (cbGiangVien.Items.Count > 0)
+                cbGiangVien.SelectedIndex = 0;
             datePickerNgayBatDauHoc.Value = DateTime.Now;
             datePickerNgayKetThucHoc.Value = DateTime.Now;
             lbSiSo.Text = "";
