@@ -86,6 +86,12 @@
     <Compile Include="Dialog_ThongTinKhoaHoc.Designer.cs">
       <DependentUpon>Dialog_ThongTinKhoaHoc.cs</DependentUpon>
     </Compile>
+    <Compile Include="Gui_ChiTietLopHoc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Gui_ChiTietLopHoc.Designer.cs">
+      <DependentUpon>Gui_ChiTietLopHoc.cs</DependentUpon>
+    </Compile>
     <Compile Include="Gui_QuanLyLopHoc.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -183,6 +189,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Dialog_ThongTinKhoaHoc.resx">
       <DependentUpon>Dialog_ThongTinKhoaHoc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gui_ChiTietLopHoc.resx">
+      <DependentUpon>Gui_ChiTietLopHoc.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Gui_QuanLyLopHoc.resx">
       <DependentUpon>Gui_QuanLyLopHoc.cs</DependentUpon>

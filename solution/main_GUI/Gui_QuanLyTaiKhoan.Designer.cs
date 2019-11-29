@@ -65,7 +65,6 @@
             // grdTaiKhoan
             // 
             this.grdTaiKhoan.AllowUserToAddRows = false;
-            this.grdTaiKhoan.AllowUserToDeleteRows = false;
             this.grdTaiKhoan.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grdTaiKhoan.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.username,

@@ -134,6 +134,7 @@
             this.grdLopHoc.Size = new System.Drawing.Size(822, 236);
             this.grdLopHoc.TabIndex = 34;
             this.grdLopHoc.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdLopHoc_CellClick);
+            this.grdLopHoc.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdLopHoc_CellDoubleClick);
             // 
             // id_LH
             // 

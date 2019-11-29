@@ -94,6 +94,39 @@ namespace DALs
             return lstLopHocs;
         }
 
+        public LopHocDTO getLopHoc(string maLop)
+        {
+            conn.Open();
+            LopHocDTO dto = null;
+            string query = "select * from LOPHOC where id_LH = @id_LH";
+            SqlCommand cmd = new SqlCommand(query, conn);
+            cmd.Parameters.AddWithValue("id_LH", maLop);
+            try
+            {
+                SqlDataReader rd = cmd.ExecuteReader();
+                while (rd.Read())
+                {
+                    dto = new LopHocDTO();
+                    dto.id_LH = rd["id_LH"].ToString();
+                    dto.id_KH = rd["id_KH"].ToString();
+                    dto.ngayBatDau = DateTime.Parse(rd["ngaybatdau"].ToString());
+                    dto.ngayKetThuc = DateTime.Parse(rd["ngayketthuc"].ToString());
+                    dto.id_GV = rd["id_GV"].ToString();
+                    dto.ten_LH = rd["ten_LH"].ToString();
+                    dto.id_PH = rd["id_LH"].ToString();
+                    dto.ghiChu_LH = rd["ghichu_LH"].ToString();
+                    dto.siSo = int.Parse(rd["siso_LH"].ToString());
+                }
+            }
+            catch (SqlException e)
+            {
+                conn.Close();
+                throw e;
+            }
+            conn.Close();
+            return dto;
+        }
+
         public void insertLopHoc(LopHocDTO lopHocDTO)
         {
             conn.Open();

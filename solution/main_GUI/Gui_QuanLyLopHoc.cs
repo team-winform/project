@@ -210,9 +210,15 @@ namespace main_GUI
             //datePickerNgayKetThucHoc.Value = DateTime.Parse(row.Cells[6].Value.ToString().Trim());
         }
 
+
         private void grdLopHoc_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+            int index = grdLopHoc.SelectedCells[0].RowIndex;
+            DataGridViewRow row = grdLopHoc.Rows[index];
+            string maLopHoc = row.Cells[0].Value.ToString();
+            LopHocDTO currentLopHoc = quanLyLopHocBLL.findLopHocInList(maLopHoc, currentListLopHoc);
 
+            new Gui_ChiTietLopHoc(currentLopHoc.id_LH).ShowDialog();
         }
 
         private void ClearFormLopHoc()
