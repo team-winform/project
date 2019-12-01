@@ -16,6 +16,7 @@ namespace DTOs
         private string note;
         private DateTime created;
         private DateTime updated;
+        
 
         public GiangVienDTO() { }
         public GiangVienDTO(string id, string name, DateTime dayOfBirth, string phone, string address, string note, DateTime created, DateTime updated)

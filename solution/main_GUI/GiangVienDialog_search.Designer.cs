@@ -242,6 +242,7 @@
             this.cb_loaitk.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.cb_loaitk.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.cb_loaitk.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cb_loaitk.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cb_loaitk.FormattingEnabled = true;
             this.cb_loaitk.Items.AddRange(new object[] {
             "Theo mã",

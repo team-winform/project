@@ -59,6 +59,12 @@
     <Compile Include="Dialog_KhoaHOC.Designer.cs">
       <DependentUpon>Dialog_KhoaHOC.cs</DependentUpon>
     </Compile>
+    <Compile Include="DiemDialog_nhapDiem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DiemDialog_nhapDiem.Designer.cs">
+      <DependentUpon>DiemDialog_nhapDiem.cs</DependentUpon>
+    </Compile>
     <Compile Include="DiemGUI.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -70,6 +76,12 @@
     </Compile>
     <Compile Include="Dialog_ThongTinKhoaHoc.Designer.cs">
       <DependentUpon>Dialog_ThongTinKhoaHoc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GiangVienDialog_chiTiet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GiangVienDialog_chiTiet.Designer.cs">
+      <DependentUpon>GiangVienDialog_chiTiet.cs</DependentUpon>
     </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
@@ -139,11 +151,17 @@
     <EmbeddedResource Include="Dialog_KhoaHOC.resx">
       <DependentUpon>Dialog_KhoaHOC.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="DiemDialog_nhapDiem.resx">
+      <DependentUpon>DiemDialog_nhapDiem.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DiemGUI.resx">
       <DependentUpon>DiemGUI.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Dialog_ThongTinKhoaHoc.resx">
       <DependentUpon>Dialog_ThongTinKhoaHoc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GiangVienDialog_chiTiet.resx">
+      <DependentUpon>GiangVienDialog_chiTiet.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>Form1.cs</DependentUpon>

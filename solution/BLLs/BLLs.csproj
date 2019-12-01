@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GlobalInfo.cs" />
+    <Compile Include="HocVienLopHocBLL.cs" />
     <Compile Include="LoginBLL.cs" />
     <Compile Include="DiemDanhBLL.cs" />
     <Compile Include="GiangVienBLL.cs" />

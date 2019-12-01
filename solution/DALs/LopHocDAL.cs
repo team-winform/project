@@ -251,5 +251,30 @@ namespace DALs
             }
             return lstLopHocDTOs;
         }
+
+        ////////////////////
+        /// function created by Giangboy. use for HocVienLopHoc Module
+        /// /////
+        /// 
+        public List<LopHocDTO> getsIdAndName()
+        {
+            conn.Open();
+
+            List<LopHocDTO> lhs = new List<LopHocDTO>();
+            string sql = "select id_LH, ten_LH from lophoc";
+            SqlCommand cmd = new SqlCommand(sql, conn);
+            SqlDataReader dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                LopHocDTO lh = new LopHocDTO();
+                lh.id_LH = dr["id_LH"].ToString();
+                lh.tenLopHoc = dr["ten_LH"].ToString();
+                lhs.Add(lh);
+            }
+
+            conn.Close();
+
+            return lhs;
+        }
     }
 }

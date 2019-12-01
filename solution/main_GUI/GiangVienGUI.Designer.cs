@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.dgv_GV = new System.Windows.Forms.DataGridView();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.id_GV = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ten_GV = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ngaysinh_GV = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -38,10 +37,11 @@
             this.ngaytao = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ngaysua = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ghichu_GV = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bt_them = new System.Windows.Forms.Button();
-            this.bt_sua = new System.Windows.Forms.Button();
-            this.bt_xoa = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.bt_tim = new System.Windows.Forms.Button();
+            this.bt_xoa = new System.Windows.Forms.Button();
+            this.bt_sua = new System.Windows.Forms.Button();
+            this.bt_them = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_GV)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -69,19 +69,7 @@
             this.dgv_GV.Size = new System.Drawing.Size(1030, 450);
             this.dgv_GV.TabIndex = 0;
             this.dgv_GV.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1_CellContentClick);
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.bt_tim);
-            this.panel1.Controls.Add(this.bt_xoa);
-            this.panel1.Controls.Add(this.bt_sua);
-            this.panel1.Controls.Add(this.bt_them);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 358);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1030, 92);
-            this.panel1.TabIndex = 1;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel1_Paint);
+            this.dgv_GV.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.cellDoubleClick);
             // 
             // id_GV
             // 
@@ -155,27 +143,29 @@
             this.ghichu_GV.Name = "ghichu_GV";
             this.ghichu_GV.ReadOnly = true;
             // 
-            // bt_them
+            // panel1
             // 
-            this.bt_them.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.bt_them.Location = new System.Drawing.Point(36, 25);
-            this.bt_them.Name = "bt_them";
-            this.bt_them.Size = new System.Drawing.Size(109, 44);
-            this.bt_them.TabIndex = 0;
-            this.bt_them.Text = "Thêm";
-            this.bt_them.UseVisualStyleBackColor = true;
-            this.bt_them.Click += new System.EventHandler(this.Bt_them_Click);
+            this.panel1.Controls.Add(this.bt_tim);
+            this.panel1.Controls.Add(this.bt_xoa);
+            this.panel1.Controls.Add(this.bt_sua);
+            this.panel1.Controls.Add(this.bt_them);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel1.Location = new System.Drawing.Point(0, 358);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1030, 92);
+            this.panel1.TabIndex = 1;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel1_Paint);
             // 
-            // bt_sua
+            // bt_tim
             // 
-            this.bt_sua.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.bt_sua.Location = new System.Drawing.Point(316, 25);
-            this.bt_sua.Name = "bt_sua";
-            this.bt_sua.Size = new System.Drawing.Size(109, 44);
-            this.bt_sua.TabIndex = 1;
-            this.bt_sua.Text = "Sửa";
-            this.bt_sua.UseVisualStyleBackColor = true;
-            this.bt_sua.Click += new System.EventHandler(this.Bt_sua_Click);
+            this.bt_tim.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.bt_tim.Location = new System.Drawing.Point(876, 25);
+            this.bt_tim.Name = "bt_tim";
+            this.bt_tim.Size = new System.Drawing.Size(109, 44);
+            this.bt_tim.TabIndex = 3;
+            this.bt_tim.Text = "Tìm kiếm";
+            this.bt_tim.UseVisualStyleBackColor = true;
+            this.bt_tim.Click += new System.EventHandler(this.Bt_tim_Click);
             // 
             // bt_xoa
             // 
@@ -188,16 +178,27 @@
             this.bt_xoa.UseVisualStyleBackColor = true;
             this.bt_xoa.Click += new System.EventHandler(this.Bt_xoa_Click);
             // 
-            // bt_tim
+            // bt_sua
             // 
-            this.bt_tim.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.bt_tim.Location = new System.Drawing.Point(876, 25);
-            this.bt_tim.Name = "bt_tim";
-            this.bt_tim.Size = new System.Drawing.Size(109, 44);
-            this.bt_tim.TabIndex = 3;
-            this.bt_tim.Text = "Tìm kiếm";
-            this.bt_tim.UseVisualStyleBackColor = true;
-            this.bt_tim.Click += new System.EventHandler(this.Bt_tim_Click);
+            this.bt_sua.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.bt_sua.Location = new System.Drawing.Point(316, 25);
+            this.bt_sua.Name = "bt_sua";
+            this.bt_sua.Size = new System.Drawing.Size(109, 44);
+            this.bt_sua.TabIndex = 1;
+            this.bt_sua.Text = "Sửa";
+            this.bt_sua.UseVisualStyleBackColor = true;
+            this.bt_sua.Click += new System.EventHandler(this.Bt_sua_Click);
+            // 
+            // bt_them
+            // 
+            this.bt_them.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.bt_them.Location = new System.Drawing.Point(36, 25);
+            this.bt_them.Name = "bt_them";
+            this.bt_them.Size = new System.Drawing.Size(109, 44);
+            this.bt_them.TabIndex = 0;
+            this.bt_them.Text = "Thêm";
+            this.bt_them.UseVisualStyleBackColor = true;
+            this.bt_them.Click += new System.EventHandler(this.Bt_them_Click);
             // 
             // GiangVienGUI
             // 

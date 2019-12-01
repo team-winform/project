@@ -57,5 +57,10 @@ namespace BLLs
         {
             return GiangVienDAL.Instance.findByName(ten);
         }
+
+        public List<LopHocDTO> getClassList(GiangVienDTO gv)
+        {
+            return GiangVienDAL.Instance.getClassList(gv);
+        }
     }
 }

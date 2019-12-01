@@ -58,5 +58,13 @@ namespace BLLs
         {
             lopHocDAL.deleteLopHoc(maLop);
         }
+
+        ////////////////////
+        /// function created by Giangboy. use for HocVienLopHoc Module
+        /// /////
+        public List<LopHocDTO> getsIdAndName()
+        {
+            return lopHocDAL.getsIdAndName();
+        }
     }
 }

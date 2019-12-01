@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BLLs;
+using DTOs;
 
 namespace main_GUI
 {
@@ -20,7 +21,7 @@ namespace main_GUI
 
         private void DataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            MessageBox.Show("cell content click");
         }
 
         private void GiangVienGUI_Load(object sender, EventArgs e)
@@ -78,6 +79,21 @@ namespace main_GUI
         private void Bt_tim_Click(object sender, EventArgs e)
         {
             new GiangVienDialog_search().Show();
+        }
+
+        private void cellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            MessageBox.Show("double click");
+            GiangVienDTO gv = new GiangVienDTO();
+            int index = dgv_GV.CurrentCell.RowIndex;
+            gv.Id = dgv_GV.Rows[index].Cells["id_GV"].Value.ToString();
+            gv.Name = dgv_GV.Rows[index].Cells["ten_GV"].Value.ToString();
+            gv.Note = dgv_GV.Rows[index].Cells["ghichu_GV"].Value.ToString();
+            gv.Phone = dgv_GV.Rows[index].Cells["sodt_GV"].Value.ToString();
+            gv.DayOfBirth = DateTime.Parse(dgv_GV.Rows[index].Cells["ngaysinh_GV"].Value.ToString());
+            gv.Address = dgv_GV.Rows[index].Cells["diachi_GV"].Value.ToString();
+
+            new GiangVienDialog_chiTiet(gv).ShowDialog();
         }
     }
 }
