@@ -98,15 +98,13 @@ namespace DALs
             conn.Close();
         }
 
-        public void changeInfo(AccountDTO account, string fullname, string phone)
+        public void changeInfo(AccountDTO account, string phone)
         {
             conn.Open();
             string query = "update account set " +
-                "fullname = @fullname," +
                 "phone = @phone " +
                 "where username = @username";
             SqlCommand cmd = new SqlCommand(query, conn);
-            cmd.Parameters.AddWithValue("fullname", fullname);
             cmd.Parameters.AddWithValue("phone", phone);
             cmd.Parameters.AddWithValue("username", account.username);
 
@@ -143,12 +141,12 @@ namespace DALs
             conn.Close();
         }
 
-        public void deleteAccount(AccountDTO accountDTO)
+        public void deleteAccount(string username)
         {
             conn.Open();
             string query = "delete account where username = @username";
             SqlCommand cmd = new SqlCommand(query, conn);
-            cmd.Parameters.AddWithValue("username", accountDTO.username);
+            cmd.Parameters.AddWithValue("username", username);
             try
             {
                 cmd.ExecuteNonQuery();
@@ -160,6 +158,32 @@ namespace DALs
                 throw e;
             }
 
+        }
+
+        public bool isAccountExists(string username)
+        {
+            conn.Open();
+            bool isExists = false;
+            string query = "select count(*) as sl from account where username = @username";
+            SqlCommand cmd = new SqlCommand(query, conn);
+            cmd.Parameters.AddWithValue("username", username);
+            SqlDataReader rd = cmd.ExecuteReader();
+            try
+            {
+                while (rd.Read())
+                {
+                    int sl = int.Parse(rd["sl"].ToString());
+                    if (sl > 0)
+                        isExists = true;
+                }
+            }
+            catch (SqlException sqle)
+            {
+                conn.Close();
+                throw sqle;
+            }
+            conn.Close();
+            return isExists;
         }
 
         public AccountDTO getAccount(string username, string password)

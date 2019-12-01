@@ -41,5 +41,10 @@ namespace BLLs
         {
             return this.diemDanhDAL.getDayOF(maHV, maLop);
         }
+
+        public DataTable thongKeDiemDanh(String maLop)
+        {
+            return this.diemDanhDAL.thongKeDiemDanh(maLop);
+        }
     }
 }

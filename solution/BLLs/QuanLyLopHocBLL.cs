@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using DALs;
 using DTOs;
 
@@ -19,6 +20,11 @@ namespace BLLs
             int start_row = row_per_page * (page - 1);
             int end_row = row_per_page * page;
             return lopHocDAL.readLopHoc(start_row, end_row);
+        }
+
+        public LopHocDTO getLopHocExtraInfo(string maLop)
+        {
+            return lopHocDAL.getLopHocExtraInfo(maLop);
         }
 
         /// <summary>
@@ -44,19 +50,51 @@ namespace BLLs
 
         public void insertLopHoc(LopHocDTO lopHocDTO)
         {
-            lopHocDTO.id_LH = getNewID_LH();
-            lopHocDAL.insertLopHoc(lopHocDTO);
+            if (lopHocDTO != null)
+            {
+                lopHocDTO.id_LH = getNewID_LH();
+                lopHocDAL.insertLopHoc(lopHocDTO);
+            }
+        }
+
+        public void updateLopHoc(LopHocDTO lopHocDTO)
+        {
+            if (lopHocDTO != null)
+                lopHocDAL.updateLopHoc(lopHocDTO);
+        }
+
+        public void updateThoiGianHoc(string maLop, int thoiGian)
+        {
+            lopHocDAL.updateThoiGianHoc(maLop, thoiGian);
         }
 
         private string getNewID_LH()
         {
-            int soLuongLop = lopHocDAL.getSoLuongLop();
-            return "LH" + soLuongLop.ToString().PadLeft(4, '0');
+            string lastID = lopHocDAL.getLastID();
+            int id = 0;
+            if (lastID != null)
+                id = int.Parse(lastID.Substring(2));
+            int new_id = id + 1;
+            return "LH" + (new_id).ToString().PadLeft(3, '0');
+            
         }
 
         public void deleteLopHoc(string maLop)
         {
-            lopHocDAL.deleteLopHoc(maLop);
+            if (lopHocDAL.getSiSo(maLop) == 0)
+                lopHocDAL.deleteLopHoc(maLop);
+            else
+                MessageBox.Show("Lớp này không trống. Không được xoá!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        }
+
+        public LopHocDTO findLopHocInList(string maString, List<LopHocDTO> lstLopHocs)
+        {
+            foreach (LopHocDTO dto in lstLopHocs)
+            {
+                if (dto.id_LH == maString)
+                    return dto;
+            }
+            return null;
         }
 
         ////////////////////

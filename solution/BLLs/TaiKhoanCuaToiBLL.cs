@@ -12,10 +12,10 @@ namespace BLLs
     public class TaiKhoanCuaToiBLL
     {
         AccountDAL accDAL = new AccountDAL();
-        public void doiThongTinCaNhan(AccountDTO accDTO, string fullname, string phone)
+        public void doiThongTinCaNhan(AccountDTO accDTO, string phone)
         {
 
-            accDAL.changeInfo(accDTO, fullname, phone);
+            accDAL.changeInfo(accDTO, phone);
             GlobalInfo.accountGlobal = accDAL.getAccount(accDTO.username, accDTO.password);
 
         }

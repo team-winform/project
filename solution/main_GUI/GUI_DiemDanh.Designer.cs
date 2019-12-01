@@ -40,7 +40,7 @@
             this.ten_HV = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.id_HV = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.sodt_HV = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nghi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.button2 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -69,6 +69,7 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.button2);
             this.panel2.Controls.Add(this.button1);
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.comboBox1);
@@ -80,10 +81,10 @@
             // 
             // button1
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(61, 386);
+            this.button1.Location = new System.Drawing.Point(58, 138);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(118, 49);
             this.button1.TabIndex = 2;
@@ -128,8 +129,7 @@
             this.vang,
             this.ten_HV,
             this.id_HV,
-            this.sodt_HV,
-            this.nghi});
+            this.sodt_HV});
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Name = "dataGridView1";
@@ -142,48 +142,49 @@
             // 
             // vang
             // 
+            this.vang.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.vang.FalseValue = "0";
             this.vang.HeaderText = "Vắng";
             this.vang.IndeterminateValue = "";
             this.vang.MinimumWidth = 6;
             this.vang.Name = "vang";
             this.vang.TrueValue = "1";
-            this.vang.Width = 125;
+            this.vang.Width = 47;
             // 
             // ten_HV
             // 
-            this.ten_HV.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.ten_HV.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.ten_HV.DataPropertyName = "ten_HV";
             this.ten_HV.HeaderText = "Tên học viên";
             this.ten_HV.MinimumWidth = 6;
             this.ten_HV.Name = "ten_HV";
-            this.ten_HV.Width = 119;
             // 
             // id_HV
             // 
-            this.id_HV.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.id_HV.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.id_HV.DataPropertyName = "id_HV";
             this.id_HV.HeaderText = "Mã học viên";
             this.id_HV.MinimumWidth = 6;
             this.id_HV.Name = "id_HV";
-            this.id_HV.Width = 113;
             // 
             // sodt_HV
             // 
-            this.sodt_HV.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.sodt_HV.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.sodt_HV.DataPropertyName = "sodt_HV";
             this.sodt_HV.HeaderText = "Số điện thoại";
             this.sodt_HV.MinimumWidth = 6;
             this.sodt_HV.Name = "sodt_HV";
-            this.sodt_HV.Width = 120;
             // 
-            // nghi
+            // button2
             // 
-            this.nghi.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.nghi.DataPropertyName = "nghi";
-            this.nghi.HeaderText = "Số buổi nghỉ";
-            this.nghi.MinimumWidth = 6;
-            this.nghi.Name = "nghi";
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Location = new System.Drawing.Point(58, 234);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(118, 48);
+            this.button2.TabIndex = 3;
+            this.button2.Text = "Thống kê";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // GUI_DiemDanh
             // 
@@ -219,6 +220,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ten_HV;
         private System.Windows.Forms.DataGridViewTextBoxColumn id_HV;
         private System.Windows.Forms.DataGridViewTextBoxColumn sodt_HV;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nghi;
+        private System.Windows.Forms.Button button2;
     }
 }

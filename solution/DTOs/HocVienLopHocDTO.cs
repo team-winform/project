@@ -41,5 +41,24 @@ namespace DTOs
         public string Note { get => note; set => note = value; }
         public string StudentName { get; set; }
         public string ClassName { get; set; }
+        public HocVienLopHocDTO()
+        {
+            this.ghiChu_HVLH = "";
+            diem1 = -1;
+            diem2 = -1;
+            diem3 = -1;
+            diem4 = -1;
+        }
+
+        public string id_HV { get; set; }
+        public string ten_HV { get; set; }
+        public string id_LH { get; set; }
+        public int diem1 { get; set; }
+        public int diem2 { get; set; }
+
+        public int diem3 { get; set; }
+        public int diem4 { get; set; }
+
+        public string ghiChu_HVLH { get; set; }
     }
 }

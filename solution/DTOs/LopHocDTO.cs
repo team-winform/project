@@ -10,20 +10,8 @@ namespace DTOs
     {
         public LopHocDTO()
         {
-        }
-
-        public LopHocDTO(string id_LH, string id_KH, string id_GV, string ten_LH, string tenLopHoc, string id_PH, int siSo, DateTime ngayBatDau, DateTime ngayKetThuc, string ghiChu_LH)
-        {
-            this.id_LH = id_LH;
-            this.id_KH = id_KH;
-            this.id_GV = id_GV;
-            this.ten_LH = ten_LH;
-            this.tenLopHoc = tenLopHoc;
-            this.id_PH = id_PH;
-            this.siSo = siSo;
-            this.ngayBatDau = ngayBatDau;
-            this.ngayKetThuc = ngayKetThuc;
-            this.ghiChu_LH = ghiChu_LH;
+            ghiChu_LH = "";
+            thoiGian = -1;
         }
 
         public string id_LH { get; set; }
@@ -31,7 +19,6 @@ namespace DTOs
 
         public string id_GV { get; set; }
         public string ten_LH { get; set; }
-        public string tenLopHoc { get; set; }
         public string id_PH { get; set; }
         public int siSo { get; set; }
 
@@ -40,9 +27,11 @@ namespace DTOs
 
         public string ghiChu_LH { get; set; }
 
-        public string tenPhongHoc { get; set; }
+        public string ten_PH { get; set; }
 
-        public string tenGiangVien { get; set; }
-        public string tenKhoaHoc { get; set; }
+        public string ten_GV { get; set; }
+        public string ten_KH { get; set; }
+
+        public int thoiGian { get; set; }
     }
 }

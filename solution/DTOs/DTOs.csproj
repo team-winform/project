@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="HocVienLopHocDTO.cs" />
     <Compile Include="GiangVienDTO.cs" />
     <Compile Include="GiangVienMapper.cs" />
     <Compile Include="HocVienLopHocDTO.cs" />
