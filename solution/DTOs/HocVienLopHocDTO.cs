@@ -18,7 +18,13 @@ namespace DTOs
         private string rank;
         private string note;
 
-        public HocVienLopHocDTO() { }
+        public HocVienLopHocDTO() {
+            this.ghiChu_HVLH = "";
+            diem1 = -1;
+            diem2 = -1;
+            diem3 = -1;
+            diem4 = -1;
+        }
 
         public HocVienLopHocDTO(string idStudent, string idClass, double point1, double point2, double pointFinal, string note)
         {
@@ -41,14 +47,7 @@ namespace DTOs
         public string Note { get => note; set => note = value; }
         public string StudentName { get; set; }
         public string ClassName { get; set; }
-        public HocVienLopHocDTO()
-        {
-            this.ghiChu_HVLH = "";
-            diem1 = -1;
-            diem2 = -1;
-            diem3 = -1;
-            diem4 = -1;
-        }
+        
 
         public string id_HV { get; set; }
         public string ten_HV { get; set; }

@@ -73,6 +73,7 @@
     </Compile>
     <Compile Include="DiemDialog_nhapDiem.Designer.cs">
       <DependentUpon>DiemDialog_nhapDiem.cs</DependentUpon>
+    </Compile>
     <Compile Include="Dialog_LichHoc.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -102,6 +103,7 @@
     </Compile>
     <Compile Include="GiangVienDialog_chiTiet.Designer.cs">
       <DependentUpon>GiangVienDialog_chiTiet.cs</DependentUpon>
+    </Compile>
     <Compile Include="Gui_ChiTietLopHoc.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -205,6 +207,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DiemDialog_nhapDiem.resx">
       <DependentUpon>DiemDialog_nhapDiem.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Dialog_LichHoc.resx">
       <DependentUpon>Dialog_LichHoc.cs</DependentUpon>
     </EmbeddedResource>
@@ -219,6 +222,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GiangVienDialog_chiTiet.resx">
       <DependentUpon>GiangVienDialog_chiTiet.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Gui_ChiTietLopHoc.resx">
       <DependentUpon>Gui_ChiTietLopHoc.cs</DependentUpon>
     </EmbeddedResource>

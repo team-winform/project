@@ -16,8 +16,8 @@ namespace main_GUI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new DiemGUI());
-            Application.Run(new LoginForm());
+            Application.Run(new GiangVienGUI());
+            //Application.Run(new LoginForm());
         }
     }
 }

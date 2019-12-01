@@ -377,7 +377,7 @@ namespace DALs
             {
                 LopHocDTO lh = new LopHocDTO();
                 lh.id_LH = dr["id_LH"].ToString();
-                lh.tenLopHoc = dr["ten_LH"].ToString();
+                lh.ten_LH = dr["ten_LH"].ToString();
                 lhs.Add(lh);
             }
 

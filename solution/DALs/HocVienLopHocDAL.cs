@@ -3,13 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Data.SqlClient;
-using DTOs;
 using System.Configuration;
 using DTOs;
-using System.Configuration;
 using System.Data.SqlClient;
-
 
 namespace DALs
 {
@@ -194,7 +190,7 @@ namespace DALs
         public void deleteHVLH(string maLop, string maHV)
         {
             conn.Open();
-            
+
             string query = "delete HOCVIEN_LOPHOC where id_HV = @id_HV and id_LH = @id_LH";
             SqlCommand cmd = new SqlCommand(query, conn);
             cmd.Parameters.AddWithValue("id_LH", maLop);

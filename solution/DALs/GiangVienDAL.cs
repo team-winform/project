@@ -183,8 +183,8 @@ namespace DALs
             {
                 LopHocDTO lh = new LopHocDTO();
                 lh.id_LH = dr["id_LH"].ToString();
-                lh.tenLopHoc = dr["ten_LH"].ToString();
-                lh.tenPhongHoc = dr["ten_PH"].ToString();
+                lh.ten_LH = dr["ten_LH"].ToString();
+                lh.ten_PH = dr["ten_PH"].ToString();
                 lh.ngayBatDau = DateTime.Parse(dr["ngaybatdau"].ToString());
                 lh.ngayKetThuc = DateTime.Parse(dr["ngayketthuc"].ToString());
                 lh.siSo = int.Parse(dr["siso_LH"].ToString());
