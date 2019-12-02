@@ -57,7 +57,7 @@ namespace main_GUI
         {
             currentLopHoc = chiTietLopHocBLL.getLopHocBasicInfo(currentLopHoc.id_LH);
             lbTenLop.Text = currentLopHoc.ten_LH;
-            lbSiSo.Text = "Sĩ số: " + currentLopHoc.siSo;
+            lbSiSo.Text = "Sĩ số: " + currentLopHoc.siSo + "/" + currentLopHoc.sucChua;
             lbMaLop.Text = currentLopHoc.id_LH;
         }
 
@@ -134,7 +134,7 @@ namespace main_GUI
 
         private void btThem_Click(object sender, EventArgs e)
         {
-            chiTietLopHocBLL.addHV_LH(currentLstDSHV, currentLopHoc.id_LH, currentHV_maHV);
+            chiTietLopHocBLL.addHV_LH(currentLstDSHV, currentLopHoc, currentHV_maHV);
             hienThiGrdDSHV();
             loadLopInfo();
         }

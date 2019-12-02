@@ -29,7 +29,7 @@ namespace main_GUI
 
         private void Gui_QuanLyLopHoc_Load(object sender, EventArgs e)
         {
-                        lbMaLop.Text = "";
+            lbMaLop.Text = "";
             lbSiSo.Text = "";
             lbMaLop.Show();
             lbSiSo.Show();
@@ -96,7 +96,7 @@ namespace main_GUI
                 grdLopHoc.Rows[index].Cells[6].Value = dto.ngayKetThuc.Day + "/" + dto.ngayKetThuc.Month + "/" + dto.ngayKetThuc.Year; ;
                 //grdLopHoc.Rows[index].Cells[5].Value = dto.ngayBatDau.ToShortDateString();
                 //grdLopHoc.Rows[index].Cells[6].Value = dto.ngayKetThuc.ToShortDateString();
-                grdLopHoc.Rows[index].Cells[7].Value = dto.siSo;
+                grdLopHoc.Rows[index].Cells[7].Value = dto.siSo + "/" + dto.sucChua;
                 index++;
             }
         }
@@ -223,7 +223,7 @@ namespace main_GUI
 
             lbMaLop.Text = currentLopHoc.id_LH;
             txtTenLopHoc.Text = currentLopHoc.ten_LH;
-            lbSiSo.Text = currentLopHoc.siSo.ToString();
+            lbSiSo.Text = currentLopHoc.siSo.ToString() + "/" + currentLopHoc.sucChua;
 
             //DataGridViewRow row = grdLopHoc.Rows[index];
             //datePickerNgayBatDauHoc.Value = DateTime.Parse(row.Cells[5].Value.ToString().Trim());

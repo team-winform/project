@@ -25,17 +25,23 @@ namespace BLLs
             return dal.getLopHoc(maLop);
         }
 
-        public void addHV_LH(List<HocVienLopHocDTO> lstHVLH, string maLop, string maHV)
+        public void addHV_LH(List<HocVienLopHocDTO> lstHVLH, LopHocDTO currentLopHoc, string maHV)
         {
+            string maLop = currentLopHoc.id_LH;
             if (maLop != null && maHV != null && maLop.Trim() != "" && maHV.Trim() != "")
             {
-                if (findHocVienInDSHV(lstHVLH, maHV) == null)
+                if (findHocVienInDSHV(lstHVLH, maHV) == null && lstHVLH.Count < currentLopHoc.sucChua)
                 {
                     HocVienLopHocDTO hvlh = new HocVienLopHocDTO();
                     hvlh.id_HV = maHV;
                     hvlh.id_LH = maLop;
 
                     hocVienLopHocDAL.insertHV_LH(hvlh);
+                }
+                else if (lstHVLH.Count >= currentLopHoc.sucChua)
+                {
+                    hienThongBao("Lớp học đã đầy!");
+
                 }
                 else
                 {

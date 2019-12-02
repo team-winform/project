@@ -12,6 +12,7 @@ namespace DTOs
         {
             ghiChu_LH = "";
             thoiGian = -1;
+            sucChua = 0;
         }
 
         public string id_LH { get; set; }
@@ -33,5 +34,6 @@ namespace DTOs
         public string ten_KH { get; set; }
 
         public int thoiGian { get; set; }
+        public int sucChua { get; set; }
     }
 }
