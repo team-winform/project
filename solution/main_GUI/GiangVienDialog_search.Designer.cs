@@ -117,6 +117,8 @@
             this.dgv_GV.RowTemplate.Height = 24;
             this.dgv_GV.Size = new System.Drawing.Size(1104, 447);
             this.dgv_GV.TabIndex = 1;
+            this.dgv_GV.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dgv_GV_CellClick);
+            this.dgv_GV.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dgv_GV_CellDoubleClick);
             // 
             // id_GV
             // 
@@ -275,7 +277,9 @@
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "GiangVienDialog_search";
             this.Text = "GiangVienDialog_search";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.GiangVienDialog_search_FormClosed);
             this.Load += new System.EventHandler(this.GiangVienDialog_search_Load);
+            this.Leave += new System.EventHandler(this.GiangVienDialog_search_Leave);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_GV)).EndInit();

@@ -67,7 +67,7 @@ namespace main_GUI
                 
                 ph.Created = DateTime.Now;
                 ph.Updated = ph.Created;
-                ph.Id = "PH" + DateTime.Now.Ticks;
+                ph.Id = "PH_" + TimingDTO.getTimeString("dd", "MM", "yy", "HH", "mm", "ss");
 
                 if (PhongHocBLL.Instance.insert(ph))
                 {

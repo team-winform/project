@@ -31,12 +31,30 @@ namespace DALs
             conn = new SqlConnection(connString);
         }
 
-        public List<GiangVienDTO> getAll()
+        public List<GiangVienDTO> getAll(string sortBy = null, string sortType = null)
         {
+            if(sortBy == "ghichu_GV")
+            {
+                sortBy = "CAST(" + sortBy + " AS NVARCHAR(100))";
+            }
             List<GiangVienDTO> gvs = new List<GiangVienDTO>();
             conn.Open();
-            string sql = "select * from giangvien";
-            SqlCommand cmd = new SqlCommand(sql, conn);
+            string sql = "";
+            SqlCommand cmd;
+            if (sortBy != null && sortType != null)
+            {
+                sql = "select * from giangvien order by " +sortBy + " " + sortType;
+                cmd = new SqlCommand(sql, conn);
+                //cmd.Parameters.AddWithValue("sort", sortBy);
+                //cmd.Parameters.AddWithValue("type", sortType);
+            }
+            else
+            {
+                sql = "select * from giangvien";
+                cmd = new SqlCommand(sql, conn);
+            }
+            
+
             SqlDataReader dr = cmd.ExecuteReader();
 
             while (dr.Read())
@@ -174,7 +192,7 @@ namespace DALs
             List<LopHocDTO> lhs = new List<LopHocDTO>();
 
             conn.Open();
-            string sql = "select lophoc.id_LH, lophoc.ten_LH, lophoc.siso_LH, phonghoc.ten_PH, lophoc.ngaybatdau, lophoc.ngayketthuc from lophoc inner join giangvien on lophoc.id_GV = giangvien.id_GV inner join phonghoc on lophoc.id_PH = phonghoc.id_PH where lophoc.id_GV = @idgv";
+            string sql = "select lophoc.id_LH, lophoc.ten_LH, lophoc.siso_LH, phonghoc.ten_PH, lophoc.ngaybatdau, lophoc.ngayketthuc, khoahoc.ten_KH from lophoc inner join giangvien on lophoc.id_GV = giangvien.id_GV inner join phonghoc on lophoc.id_PH = phonghoc.id_PH inner join khoahoc on lophoc.id_KH = khoahoc.id_KH where lophoc.id_GV = @idgv";
             SqlCommand cmd = new SqlCommand(sql, conn);
             cmd.Parameters.AddWithValue("idgv", gv.Id);
 
@@ -184,6 +202,7 @@ namespace DALs
                 LopHocDTO lh = new LopHocDTO();
                 lh.id_LH = dr["id_LH"].ToString();
                 lh.ten_LH = dr["ten_LH"].ToString();
+                lh.ten_KH = dr["ten_KH"].ToString();
                 lh.ten_PH = dr["ten_PH"].ToString();
                 lh.ngayBatDau = DateTime.Parse(dr["ngaybatdau"].ToString());
                 lh.ngayKetThuc = DateTime.Parse(dr["ngayketthuc"].ToString());
