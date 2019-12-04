@@ -71,7 +71,7 @@ namespace DALs
             conn.Open();
             List<LopHocDTO> lstLopHocs = new List<LopHocDTO>();
             string query = "select * from ( " +
-                    "select LOPHOC.*, KHOAHOC.ten_KH, PHONGHOC.ten_PH, GIANGVIEN.ten_GV, " +
+                    "select LOPHOC.*, KHOAHOC.ten_KH, PHONGHOC.ten_PH, PHONGHOC.succhua_PH, GIANGVIEN.ten_GV, " +
                             "ROW_NUMBER() over(order by LOPHOC.ngaybatdau DESC) as rownum " +
                             "from LOPHOC left join KHOAHOC on LOPHOC.id_KH = KHOAHOC.id_KH " +
                             "left join GIANGVIEN on LOPHOC.id_GV = GIANGVIEN.id_GV " +
@@ -98,7 +98,7 @@ namespace DALs
         {
             conn.Open();
             LopHocDTO dto = null;
-            string query = "select * from LOPHOC where id_LH = @id_LH";
+            string query = "select LOPHOC.*, PHONGHOC.succhua_PH from LOPHOC inner join PHONGHOC on LOPHOC.id_PH = PHONGHOC.id_PH where id_LH = @id_LH";
             SqlCommand cmd = new SqlCommand(query, conn);
             cmd.Parameters.AddWithValue("id_LH", maLop);
             try
@@ -116,6 +116,7 @@ namespace DALs
                     dto.id_PH = rd["id_LH"].ToString();
                     dto.ghiChu_LH = rd["ghichu_LH"].ToString();
                     dto.siSo = int.Parse(rd["siso_LH"].ToString());
+                    dto.sucChua = int.Parse(rd["succhua_PH"].ToString());
                 }
             }
             catch (SqlException e)
@@ -131,7 +132,7 @@ namespace DALs
         {
             conn.Open();
             LopHocDTO dto = null;
-            string query = "select LOPHOC.*, GIANGVIEN.ten_GV, PHONGHOC.ten_PH, KHOAHOC.ten_KH  from " +
+            string query = "select LOPHOC.*, GIANGVIEN.ten_GV, PHONGHOC.ten_PH, PHONGHOC.succhua_PH, KHOAHOC.ten_KH  from " +
                 "LOPHOC inner join GIANGVIEN on LOPHOC.id_GV = GIANGVIEN.id_GV " +
                 "inner join PHONGHOC on LOPHOC.id_PH = PHONGHOC.id_PH " +
                 "inner join KHOAHOC on LOPHOC.id_KH = KHOAHOC.id_KH " +
@@ -330,7 +331,7 @@ namespace DALs
                 dto.id_PH = rd["id_LH"].ToString();
                 dto.ghiChu_LH = rd["ghichu_LH"].ToString();
                 dto.siSo = int.Parse(rd["siso_LH"].ToString());
-
+                dto.sucChua = int.Parse(rd["succhua_PH"].ToString());
                 lstLopHocDTOs.Add(dto);
             }
             return lstLopHocDTOs;
@@ -355,7 +356,7 @@ namespace DALs
                 dto.ten_GV = rd["ten_GV"].ToString();
                 dto.ten_PH = rd["ten_PH"].ToString();
                 dto.ten_KH = rd["ten_KH"].ToString();
-
+                dto.sucChua = int.Parse(rd["succhua_PH"].ToString());
                 lstLopHocDTOs.Add(dto);
             }
             return lstLopHocDTOs;

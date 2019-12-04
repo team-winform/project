@@ -266,12 +266,12 @@ namespace main_GUI
             if (thu.Length != 0)
                 thu = thu.Substring(0, thu.Length - 2);
             string s3 = string.Format("  {0, -15} {3, -30} {1, -15} {4, -20} {2, -15} {5, -20}",
-                "Phòng học:", "Thứ:", "Từ ngày:", currentLopHoc.ten_PH, thu, formatDate(currentLopHoc.ngayBatDau));
+                "Phòng học:", "Thứ:", "Từ ngày:", currentLopHoc.ten_PH.Trim(), thu.Trim(), formatDate(currentLopHoc.ngayBatDau).Trim());
             Paragraph p3 = new Paragraph(s3, f2);
             p3.Alignment = Element.ALIGN_LEFT;
 
             string s4 = string.Format("  {0, -15} {3, -30} {1, -15} {4, -20} {2, -15} {5, -20}",
-                "Giảng viên:", "Thời gian:", "Đến ngày:", currentLopHoc.ten_GV, lbThoiGian.Text, formatDate(currentLopHoc.ngayKetThuc));
+                "Giảng viên:", "Thời gian:", "Đến ngày:", currentLopHoc.ten_GV.Trim(), lbThoiGian.Text.Trim(), formatDate(currentLopHoc.ngayKetThuc).Trim());
             Paragraph p4 = new Paragraph(s4, f2);
             p4.Alignment = Element.ALIGN_LEFT;
 
