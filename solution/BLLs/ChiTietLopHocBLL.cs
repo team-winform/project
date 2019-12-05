@@ -33,8 +33,8 @@ namespace BLLs
                 if (findHocVienInDSHV(lstHVLH, maHV) == null && lstHVLH.Count < currentLopHoc.sucChua)
                 {
                     HocVienLopHocDTO hvlh = new HocVienLopHocDTO();
-                    hvlh.id_HV = maHV;
-                    hvlh.id_LH = maLop;
+                    hvlh.StudentId = maHV;
+                    hvlh.ClassId = maLop;
 
                     hocVienLopHocDAL.insertHV_LH(hvlh);
                 }
@@ -77,7 +77,7 @@ namespace BLLs
         {
             foreach (HocVienLopHocDTO hvlh in lstHVLH)
             {
-                if (hvlh.id_HV.Equals(maHV))
+                if (hvlh.StudentId.Equals(maHV))
                 {
                     return hvlh;
                 }

@@ -143,15 +143,52 @@ namespace DALs
             SqlCommand cmd = new SqlCommand(sql, conn);
             cmd.Parameters.AddWithValue("id", id);
 
-            int rowEffect = cmd.ExecuteNonQuery();
-            conn.Close();
-
+            int rowEffect = 0;
+            try
+            {
+                rowEffect = cmd.ExecuteNonQuery();
+                conn.Close();
+            }
+            catch(Exception ee)
+            {
+                conn.Close();
+                Console.WriteLine(ee.Message);
+            }
+            
             if (rowEffect == 0)
             {
                 return false;
             }
             
             return true;
+        }
+
+        public List<LopHocDTO> getsClassUse(string id_ph)
+        {
+            List<LopHocDTO> lhs = new List<LopHocDTO>();
+
+            conn.Open();
+            string sql = "select lophoc.id_LH, lophoc.ten_LH, lophoc.siso_LH, giangvien.ten_GV, lophoc.ngaybatdau, lophoc.ngayketthuc, khoahoc.ten_KH from lophoc inner join giangvien on lophoc.id_GV = giangvien.id_GV inner join phonghoc on lophoc.id_PH = phonghoc.id_PH inner join khoahoc on lophoc.id_KH = khoahoc.id_KH where lophoc.id_PH = @idph";
+            SqlCommand cmd = new SqlCommand(sql, conn);
+            cmd.Parameters.AddWithValue("idph", id_ph);
+
+            SqlDataReader dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                LopHocDTO lh = new LopHocDTO();
+                lh.id_LH = dr["id_LH"].ToString();
+                lh.ten_LH = dr["ten_LH"].ToString();
+                lh.ten_KH = dr["ten_KH"].ToString();
+                lh.ten_GV = dr["ten_GV"].ToString();
+                lh.ngayBatDau = DateTime.Parse(dr["ngaybatdau"].ToString());
+                lh.ngayKetThuc = DateTime.Parse(dr["ngayketthuc"].ToString());
+                lh.siSo = int.Parse(dr["siso_LH"].ToString());
+
+                lhs.Add(lh);
+            }
+
+            conn.Close();
+            return lhs;
         }
 
     }

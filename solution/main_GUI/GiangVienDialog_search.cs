@@ -54,6 +54,7 @@ namespace main_GUI
                 {
                     MessageBox.Show("Xóa thành công", "thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     hienThiGrid();
+                    showButton();
                 }
                 else
                 {
@@ -66,6 +67,7 @@ namespace main_GUI
         private void Bt_tim_Click_1(object sender, EventArgs e)
         {
             hienThiGrid();
+            showButton();
         }
 
         private void hienThiGrid()
@@ -111,10 +113,22 @@ namespace main_GUI
 
         private void Dgv_GV_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if(dgv_GV.Rows[0].Cells[0].Value != null)
+            showButton();
+        }
+
+        private void showButton()
+        {
+            if (dgv_GV.Rows.Count > 0 && dgv_GV.Rows[0].Cells[0].Value != null)
             {
+                Console.WriteLine("true");
                 bt_xoa.Enabled = true;
                 bt_sua.Enabled = true;
+            }
+            else
+            {
+                Console.WriteLine("false");
+                bt_xoa.Enabled = false;
+                bt_sua.Enabled = false;
             }
         }
 

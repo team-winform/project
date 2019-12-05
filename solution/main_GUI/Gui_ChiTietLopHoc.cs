@@ -35,7 +35,39 @@ namespace main_GUI
             clearForm();
             loadLopInfo();
             hienThiGrdDSHV();
+            tinhDTB();
             loadTabLichHoc();
+        }
+
+        //thông kê đtb
+        private void tinhDTB()
+        {
+            double tongDiemTongKet = 0;
+            int soDiem = 0;
+            
+
+            foreach(HocVienLopHocDTO h in currentLstDSHV)
+            {
+                if(h.Point1 != -1 && h.Point2 != -1 && h.PointFinal != -1)
+                {
+                    tongDiemTongKet += ( (h.Point1 + h.Point2)/2  +  h.PointFinal * 2 ) / 3;
+                    soDiem++;
+                }
+            }
+            double diemTB;
+            if (soDiem != 0)
+            {
+                lb_dtb.ForeColor = Color.Green;
+                diemTB = tongDiemTongKet / soDiem;
+                lb_dtb.Text = diemTB.ToString();
+            }
+            else
+            {
+                lb_dtb.ForeColor = Color.Red;
+                lb_dtb.Text = "Chưa đủ dữ liệu";
+            }
+                
+            
         }
 
         private void loadTabLichHoc()
@@ -78,26 +110,37 @@ namespace main_GUI
             foreach (HocVienLopHocDTO hvlh in lstHocVienLopHoc)
             {
                 grdDssv.Rows.Add();
-                grdDssv.Rows[index].Cells[0].Value = hvlh.id_HV;
-                grdDssv.Rows[index].Cells[1].Value = hvlh.ten_HV;
-                if (hvlh.diem1 != -1)
-                    grdDssv.Rows[index].Cells[2].Value = hvlh.diem1;
+                grdDssv.Rows[index].Cells[0].Value = hvlh.StudentId;
+                grdDssv.Rows[index].Cells[1].Value = hvlh.StudentName;
+
+                if (hvlh.Point1 != -1)
+                    grdDssv.Rows[index].Cells[2].Value = hvlh.Point1;
                 else
                     grdDssv.Rows[index].Cells[2].Value = "";
-                if (hvlh.diem2 != -1)
-                    grdDssv.Rows[index].Cells[3].Value = hvlh.diem2;
+
+                if (hvlh.Point2 != -1)
+                    grdDssv.Rows[index].Cells[3].Value = hvlh.Point2;
                 else
                     grdDssv.Rows[index].Cells[3].Value = "";
-                if (hvlh.diem3 != -1)
-                    grdDssv.Rows[index].Cells[4].Value = hvlh.diem3;
+
+                if (hvlh.Rate == true)
+                    grdDssv.Rows[index].Cells[4].Value = "Đạt";
                 else
-                    grdDssv.Rows[index].Cells[4].Value = "";
-                if (hvlh.diem4 != -1)
-                    grdDssv.Rows[index].Cells[5].Value = hvlh.diem4;
+                    grdDssv.Rows[index].Cells[4].Value = "Không đạt";
+
+                if (hvlh.PointFinal != -1)
+                    grdDssv.Rows[index].Cells[5].Value = hvlh.PointFinal;
                 else
                     grdDssv.Rows[index].Cells[5].Value = "";
 
-                grdDssv.Rows[index].Cells[6].Value = hvlh.ghiChu_HVLH;
+                if (hvlh.Graduating == true)
+                    grdDssv.Rows[index].Cells[6].Value = "Tốt nghiệp";
+                else
+                    grdDssv.Rows[index].Cells[6].Value = "Chưa tốt nghiệp";
+
+                grdDssv.Rows[index].Cells[7].Value = hvlh.Rank;
+
+                grdDssv.Rows[index].Cells[8].Value = hvlh.Note;
                 index++;
             }
         }
@@ -146,8 +189,8 @@ namespace main_GUI
             currentHV_maHV = row.Cells[0].Value.ToString();
             HocVienLopHocDTO hvlh;
             hvlh = chiTietLopHocBLL.findHocVienInDSHV(currentLstDSHV, currentHV_maHV);
-            lbMaHocVien.Text = hvlh.id_HV;
-            lbTenHocVien.Text = hvlh.ten_HV;
+            lbMaHocVien.Text = hvlh.StudentId;
+            lbTenHocVien.Text = hvlh.StudentName;
         }
 
         private void btXoa_Click(object sender, EventArgs e)
@@ -250,6 +293,11 @@ namespace main_GUI
         private DialogResult hienCanhBao(String message)
         {
             return MessageBox.Show(message, "Thông báo!", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+        }
+
+        private void Lb_dtb_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

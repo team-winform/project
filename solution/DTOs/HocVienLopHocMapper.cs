@@ -23,7 +23,6 @@ namespace DTOs
             hvlh.Note = dr["ghichu_HVLH"].ToString();
             hvlh.StudentName = dr["ten_HV"].ToString();
             hvlh.ClassName = dr["ten_LH"].ToString();
-
             return hvlh;
         }
     }

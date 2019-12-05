@@ -64,6 +64,7 @@
             this.dgv_ph.RowTemplate.Height = 24;
             this.dgv_ph.Size = new System.Drawing.Size(1167, 534);
             this.dgv_ph.TabIndex = 0;
+            this.dgv_ph.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dgv_ph_CellDoubleClick);
             // 
             // id_PH
             // 

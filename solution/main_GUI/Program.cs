@@ -16,7 +16,7 @@ namespace main_GUI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new GiangVienGUI());
+            Application.Run(new Gui_QuanLyLopHoc());
             //Application.Run(new LoginForm());
         }
     }

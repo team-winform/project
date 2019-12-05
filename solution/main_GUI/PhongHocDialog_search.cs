@@ -21,6 +21,12 @@ namespace main_GUI
 
         private void Bt_tim_Click(object sender, EventArgs e)
         {
+            searchPH();
+            showButton();
+        }
+
+        private void searchPH()
+        {
             if (cb_loai.Text == "Theo mã")
             {
 
@@ -40,6 +46,8 @@ namespace main_GUI
         private void PhongHocDialog_search_Load(object sender, EventArgs e)
         {
             cb_loai.Text = "Theo mã";
+            bt_sua.Enabled = false;
+            bt_xoa.Enabled = false;
         }
 
         private void Bt_sua_Click(object sender, EventArgs e)
@@ -64,6 +72,7 @@ namespace main_GUI
                 {
                     MessageBox.Show("Xóa thành công", "thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     dgv_ph.DataSource = PhongHocBLL.Instance.getAll();
+                    showButton();
                 }
                 else
                 {
@@ -76,6 +85,27 @@ namespace main_GUI
         private void Bt_back_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void Dgv_ph_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            showButton();
+        }
+
+        private void showButton()
+        {
+            if (dgv_ph.Rows.Count > 0 && dgv_ph.Rows[0].Cells[0].Value != null)
+            {
+                Console.WriteLine("true");
+                bt_xoa.Enabled = true;
+                bt_sua.Enabled = true;
+            }
+            else
+            {
+                Console.WriteLine("false");
+                bt_xoa.Enabled = false;
+                bt_sua.Enabled = false;
+            }
         }
     }
 }

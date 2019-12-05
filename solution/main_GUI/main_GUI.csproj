@@ -176,6 +176,12 @@
     <Compile Include="LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="PhongHocDialog_ChiTiet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PhongHocDialog_ChiTiet.Designer.cs">
+      <DependentUpon>PhongHocDialog_ChiTiet.cs</DependentUpon>
+    </Compile>
     <Compile Include="PhongHocDialog_insertupdate.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -258,6 +264,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PhongHocDialog_ChiTiet.resx">
+      <DependentUpon>PhongHocDialog_ChiTiet.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PhongHocDialog_insertupdate.resx">
       <DependentUpon>PhongHocDialog_insertupdate.cs</DependentUpon>

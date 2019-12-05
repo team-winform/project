@@ -52,31 +52,44 @@ namespace DALs
         public bool setPoint(HocVienLopHocDTO hl, int pointType)
         {
             conn.Open();
-            string sql = "";
-            SqlCommand cmd;
-            if (pointType == 0)
+            try
             {
-                sql = "update hocvien_lophoc set diem_1 = @d1, diem_2 = @d2 where id_HV = @idhv and id_LH = @idlh";
-                cmd = new SqlCommand(sql, conn);
+                string sql = "";
+                SqlCommand cmd;
+                if (pointType == 1)
+                {
+                    sql = "update hocvien_lophoc set diem_1 = @d1 where id_HV = @idhv and id_LH = @idlh";
+                    cmd = new SqlCommand(sql, conn);
+                    cmd.Parameters.AddWithValue("d1", hl.Point1);
+                }
+                else if (pointType == 2)
+                {
+                    sql = "update hocvien_lophoc set diem_2 = @d2 where id_HV = @idhv and id_LH = @idlh";
+                    cmd = new SqlCommand(sql, conn);
+                    cmd.Parameters.AddWithValue("d2", hl.Point2);
+                }
+                else
+                {
+                    sql = "update hocvien_lophoc set diem_do_an = @dda where id_HV = @idhv and id_LH = @idlh";
+                    cmd = new SqlCommand(sql, conn);
+                    cmd.Parameters.AddWithValue("dda", hl.PointFinal);
+                }
+
                 cmd.Parameters.AddWithValue("idhv", hl.StudentId);
                 cmd.Parameters.AddWithValue("idlh", hl.ClassId);
-                cmd.Parameters.AddWithValue("d1", hl.Point1);
-                cmd.Parameters.AddWithValue("d2", hl.Point2);
+
+                int rowEffect = cmd.ExecuteNonQuery();
+                conn.Close();
+
+                if (rowEffect == 0)
+                    return false;
             }
-            else
+            catch(Exception ee)
             {
-                sql = "update hocvien_lophoc set diem_do_an = @dda where id_HV = @idhv and id_LH = @idlh";
-                cmd = new SqlCommand(sql, conn);
-                cmd.Parameters.AddWithValue("dda", hl.PointFinal);
-                cmd.Parameters.AddWithValue("idhv", hl.StudentId);
-                cmd.Parameters.AddWithValue("idlh", hl.ClassId);
-            }
-
-            int rowEffect = cmd.ExecuteNonQuery();
-            conn.Close();
-
-            if (rowEffect == 0)
+                Console.WriteLine(ee.Message);
+                conn.Close();
                 return false;
+            }
             return true;
         }
 
@@ -99,81 +112,100 @@ namespace DALs
         public bool setGraduatAndRank(HocVienLopHocDTO hl)
         {
             conn.Open();
-            string sql = "update hocvien_lophoc set xet_tot_nghiep = @tn, xeploai = @xl where id_HV = @idhv and id_LH = @idlh";
-            SqlCommand cmd = new SqlCommand(sql, conn);
-            cmd.Parameters.AddWithValue("idhv", hl.StudentId);
-            cmd.Parameters.AddWithValue("idlh", hl.ClassId);
-            cmd.Parameters.AddWithValue("tn", hl.Graduating);
-            cmd.Parameters.AddWithValue("xl", hl.Rank);
-            int rowEffect = cmd.ExecuteNonQuery();
-            Console.WriteLine(rowEffect);
-            conn.Close();
-            if (rowEffect == 0)
+            try
+            {
+                string sql = "update hocvien_lophoc set xet_tot_nghiep = @tn, xeploai = @xl where id_HV = @idhv and id_LH = @idlh";
+                SqlCommand cmd = new SqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("idhv", hl.StudentId);
+                cmd.Parameters.AddWithValue("idlh", hl.ClassId);
+                cmd.Parameters.AddWithValue("tn", hl.Graduating);
+                cmd.Parameters.AddWithValue("xl", hl.Rank);
+                int rowEffect = cmd.ExecuteNonQuery();
+                Console.WriteLine(rowEffect);
+                conn.Close();
+                if (rowEffect == 0)
+                    return false;
+            } catch(Exception e)
+            {
+                Console.WriteLine(e.Message);
+                conn.Close();
                 return false;
+            }
+            
             return true;
-            string constring = ConfigurationManager.ConnectionStrings["constring"].ToString();
-            conn = new SqlConnection(constring);
+            
         }
 
         public List<HocVienLopHocDTO> readDSHV(string maLop)
         {
+            Console.WriteLine("da vao readdshv");
             conn.Open();
             List<HocVienLopHocDTO> lstChiTietLop = new List<HocVienLopHocDTO>();
             string query = "select " +
                 "HOCVIEN.id_HV, " +
                 "HOCVIEN.ten_HV, " +
-                "HOCVIEN_LOPHOC.id_LH, " +
                 "HOCVIEN_LOPHOC.diem_1, " +
                 "HOCVIEN_LOPHOC.diem_2, " +
-                "HOCVIEN_LOPHOC.diem_3, " +
-                "HOCVIEN_LOPHOC.diem_4, " +
+                "HOCVIEN_LOPHOC.danhgia, " +
+                "HOCVIEN_LOPHOC.diem_do_an, " +
+                "HOCVIEN_LOPHOC.xet_tot_nghiep, " +
+                "HOCVIEN_LOPHOC.xeploai, " +
                 "HOCVIEN_LOPHOC.ghichu_HVLH " +
                 "from HOCVIEN inner join HOCVIEN_LOPHOC on HOCVIEN.id_HV = HOCVIEN_LOPHOC.id_HV " +
                 "where HOCVIEN_LOPHOC.id_LH = @id_LH";
             SqlCommand cmd = new SqlCommand(query, conn);
             cmd.Parameters.AddWithValue("id_LH", maLop);
-
+            Console.WriteLine("sau khi cmd pa");
             try
             {
                 SqlDataReader rd = cmd.ExecuteReader();
                 while (rd.Read())
                 {
                     HocVienLopHocDTO hvlh = new HocVienLopHocDTO();
-                    hvlh.id_HV = rd["id_HV"].ToString();
-                    hvlh.id_LH = rd["id_LH"].ToString();
-                    hvlh.ten_HV = rd["ten_HV"].ToString();
-                    hvlh.diem1 = int.Parse(rd["diem_1"].ToString());
-                    hvlh.diem2 = int.Parse(rd["diem_2"].ToString());
-                    hvlh.diem3 = int.Parse(rd["diem_3"].ToString());
-                    hvlh.diem4 = int.Parse(rd["diem_4"].ToString());
-                    hvlh.ghiChu_HVLH = rd["ghiChu_HVLH"].ToString();
+                    hvlh.StudentId = rd["id_HV"].ToString();
+                    hvlh.StudentName = rd["ten_HV"].ToString();
+                    hvlh.Point1 = int.Parse(rd["diem_1"].ToString());
+                    hvlh.Point2 = int.Parse(rd["diem_2"].ToString());
+                    hvlh.PointFinal = int.Parse(rd["diem_do_an"].ToString());
+                    hvlh.Note = rd["ghiChu_HVLH"].ToString();
+                    hvlh.Graduating = bool.Parse( rd["xet_tot_nghiep"].ToString());
+                    hvlh.Rank =rd["xeploai"].ToString();
+                    hvlh.Rate = bool.Parse(rd["danhgia"].ToString());
+
                     lstChiTietLop.Add(hvlh);
                 }
+                Console.WriteLine("try thanh cong");
+
             }
             catch (SqlException ee)
             {
+                Console.WriteLine("try loi");
                 conn.Close();
                 throw ee;
             }
             conn.Close();
+            Console.WriteLine("xong readdshv");
             return lstChiTietLop;
         }
 
         public void insertHV_LH(HocVienLopHocDTO hvlh)
         {
             conn.Open();
-
+            Console.WriteLine("da vao inseert hvlh");
             string query = "insert into HOCVIEN_LOPHOC" +
-                "(id_LH, id_HV, diem_1, diem_2, diem_3, diem_4, ghichu_HVLH) values" +
-                "(@id_LH, @id_HV, @diem1, @diem2, @diem3, @diem4, @ghichu_HVLH)";
+                "(id_LH, id_HV, diem_1, diem_2, danhgia, diem_do_an, xet_tot_nghiep, xeploai, ghichu_HVLH) values" +
+                "(@id_LH, @id_HV, @diem1, @diem2, @danhgia, @diemdoan, @xtn, @xl, @ghichu_HVLH)";
             SqlCommand cmd = new SqlCommand(query, conn);
-            cmd.Parameters.AddWithValue("id_LH", hvlh.id_LH);
-            cmd.Parameters.AddWithValue("id_HV", hvlh.id_HV);
-            cmd.Parameters.AddWithValue("diem1", hvlh.diem1);
-            cmd.Parameters.AddWithValue("diem2", hvlh.diem2);
-            cmd.Parameters.AddWithValue("diem3", hvlh.diem3);
-            cmd.Parameters.AddWithValue("diem4", hvlh.diem4);
-            cmd.Parameters.AddWithValue("ghichu_HVLH", hvlh.ghiChu_HVLH);
+            Console.WriteLine("insert hvlh " + hvlh.ClassId + hvlh.StudentId + hvlh.Point1 + hvlh.Point2 + hvlh.PointFinal + hvlh.Rate + hvlh.Graduating + hvlh.Rank + hvlh.Note);
+            cmd.Parameters.AddWithValue("id_LH", hvlh.ClassId);
+            cmd.Parameters.AddWithValue("id_HV", hvlh.StudentId);
+            cmd.Parameters.AddWithValue("diem1", -1);
+            cmd.Parameters.AddWithValue("diem2", -1);
+            cmd.Parameters.AddWithValue("danhgia", 0);
+            cmd.Parameters.AddWithValue("diemdoan", -1);
+            cmd.Parameters.AddWithValue("xtn", 0);
+            cmd.Parameters.AddWithValue("xl", "Không xếp loại");
+            cmd.Parameters.AddWithValue("ghichu_HVLH", "");
 
             try
             {

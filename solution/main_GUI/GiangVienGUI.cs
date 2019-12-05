@@ -162,10 +162,10 @@ namespace main_GUI
 
         private void Cb_sortBy_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(cb_sortBy.Items.Count > 0 && cb_sortType.Items.Count > 0)
+            if (cb_sortBy.Items.Count > 0 && cb_sortType.Items.Count > 0)
             {
                 dgv_GV.DataSource = GiangVienBLL.Instance.getAll(getSortedByValue(), getSortTypeValue());
-
+                //MessageBox.Show("count > 0");
             }
         }
   
@@ -174,7 +174,6 @@ namespace main_GUI
             if (cb_sortBy.Items.Count > 0 && cb_sortType.Items.Count > 0)
             {
                 dgv_GV.DataSource = GiangVienBLL.Instance.getAll(getSortedByValue(), getSortTypeValue());
-
             }
         }
 

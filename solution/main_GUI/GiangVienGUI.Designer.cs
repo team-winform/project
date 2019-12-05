@@ -208,7 +208,6 @@
             this.id_GV.HeaderText = "Mã giảng viên";
             this.id_GV.MinimumWidth = 6;
             this.id_GV.Name = "id_GV";
-            this.id_GV.ReadOnly = true;
             // 
             // ten_GV
             // 
@@ -217,7 +216,6 @@
             this.ten_GV.HeaderText = "Tên giảng viên";
             this.ten_GV.MinimumWidth = 6;
             this.ten_GV.Name = "ten_GV";
-            this.ten_GV.ReadOnly = true;
             // 
             // ngaysinh_GV
             // 
@@ -226,7 +224,6 @@
             this.ngaysinh_GV.HeaderText = "Ngày sinh";
             this.ngaysinh_GV.MinimumWidth = 6;
             this.ngaysinh_GV.Name = "ngaysinh_GV";
-            this.ngaysinh_GV.ReadOnly = true;
             // 
             // sodt_GV
             // 
@@ -235,7 +232,6 @@
             this.sodt_GV.HeaderText = "Số điện thoại";
             this.sodt_GV.MinimumWidth = 6;
             this.sodt_GV.Name = "sodt_GV";
-            this.sodt_GV.ReadOnly = true;
             // 
             // diachi_GV
             // 
@@ -244,7 +240,6 @@
             this.diachi_GV.HeaderText = "Địa chỉ";
             this.diachi_GV.MinimumWidth = 6;
             this.diachi_GV.Name = "diachi_GV";
-            this.diachi_GV.ReadOnly = true;
             // 
             // ngaytao
             // 
@@ -253,7 +248,6 @@
             this.ngaytao.HeaderText = "Ngày tạo";
             this.ngaytao.MinimumWidth = 6;
             this.ngaytao.Name = "ngaytao";
-            this.ngaytao.ReadOnly = true;
             // 
             // ngaysua
             // 
@@ -262,7 +256,6 @@
             this.ngaysua.HeaderText = "Ngày sửa";
             this.ngaysua.MinimumWidth = 6;
             this.ngaysua.Name = "ngaysua";
-            this.ngaysua.ReadOnly = true;
             // 
             // ghichu_GV
             // 
@@ -271,7 +264,6 @@
             this.ghichu_GV.HeaderText = "Ghi chú";
             this.ghichu_GV.MinimumWidth = 6;
             this.ghichu_GV.Name = "ghichu_GV";
-            this.ghichu_GV.ReadOnly = true;
             // 
             // GiangVienGUI
             // 

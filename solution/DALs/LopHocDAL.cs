@@ -68,6 +68,7 @@ namespace DALs
 
         public List<LopHocDTO> readLopHoc(int row_start, int row_end)
         {
+            Console.WriteLine("da vao readlop hoc");
             conn.Open();
             List<LopHocDTO> lstLopHocs = new List<LopHocDTO>();
             string query = "select * from ( " +
@@ -80,6 +81,7 @@ namespace DALs
             SqlCommand cmd = new SqlCommand(query, conn);
             cmd.Parameters.AddWithValue("row_start", row_start);
             cmd.Parameters.AddWithValue("row_end", row_end);
+            Console.WriteLine("sau khi cmd.parameters");
             try
             {
                 SqlDataReader rd = cmd.ExecuteReader();
@@ -87,10 +89,12 @@ namespace DALs
             }
             catch (SqlException e)
             {
+                Console.WriteLine("da vaoex");
                 conn.Close();
                 throw e;
             }
             conn.Close();
+            Console.WriteLine("da close o read lophoc");
             return lstLopHocs;
         }
 
@@ -339,6 +343,7 @@ namespace DALs
 
         private List<LopHocDTO> getLopHocFullInfo(SqlDataReader rd)
         {
+            Console.WriteLine("da vao getlophocFullInfo");
             List<LopHocDTO> lstLopHocDTOs = new List<LopHocDTO>();
             while (rd.Read())
             {

@@ -29,14 +29,14 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.bt_back = new System.Windows.Forms.Button();
-            this.bt_tim = new System.Windows.Forms.Button();
-            this.cb_loai = new System.Windows.Forms.ComboBox();
-            this.tb_ph = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.tb_ph = new System.Windows.Forms.TextBox();
+            this.cb_loai = new System.Windows.Forms.ComboBox();
+            this.bt_tim = new System.Windows.Forms.Button();
+            this.bt_back = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.bt_sua = new System.Windows.Forms.Button();
             this.bt_xoa = new System.Windows.Forms.Button();
+            this.bt_sua = new System.Windows.Forms.Button();
             this.dgv_ph = new System.Windows.Forms.DataGridView();
             this.id_PH = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ten_PH = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -63,27 +63,23 @@
             this.panel1.Size = new System.Drawing.Size(1027, 140);
             this.panel1.TabIndex = 0;
             // 
-            // bt_back
+            // label1
             // 
-            this.bt_back.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bt_back.Location = new System.Drawing.Point(12, 12);
-            this.bt_back.Name = "bt_back";
-            this.bt_back.Size = new System.Drawing.Size(123, 37);
-            this.bt_back.TabIndex = 0;
-            this.bt_back.Text = "Quay lại";
-            this.bt_back.UseVisualStyleBackColor = true;
-            this.bt_back.Click += new System.EventHandler(this.Bt_back_Click);
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(428, 3);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(206, 25);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "Tìm kiếm phòng học";
             // 
-            // bt_tim
+            // tb_ph
             // 
-            this.bt_tim.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bt_tim.Location = new System.Drawing.Point(737, 80);
-            this.bt_tim.Name = "bt_tim";
-            this.bt_tim.Size = new System.Drawing.Size(99, 32);
-            this.bt_tim.TabIndex = 2;
-            this.bt_tim.Text = "Tìm";
-            this.bt_tim.UseVisualStyleBackColor = true;
-            this.bt_tim.Click += new System.EventHandler(this.Bt_tim_Click);
+            this.tb_ph.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_ph.Location = new System.Drawing.Point(388, 83);
+            this.tb_ph.Name = "tb_ph";
+            this.tb_ph.Size = new System.Drawing.Size(278, 30);
+            this.tb_ph.TabIndex = 4;
             // 
             // cb_loai
             // 
@@ -97,23 +93,27 @@
             this.cb_loai.Size = new System.Drawing.Size(121, 33);
             this.cb_loai.TabIndex = 3;
             // 
-            // tb_ph
+            // bt_tim
             // 
-            this.tb_ph.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_ph.Location = new System.Drawing.Point(388, 83);
-            this.tb_ph.Name = "tb_ph";
-            this.tb_ph.Size = new System.Drawing.Size(278, 30);
-            this.tb_ph.TabIndex = 4;
+            this.bt_tim.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bt_tim.Location = new System.Drawing.Point(737, 80);
+            this.bt_tim.Name = "bt_tim";
+            this.bt_tim.Size = new System.Drawing.Size(99, 32);
+            this.bt_tim.TabIndex = 2;
+            this.bt_tim.Text = "Tìm";
+            this.bt_tim.UseVisualStyleBackColor = true;
+            this.bt_tim.Click += new System.EventHandler(this.Bt_tim_Click);
             // 
-            // label1
+            // bt_back
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(428, 3);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(206, 25);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "Tìm kiếm phòng học";
+            this.bt_back.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bt_back.Location = new System.Drawing.Point(12, 12);
+            this.bt_back.Name = "bt_back";
+            this.bt_back.Size = new System.Drawing.Size(123, 37);
+            this.bt_back.TabIndex = 0;
+            this.bt_back.Text = "Quay lại";
+            this.bt_back.UseVisualStyleBackColor = true;
+            this.bt_back.Click += new System.EventHandler(this.Bt_back_Click);
             // 
             // panel2
             // 
@@ -125,16 +125,6 @@
             this.panel2.Size = new System.Drawing.Size(1027, 71);
             this.panel2.TabIndex = 1;
             // 
-            // bt_sua
-            // 
-            this.bt_sua.Location = new System.Drawing.Point(318, 23);
-            this.bt_sua.Name = "bt_sua";
-            this.bt_sua.Size = new System.Drawing.Size(88, 36);
-            this.bt_sua.TabIndex = 0;
-            this.bt_sua.Text = "Sửa";
-            this.bt_sua.UseVisualStyleBackColor = true;
-            this.bt_sua.Click += new System.EventHandler(this.Bt_sua_Click);
-            // 
             // bt_xoa
             // 
             this.bt_xoa.Location = new System.Drawing.Point(657, 23);
@@ -144,6 +134,16 @@
             this.bt_xoa.Text = "Xóa";
             this.bt_xoa.UseVisualStyleBackColor = true;
             this.bt_xoa.Click += new System.EventHandler(this.Bt_xoa_Click);
+            // 
+            // bt_sua
+            // 
+            this.bt_sua.Location = new System.Drawing.Point(318, 23);
+            this.bt_sua.Name = "bt_sua";
+            this.bt_sua.Size = new System.Drawing.Size(88, 36);
+            this.bt_sua.TabIndex = 0;
+            this.bt_sua.Text = "Sửa";
+            this.bt_sua.UseVisualStyleBackColor = true;
+            this.bt_sua.Click += new System.EventHandler(this.Bt_sua_Click);
             // 
             // dgv_ph
             // 
@@ -165,6 +165,7 @@
             this.dgv_ph.RowTemplate.Height = 24;
             this.dgv_ph.Size = new System.Drawing.Size(1027, 316);
             this.dgv_ph.TabIndex = 2;
+            this.dgv_ph.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dgv_ph_CellClick);
             // 
             // id_PH
             // 

@@ -49,5 +49,10 @@ namespace BLLs
         {
             return PhongHocDAL.Instance.delete(id);
         }
+
+        public List<LopHocDTO> getsClassUse(string id_ph)
+        {
+            return PhongHocDAL.Instance.getsClassUse(id_ph);
+        }
     }
 }

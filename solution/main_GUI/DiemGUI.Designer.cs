@@ -28,18 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.cb_listClass = new System.Windows.Forms.ComboBox();
             this.bt_selectLop = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.bt_suaDiem = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cb_chonDiem = new System.Windows.Forms.ComboBox();
             this.bt_nhapDiem = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.bt_xacNhanDiem = new System.Windows.Forms.Button();
+            this.bt_Huy = new System.Windows.Forms.Button();
             this.dgv_Diem = new System.Windows.Forms.DataGridView();
-            this.id_LH = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ten_LH = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ten_HV = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.id_HV = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ten_HV = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.diem_1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.diem_2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.danhgia = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -48,6 +50,7 @@
             this.xeploai = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ghichu_HVLH = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Diem)).BeginInit();
             this.SuspendLayout();
@@ -64,9 +67,10 @@
             // 
             // cb_listClass
             // 
+            this.cb_listClass.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cb_listClass.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cb_listClass.FormattingEnabled = true;
-            this.cb_listClass.Location = new System.Drawing.Point(235, 41);
+            this.cb_listClass.Location = new System.Drawing.Point(179, 41);
             this.cb_listClass.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cb_listClass.Name = "cb_listClass";
             this.cb_listClass.Size = new System.Drawing.Size(379, 33);
@@ -76,7 +80,7 @@
             // 
             this.bt_selectLop.Enabled = false;
             this.bt_selectLop.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bt_selectLop.Location = new System.Drawing.Point(709, 38);
+            this.bt_selectLop.Location = new System.Drawing.Point(592, 35);
             this.bt_selectLop.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.bt_selectLop.Name = "bt_selectLop";
             this.bt_selectLop.Size = new System.Drawing.Size(112, 42);
@@ -87,6 +91,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.groupBox1);
             this.panel1.Controls.Add(this.bt_selectLop);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.cb_listClass);
@@ -98,10 +103,49 @@
             this.panel1.Size = new System.Drawing.Size(1220, 100);
             this.panel1.TabIndex = 3;
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.cb_chonDiem);
+            this.groupBox1.Controls.Add(this.bt_nhapDiem);
+            this.groupBox1.Location = new System.Drawing.Point(814, 12);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(370, 73);
+            this.groupBox1.TabIndex = 3;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Chọn điểm";
+            // 
+            // cb_chonDiem
+            // 
+            this.cb_chonDiem.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cb_chonDiem.Enabled = false;
+            this.cb_chonDiem.FormattingEnabled = true;
+            this.cb_chonDiem.Items.AddRange(new object[] {
+            "Điểm 1",
+            "Điểm 2",
+            "Điểm đồ án"});
+            this.cb_chonDiem.Location = new System.Drawing.Point(37, 29);
+            this.cb_chonDiem.Name = "cb_chonDiem";
+            this.cb_chonDiem.Size = new System.Drawing.Size(153, 33);
+            this.cb_chonDiem.TabIndex = 4;
+            this.cb_chonDiem.SelectedIndexChanged += new System.EventHandler(this.Cb_chonDiem_SelectedIndexChanged);
+            // 
+            // bt_nhapDiem
+            // 
+            this.bt_nhapDiem.Enabled = false;
+            this.bt_nhapDiem.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bt_nhapDiem.Location = new System.Drawing.Point(196, 28);
+            this.bt_nhapDiem.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.bt_nhapDiem.Name = "bt_nhapDiem";
+            this.bt_nhapDiem.Size = new System.Drawing.Size(139, 37);
+            this.bt_nhapDiem.TabIndex = 0;
+            this.bt_nhapDiem.Text = "Bắt đầu";
+            this.bt_nhapDiem.UseVisualStyleBackColor = true;
+            this.bt_nhapDiem.Click += new System.EventHandler(this.Bt_nhapDiem_Click);
+            // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.bt_suaDiem);
-            this.panel2.Controls.Add(this.bt_nhapDiem);
+            this.panel2.Controls.Add(this.bt_xacNhanDiem);
+            this.panel2.Controls.Add(this.bt_Huy);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel2.Location = new System.Drawing.Point(0, 457);
             this.panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -109,30 +153,30 @@
             this.panel2.Size = new System.Drawing.Size(1220, 71);
             this.panel2.TabIndex = 4;
             // 
-            // bt_suaDiem
+            // bt_xacNhanDiem
             // 
-            this.bt_suaDiem.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bt_suaDiem.Location = new System.Drawing.Point(695, 20);
-            this.bt_suaDiem.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.bt_suaDiem.Name = "bt_suaDiem";
-            this.bt_suaDiem.Size = new System.Drawing.Size(107, 39);
-            this.bt_suaDiem.TabIndex = 1;
-            this.bt_suaDiem.Text = "Sửa điểm";
-            this.bt_suaDiem.UseVisualStyleBackColor = true;
-            this.bt_suaDiem.Visible = false;
+            this.bt_xacNhanDiem.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bt_xacNhanDiem.Location = new System.Drawing.Point(420, 21);
+            this.bt_xacNhanDiem.Name = "bt_xacNhanDiem";
+            this.bt_xacNhanDiem.Size = new System.Drawing.Size(129, 38);
+            this.bt_xacNhanDiem.TabIndex = 2;
+            this.bt_xacNhanDiem.Text = "Xác nhận";
+            this.bt_xacNhanDiem.UseVisualStyleBackColor = true;
+            this.bt_xacNhanDiem.Visible = false;
+            this.bt_xacNhanDiem.Click += new System.EventHandler(this.Bt_xacNhanDiem_Click);
             // 
-            // bt_nhapDiem
+            // bt_Huy
             // 
-            this.bt_nhapDiem.Enabled = false;
-            this.bt_nhapDiem.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bt_nhapDiem.Location = new System.Drawing.Point(327, 20);
-            this.bt_nhapDiem.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.bt_nhapDiem.Name = "bt_nhapDiem";
-            this.bt_nhapDiem.Size = new System.Drawing.Size(107, 39);
-            this.bt_nhapDiem.TabIndex = 0;
-            this.bt_nhapDiem.Text = "Nhập điểm";
-            this.bt_nhapDiem.UseVisualStyleBackColor = true;
-            this.bt_nhapDiem.Click += new System.EventHandler(this.Bt_nhapDiem_Click);
+            this.bt_Huy.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bt_Huy.Location = new System.Drawing.Point(728, 21);
+            this.bt_Huy.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.bt_Huy.Name = "bt_Huy";
+            this.bt_Huy.Size = new System.Drawing.Size(107, 39);
+            this.bt_Huy.TabIndex = 1;
+            this.bt_Huy.Text = "Hủy";
+            this.bt_Huy.UseVisualStyleBackColor = true;
+            this.bt_Huy.Visible = false;
+            this.bt_Huy.Click += new System.EventHandler(this.Bt_Huy_Click);
             // 
             // dgv_Diem
             // 
@@ -140,10 +184,8 @@
             this.dgv_Diem.AllowUserToDeleteRows = false;
             this.dgv_Diem.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_Diem.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.id_LH,
-            this.ten_LH,
-            this.ten_HV,
             this.id_HV,
+            this.ten_HV,
             this.diem_1,
             this.diem_2,
             this.danhgia,
@@ -155,38 +197,13 @@
             this.dgv_Diem.Location = new System.Drawing.Point(0, 100);
             this.dgv_Diem.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgv_Diem.Name = "dgv_Diem";
-            this.dgv_Diem.ReadOnly = true;
             this.dgv_Diem.RowHeadersWidth = 51;
             this.dgv_Diem.RowTemplate.Height = 24;
             this.dgv_Diem.Size = new System.Drawing.Size(1220, 357);
             this.dgv_Diem.TabIndex = 5;
-            // 
-            // id_LH
-            // 
-            this.id_LH.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.id_LH.DataPropertyName = "ClassId";
-            this.id_LH.HeaderText = "Mã lớp";
-            this.id_LH.MinimumWidth = 6;
-            this.id_LH.Name = "id_LH";
-            this.id_LH.ReadOnly = true;
-            // 
-            // ten_LH
-            // 
-            this.ten_LH.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ten_LH.DataPropertyName = "ClassName";
-            this.ten_LH.HeaderText = "Tên lớp";
-            this.ten_LH.MinimumWidth = 6;
-            this.ten_LH.Name = "ten_LH";
-            this.ten_LH.ReadOnly = true;
-            // 
-            // ten_HV
-            // 
-            this.ten_HV.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ten_HV.DataPropertyName = "StudentName";
-            this.ten_HV.HeaderText = "Tên học viên";
-            this.ten_HV.MinimumWidth = 6;
-            this.ten_HV.Name = "ten_HV";
-            this.ten_HV.ReadOnly = true;
+            this.dgv_Diem.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.Dgv_Diem_EditingControlShowing);
+            this.dgv_Diem.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Dgv_Diem_KeyDown);
+            this.dgv_Diem.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Dgv_Diem_KeyUp);
             // 
             // id_HV
             // 
@@ -197,23 +214,35 @@
             this.id_HV.Name = "id_HV";
             this.id_HV.ReadOnly = true;
             // 
+            // ten_HV
+            // 
+            this.ten_HV.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ten_HV.DataPropertyName = "StudentName";
+            this.ten_HV.HeaderText = "Tên học viên";
+            this.ten_HV.MinimumWidth = 6;
+            this.ten_HV.Name = "ten_HV";
+            this.ten_HV.ReadOnly = true;
+            // 
             // diem_1
             // 
             this.diem_1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.diem_1.DataPropertyName = "Point1";
+            dataGridViewCellStyle2.Format = "N2";
+            dataGridViewCellStyle2.NullValue = null;
+            this.diem_1.DefaultCellStyle = dataGridViewCellStyle2;
             this.diem_1.HeaderText = "Điểm 1";
+            this.diem_1.MaxInputLength = 2;
             this.diem_1.MinimumWidth = 6;
             this.diem_1.Name = "diem_1";
-            this.diem_1.ReadOnly = true;
             // 
             // diem_2
             // 
             this.diem_2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.diem_2.DataPropertyName = "Point2";
             this.diem_2.HeaderText = "Điểm 2";
+            this.diem_2.MaxInputLength = 2;
             this.diem_2.MinimumWidth = 6;
             this.diem_2.Name = "diem_2";
-            this.diem_2.ReadOnly = true;
             // 
             // danhgia
             // 
@@ -229,9 +258,9 @@
             this.diem_do_an.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.diem_do_an.DataPropertyName = "PointFinal";
             this.diem_do_an.HeaderText = "Điểm đồ án";
+            this.diem_do_an.MaxInputLength = 2;
             this.diem_do_an.MinimumWidth = 6;
             this.diem_do_an.Name = "diem_do_an";
-            this.diem_do_an.ReadOnly = true;
             // 
             // xet_tot_nghiep
             // 
@@ -274,6 +303,7 @@
             this.Load += new System.EventHandler(this.DiemGUI_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Diem)).EndInit();
             this.ResumeLayout(false);
@@ -287,13 +317,14 @@
         private System.Windows.Forms.Button bt_selectLop;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Button bt_suaDiem;
+        private System.Windows.Forms.Button bt_Huy;
         private System.Windows.Forms.Button bt_nhapDiem;
-        private System.Windows.Forms.DataGridView dgv_Diem;
-        private System.Windows.Forms.DataGridViewTextBoxColumn id_LH;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ten_LH;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ten_HV;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.ComboBox cb_chonDiem;
+        private System.Windows.Forms.Button bt_xacNhanDiem;
+        public System.Windows.Forms.DataGridView dgv_Diem;
         private System.Windows.Forms.DataGridViewTextBoxColumn id_HV;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ten_HV;
         private System.Windows.Forms.DataGridViewTextBoxColumn diem_1;
         private System.Windows.Forms.DataGridViewTextBoxColumn diem_2;
         private System.Windows.Forms.DataGridViewTextBoxColumn danhgia;
