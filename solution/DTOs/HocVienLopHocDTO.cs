@@ -19,16 +19,18 @@ namespace DTOs
         private string note;
 
         public HocVienLopHocDTO() {
-            this.ghiChu_HVLH = "";
-            diem1 = -1;
-            diem2 = -1;
-            diem3 = -1;
-            diem4 = -1;
+            this.Note = "";
+            Point1 = -1;
+            point2 = -1;
+            PointFinal = -1;
+            Rank = "Không xếp loại";
+            Graduating = false;
+            Rate = false;
         }
 
         public HocVienLopHocDTO(string idStudent, string idClass, double point1, double point2, double pointFinal, string note)
         {
-            this.studentId = idStudent;
+            this.StudentId = idStudent;
             this.classId = idClass;
             this.point1 = point1;
             this.point2 = point2;
@@ -49,15 +51,20 @@ namespace DTOs
         public string ClassName { get; set; }
         
 
-        public string id_HV { get; set; }
-        public string ten_HV { get; set; }
-        public string id_LH { get; set; }
-        public int diem1 { get; set; }
-        public int diem2 { get; set; }
+        public double getDTBTX()
+        {
+            if (Point1 == -1 || Point2 == -1)
+                return -1;
+            return (double)(Point1 + Point2) / 2;
+        }
 
-        public int diem3 { get; set; }
-        public int diem4 { get; set; }
-
-        public string ghiChu_HVLH { get; set; }
+        public string getDTB()
+        {
+            if (getDTBTX() == -1 || PointFinal == -1)
+                return "-1";
+            double d = ((getDTBTX() + pointFinal * 2) / 3);
+            Console.WriteLine(d + " => " + String.Format("{0:0.##}", d));
+            return String.Format("{0:0.##}", d);
+        }
     }
 }

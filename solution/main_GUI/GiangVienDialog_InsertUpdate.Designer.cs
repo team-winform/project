@@ -114,6 +114,7 @@
             this.tb_ten.Name = "tb_ten";
             this.tb_ten.Size = new System.Drawing.Size(237, 34);
             this.tb_ten.TabIndex = 6;
+            this.tb_ten.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Tb_ten_KeyUp);
             // 
             // tb_sdt
             // 
@@ -122,6 +123,7 @@
             this.tb_sdt.Name = "tb_sdt";
             this.tb_sdt.Size = new System.Drawing.Size(237, 34);
             this.tb_sdt.TabIndex = 8;
+            this.tb_sdt.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Tb_sdt_KeyUp);
             // 
             // tb_diachi
             // 
@@ -130,6 +132,7 @@
             this.tb_diachi.Name = "tb_diachi";
             this.tb_diachi.Size = new System.Drawing.Size(237, 34);
             this.tb_diachi.TabIndex = 9;
+            this.tb_diachi.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Tb_diachi_KeyUp);
             // 
             // tb_ghichu
             // 
@@ -138,6 +141,7 @@
             this.tb_ghichu.Name = "tb_ghichu";
             this.tb_ghichu.Size = new System.Drawing.Size(237, 34);
             this.tb_ghichu.TabIndex = 10;
+            this.tb_ghichu.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Tb_ghichu_KeyUp);
             // 
             // bt_ok
             // 
@@ -169,8 +173,9 @@
             this.dateTimePicker1.Location = new System.Drawing.Point(304, 121);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(237, 30);
-            this.dateTimePicker1.TabIndex = 13;
+            this.dateTimePicker1.TabIndex = 7;
             this.dateTimePicker1.ValueChanged += new System.EventHandler(this.DateTimePicker1_ValueChanged);
+            this.dateTimePicker1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.DateTimePicker1_KeyUp);
             // 
             // GiangVienDialog_InsertUpdate
             // 

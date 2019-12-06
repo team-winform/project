@@ -99,7 +99,7 @@
             this.bt_tim.Location = new System.Drawing.Point(737, 80);
             this.bt_tim.Name = "bt_tim";
             this.bt_tim.Size = new System.Drawing.Size(99, 32);
-            this.bt_tim.TabIndex = 2;
+            this.bt_tim.TabIndex = 5;
             this.bt_tim.Text = "Tìm";
             this.bt_tim.UseVisualStyleBackColor = true;
             this.bt_tim.Click += new System.EventHandler(this.Bt_tim_Click);
@@ -130,7 +130,7 @@
             this.bt_xoa.Location = new System.Drawing.Point(657, 23);
             this.bt_xoa.Name = "bt_xoa";
             this.bt_xoa.Size = new System.Drawing.Size(88, 36);
-            this.bt_xoa.TabIndex = 1;
+            this.bt_xoa.TabIndex = 7;
             this.bt_xoa.Text = "Xóa";
             this.bt_xoa.UseVisualStyleBackColor = true;
             this.bt_xoa.Click += new System.EventHandler(this.Bt_xoa_Click);
@@ -140,7 +140,7 @@
             this.bt_sua.Location = new System.Drawing.Point(318, 23);
             this.bt_sua.Name = "bt_sua";
             this.bt_sua.Size = new System.Drawing.Size(88, 36);
-            this.bt_sua.TabIndex = 0;
+            this.bt_sua.TabIndex = 6;
             this.bt_sua.Text = "Sửa";
             this.bt_sua.UseVisualStyleBackColor = true;
             this.bt_sua.Click += new System.EventHandler(this.Bt_sua_Click);

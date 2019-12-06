@@ -103,7 +103,6 @@ namespace DALs
             cmd.Parameters.AddWithValue("rate", hl.Rate);
             int rowEffect = cmd.ExecuteNonQuery();
             conn.Close();
-            Console.WriteLine("rate: " + rowEffect);
             if (rowEffect == 0)
                 return false;
             return true;

@@ -73,7 +73,7 @@
             this.bt_tim.Location = new System.Drawing.Point(988, 25);
             this.bt_tim.Name = "bt_tim";
             this.bt_tim.Size = new System.Drawing.Size(109, 44);
-            this.bt_tim.TabIndex = 3;
+            this.bt_tim.TabIndex = 7;
             this.bt_tim.Text = "Tìm kiếm";
             this.bt_tim.UseVisualStyleBackColor = true;
             this.bt_tim.Click += new System.EventHandler(this.Bt_tim_Click);
@@ -84,7 +84,7 @@
             this.bt_xoa.Location = new System.Drawing.Point(708, 25);
             this.bt_xoa.Name = "bt_xoa";
             this.bt_xoa.Size = new System.Drawing.Size(109, 44);
-            this.bt_xoa.TabIndex = 2;
+            this.bt_xoa.TabIndex = 6;
             this.bt_xoa.Text = "Xóa";
             this.bt_xoa.UseVisualStyleBackColor = true;
             this.bt_xoa.Click += new System.EventHandler(this.Bt_xoa_Click);
@@ -95,7 +95,7 @@
             this.bt_sua.Location = new System.Drawing.Point(428, 25);
             this.bt_sua.Name = "bt_sua";
             this.bt_sua.Size = new System.Drawing.Size(109, 44);
-            this.bt_sua.TabIndex = 1;
+            this.bt_sua.TabIndex = 5;
             this.bt_sua.Text = "Sửa";
             this.bt_sua.UseVisualStyleBackColor = true;
             this.bt_sua.Click += new System.EventHandler(this.Bt_sua_Click);
@@ -106,7 +106,7 @@
             this.bt_them.Location = new System.Drawing.Point(148, 25);
             this.bt_them.Name = "bt_them";
             this.bt_them.Size = new System.Drawing.Size(109, 44);
-            this.bt_them.TabIndex = 0;
+            this.bt_them.TabIndex = 4;
             this.bt_them.Text = "Thêm";
             this.bt_them.UseVisualStyleBackColor = true;
             this.bt_them.Click += new System.EventHandler(this.Bt_them_Click);
@@ -131,7 +131,7 @@
             this.cb_sortType.Location = new System.Drawing.Point(1127, 31);
             this.cb_sortType.Name = "cb_sortType";
             this.cb_sortType.Size = new System.Drawing.Size(70, 24);
-            this.cb_sortType.TabIndex = 3;
+            this.cb_sortType.TabIndex = 2;
             this.cb_sortType.SelectedIndexChanged += new System.EventHandler(this.Cb_sortType_SelectedIndexChanged);
             // 
             // cb_sortBy
@@ -143,7 +143,7 @@
             this.cb_sortBy.Location = new System.Drawing.Point(1000, 31);
             this.cb_sortBy.Name = "cb_sortBy";
             this.cb_sortBy.Size = new System.Drawing.Size(121, 24);
-            this.cb_sortBy.TabIndex = 2;
+            this.cb_sortBy.TabIndex = 1;
             this.cb_sortBy.SelectedIndexChanged += new System.EventHandler(this.Cb_sortBy_SelectedIndexChanged);
             // 
             // label2
@@ -208,6 +208,7 @@
             this.id_GV.HeaderText = "Mã giảng viên";
             this.id_GV.MinimumWidth = 6;
             this.id_GV.Name = "id_GV";
+            this.id_GV.ReadOnly = true;
             // 
             // ten_GV
             // 
@@ -216,6 +217,7 @@
             this.ten_GV.HeaderText = "Tên giảng viên";
             this.ten_GV.MinimumWidth = 6;
             this.ten_GV.Name = "ten_GV";
+            this.ten_GV.ReadOnly = true;
             // 
             // ngaysinh_GV
             // 
@@ -224,6 +226,7 @@
             this.ngaysinh_GV.HeaderText = "Ngày sinh";
             this.ngaysinh_GV.MinimumWidth = 6;
             this.ngaysinh_GV.Name = "ngaysinh_GV";
+            this.ngaysinh_GV.ReadOnly = true;
             // 
             // sodt_GV
             // 
@@ -232,6 +235,7 @@
             this.sodt_GV.HeaderText = "Số điện thoại";
             this.sodt_GV.MinimumWidth = 6;
             this.sodt_GV.Name = "sodt_GV";
+            this.sodt_GV.ReadOnly = true;
             // 
             // diachi_GV
             // 
@@ -240,6 +244,7 @@
             this.diachi_GV.HeaderText = "Địa chỉ";
             this.diachi_GV.MinimumWidth = 6;
             this.diachi_GV.Name = "diachi_GV";
+            this.diachi_GV.ReadOnly = true;
             // 
             // ngaytao
             // 
@@ -248,6 +253,7 @@
             this.ngaytao.HeaderText = "Ngày tạo";
             this.ngaytao.MinimumWidth = 6;
             this.ngaytao.Name = "ngaytao";
+            this.ngaytao.ReadOnly = true;
             // 
             // ngaysua
             // 
@@ -256,6 +262,7 @@
             this.ngaysua.HeaderText = "Ngày sửa";
             this.ngaysua.MinimumWidth = 6;
             this.ngaysua.Name = "ngaysua";
+            this.ngaysua.ReadOnly = true;
             // 
             // ghichu_GV
             // 
@@ -264,6 +271,7 @@
             this.ghichu_GV.HeaderText = "Ghi chú";
             this.ghichu_GV.MinimumWidth = 6;
             this.ghichu_GV.Name = "ghichu_GV";
+            this.ghichu_GV.ReadOnly = true;
             // 
             // GiangVienGUI
             // 

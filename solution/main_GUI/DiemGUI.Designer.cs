@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.cb_listClass = new System.Windows.Forms.ComboBox();
@@ -46,6 +47,7 @@
             this.diem_2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.danhgia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.diem_do_an = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dtb = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xet_tot_nghiep = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xeploai = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ghichu_HVLH = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -126,7 +128,7 @@
             this.cb_chonDiem.Location = new System.Drawing.Point(37, 29);
             this.cb_chonDiem.Name = "cb_chonDiem";
             this.cb_chonDiem.Size = new System.Drawing.Size(153, 33);
-            this.cb_chonDiem.TabIndex = 4;
+            this.cb_chonDiem.TabIndex = 3;
             this.cb_chonDiem.SelectedIndexChanged += new System.EventHandler(this.Cb_chonDiem_SelectedIndexChanged);
             // 
             // bt_nhapDiem
@@ -137,7 +139,7 @@
             this.bt_nhapDiem.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.bt_nhapDiem.Name = "bt_nhapDiem";
             this.bt_nhapDiem.Size = new System.Drawing.Size(139, 37);
-            this.bt_nhapDiem.TabIndex = 0;
+            this.bt_nhapDiem.TabIndex = 4;
             this.bt_nhapDiem.Text = "Bắt đầu";
             this.bt_nhapDiem.UseVisualStyleBackColor = true;
             this.bt_nhapDiem.Click += new System.EventHandler(this.Bt_nhapDiem_Click);
@@ -156,10 +158,10 @@
             // bt_xacNhanDiem
             // 
             this.bt_xacNhanDiem.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bt_xacNhanDiem.Location = new System.Drawing.Point(420, 21);
+            this.bt_xacNhanDiem.Location = new System.Drawing.Point(495, 22);
             this.bt_xacNhanDiem.Name = "bt_xacNhanDiem";
             this.bt_xacNhanDiem.Size = new System.Drawing.Size(129, 38);
-            this.bt_xacNhanDiem.TabIndex = 2;
+            this.bt_xacNhanDiem.TabIndex = 5;
             this.bt_xacNhanDiem.Text = "Xác nhận";
             this.bt_xacNhanDiem.UseVisualStyleBackColor = true;
             this.bt_xacNhanDiem.Visible = false;
@@ -168,11 +170,11 @@
             // bt_Huy
             // 
             this.bt_Huy.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bt_Huy.Location = new System.Drawing.Point(728, 21);
+            this.bt_Huy.Location = new System.Drawing.Point(650, 21);
             this.bt_Huy.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.bt_Huy.Name = "bt_Huy";
             this.bt_Huy.Size = new System.Drawing.Size(107, 39);
-            this.bt_Huy.TabIndex = 1;
+            this.bt_Huy.TabIndex = 6;
             this.bt_Huy.Text = "Hủy";
             this.bt_Huy.UseVisualStyleBackColor = true;
             this.bt_Huy.Visible = false;
@@ -190,6 +192,7 @@
             this.diem_2,
             this.danhgia,
             this.diem_do_an,
+            this.dtb,
             this.xet_tot_nghiep,
             this.xeploai,
             this.ghichu_HVLH});
@@ -227,11 +230,11 @@
             // 
             this.diem_1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.diem_1.DataPropertyName = "Point1";
-            dataGridViewCellStyle2.Format = "N2";
-            dataGridViewCellStyle2.NullValue = null;
-            this.diem_1.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Format = "N2";
+            dataGridViewCellStyle1.NullValue = null;
+            this.diem_1.DefaultCellStyle = dataGridViewCellStyle1;
             this.diem_1.HeaderText = "Điểm 1";
-            this.diem_1.MaxInputLength = 2;
+            this.diem_1.MaxInputLength = 4;
             this.diem_1.MinimumWidth = 6;
             this.diem_1.Name = "diem_1";
             // 
@@ -240,7 +243,7 @@
             this.diem_2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.diem_2.DataPropertyName = "Point2";
             this.diem_2.HeaderText = "Điểm 2";
-            this.diem_2.MaxInputLength = 2;
+            this.diem_2.MaxInputLength = 4;
             this.diem_2.MinimumWidth = 6;
             this.diem_2.Name = "diem_2";
             // 
@@ -258,9 +261,20 @@
             this.diem_do_an.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.diem_do_an.DataPropertyName = "PointFinal";
             this.diem_do_an.HeaderText = "Điểm đồ án";
-            this.diem_do_an.MaxInputLength = 2;
+            this.diem_do_an.MaxInputLength = 4;
             this.diem_do_an.MinimumWidth = 6;
             this.diem_do_an.Name = "diem_do_an";
+            // 
+            // dtb
+            // 
+            this.dtb.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle2.Format = "N2";
+            dataGridViewCellStyle2.NullValue = null;
+            this.dtb.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dtb.HeaderText = "Điểm trung bình";
+            this.dtb.MaxInputLength = 4;
+            this.dtb.MinimumWidth = 6;
+            this.dtb.Name = "dtb";
             // 
             // xet_tot_nghiep
             // 
@@ -329,6 +343,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn diem_2;
         private System.Windows.Forms.DataGridViewTextBoxColumn danhgia;
         private System.Windows.Forms.DataGridViewTextBoxColumn diem_do_an;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dtb;
         private System.Windows.Forms.DataGridViewTextBoxColumn xet_tot_nghiep;
         private System.Windows.Forms.DataGridViewTextBoxColumn xeploai;
         private System.Windows.Forms.DataGridViewTextBoxColumn ghichu_HVLH;

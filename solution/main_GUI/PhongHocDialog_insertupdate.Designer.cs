@@ -80,6 +80,7 @@
             this.tb_ten.Name = "tb_ten";
             this.tb_ten.Size = new System.Drawing.Size(255, 30);
             this.tb_ten.TabIndex = 3;
+            this.tb_ten.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Tb_ten_KeyUp);
             // 
             // tb_ghichu
             // 
@@ -88,7 +89,8 @@
             this.tb_ghichu.Multiline = true;
             this.tb_ghichu.Name = "tb_ghichu";
             this.tb_ghichu.Size = new System.Drawing.Size(255, 84);
-            this.tb_ghichu.TabIndex = 4;
+            this.tb_ghichu.TabIndex = 9;
+            this.tb_ghichu.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Tb_ghichu_KeyUp);
             // 
             // bt_ok
             // 
@@ -97,7 +99,7 @@
             this.bt_ok.Location = new System.Drawing.Point(140, 349);
             this.bt_ok.Name = "bt_ok";
             this.bt_ok.Size = new System.Drawing.Size(108, 42);
-            this.bt_ok.TabIndex = 5;
+            this.bt_ok.TabIndex = 10;
             this.bt_ok.Text = "OK";
             this.bt_ok.UseVisualStyleBackColor = true;
             this.bt_ok.Click += new System.EventHandler(this.Bt_ok_Click);
@@ -109,7 +111,7 @@
             this.bt_Huy.Location = new System.Drawing.Point(365, 349);
             this.bt_Huy.Name = "bt_Huy";
             this.bt_Huy.Size = new System.Drawing.Size(108, 42);
-            this.bt_Huy.TabIndex = 6;
+            this.bt_Huy.TabIndex = 11;
             this.bt_Huy.Text = "Hủy";
             this.bt_Huy.UseVisualStyleBackColor = true;
             this.bt_Huy.Click += new System.EventHandler(this.Bt_Huy_Click);
@@ -131,6 +133,7 @@
             this.tb_succhua.Name = "tb_succhua";
             this.tb_succhua.Size = new System.Drawing.Size(255, 30);
             this.tb_succhua.TabIndex = 8;
+            this.tb_succhua.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Tb_succhua_KeyUp);
             // 
             // errorProvider1
             // 

@@ -25,9 +25,7 @@ namespace main_GUI
             {
                 bt_selectLop.Enabled = true;
             }
-            
-                
-
+            dgv_Diem.ReadOnly = true;
         }
 
         private bool loadDataForComboBox()
@@ -71,10 +69,83 @@ namespace main_GUI
                 dgv_Diem.Rows[i].Cells["ten_HV"].Value = hvlh.StudentName;
                 dgv_Diem.Rows[i].Cells["diem_1"].Value = (hvlh.Point1 == -1) ? "" : hvlh.Point1.ToString();
                 dgv_Diem.Rows[i].Cells["diem_2"].Value = (hvlh.Point2 == -1) ? "" : hvlh.Point2.ToString();
-                dgv_Diem.Rows[i].Cells["danhgia"].Value = (hvlh.Rate == false)? "Không đạt" : "Đạt";
-                dgv_Diem.Rows[i].Cells["diem_do_an"].Value = (hvlh.PointFinal == -1) ? "" : hvlh.PointFinal.ToString();
-                dgv_Diem.Rows[i].Cells["xet_tot_nghiep"].Value = (hvlh.Graduating == false) ? "Chưa tốt nghiệp" : "Tốt nghiệp";
-                dgv_Diem.Rows[i].Cells["xeploai"].Value = hvlh.Rank;
+
+                // set danh gia
+                if(dgv_Diem.Rows[i].Cells["diem_1"].Value.ToString() == string.Empty || dgv_Diem.Rows[i].Cells["diem_2"].Value.ToString() == string.Empty)
+                {
+                    dgv_Diem.Rows[i].Cells["danhgia"].Value = "Chưa đánh giá";
+                }
+                else if(hvlh.Rate == false)
+                {
+                    dgv_Diem.Rows[i].Cells["danhgia"].Style.ForeColor = Color.Red;
+                    dgv_Diem.Rows[i].Cells["danhgia"].Value = "Không đạt";
+                } else if(hvlh.Rate == true)
+                {
+                    dgv_Diem.Rows[i].Cells["danhgia"].Style.ForeColor = Color.Green;
+                    dgv_Diem.Rows[i].Cells["danhgia"].Value = "Đạt";
+                }
+
+                // set diem do an
+                if(dgv_Diem.Rows[i].Cells["danhgia"].Value.ToString() == "Không đạt")
+                {
+                    dgv_Diem.Rows[i].Cells["diem_do_an"].Style.ForeColor = Color.Red;
+                    dgv_Diem.Rows[i].Cells["diem_do_an"].Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                    dgv_Diem.Rows[i].Cells["diem_do_an"].Value = "------";
+                }
+                else
+                {
+                    dgv_Diem.Rows[i].Cells["diem_do_an"].Value = (hvlh.PointFinal == -1) ? "" : hvlh.PointFinal.ToString();
+                }
+
+                //set diem tb
+                if (hvlh.getDTB() == "-1" && dgv_Diem.Rows[i].Cells["danhgia"].Value.ToString() == "Không đạt")
+                {
+                    dgv_Diem.Rows[i].Cells["dtb"].Style.ForeColor = Color.Red;
+                    dgv_Diem.Rows[i].Cells["dtb"].Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                    dgv_Diem.Rows[i].Cells["dtb"].Value = "------";
+                }
+                else if(hvlh.getDTB() == "-1")
+                {
+                    dgv_Diem.Rows[i].Cells["dtb"].Value = "Chưa đủ điểm";
+                }
+                else
+                {
+                    dgv_Diem.Rows[i].Cells["dtb"].Style.ForeColor = Color.Blue;
+                    dgv_Diem.Rows[i].Cells["dtb"].Value = hvlh.getDTB().ToString();
+                }
+
+                //set xet tot nghiep
+                if (dgv_Diem.Rows[i].Cells["danhgia"].Value.ToString() == "Không đạt")
+                {
+                    dgv_Diem.Rows[i].Cells["xet_tot_nghiep"].Style.ForeColor = Color.Red;
+                    dgv_Diem.Rows[i].Cells["xet_tot_nghiep"].Value = "Học lại";
+                }
+                else if (dgv_Diem.Rows[i].Cells["diem_do_an"].Value.ToString() == string.Empty)
+                {
+                    dgv_Diem.Rows[i].Cells["xet_tot_nghiep"].Value = "Chưa đủ điểm";
+                } 
+                else if(hvlh.Graduating == true)
+                {
+                    dgv_Diem.Rows[i].Cells["xet_tot_nghiep"].Style.ForeColor = Color.Green;
+                    dgv_Diem.Rows[i].Cells["xet_tot_nghiep"].Value = "Tốt nghiệp";
+                }
+                else
+                {
+                    dgv_Diem.Rows[i].Cells["xet_tot_nghiep"].Style.ForeColor = Color.Red;
+                    dgv_Diem.Rows[i].Cells["xet_tot_nghiep"].Value = "Học lại";
+                }
+
+                // set xep loai
+                if(hvlh.Rank != "Không xếp loại")
+                {
+                    dgv_Diem.Rows[i].Cells["xeploai"].Style.ForeColor = Color.Green;
+                    dgv_Diem.Rows[i].Cells["xeploai"].Value = hvlh.Rank;
+                }
+                else
+                {
+                    dgv_Diem.Rows[i].Cells["xeploai"].Value = hvlh.Rank;
+                }
+                
                 dgv_Diem.Rows[i].Cells["ghichu_HVLH"].Value = hvlh.Note;
 
                 i++;
@@ -109,10 +180,35 @@ namespace main_GUI
             hl.StudentName = dgv_Diem.Rows[index].Cells["ten_HV"].Value.ToString();
             hl.ClassId = cb_listClass.SelectedValue.ToString();
             hl.ClassName = cb_listClass.Text;
-            hl.Point1 = (dgv_Diem.Rows[index].Cells["diem_1"].Value.ToString() != "") ? double.Parse(dgv_Diem.Rows[index].Cells["diem_1"].Value.ToString()) : -1;
-            hl.Point2 = (dgv_Diem.Rows[index].Cells["diem_2"].Value.ToString() != "") ? double.Parse(dgv_Diem.Rows[index].Cells["diem_2"].Value.ToString()) : -1;
-            hl.PointFinal = (dgv_Diem.Rows[index].Cells["diem_do_an"].Value.ToString() != "") ? double.Parse(dgv_Diem.Rows[index].Cells["diem_do_an"].Value.ToString()) : -1;
-            hl.Rate = (dgv_Diem.Rows[index].Cells["danhgia"].Value.ToString() == "Đạt") ? true : false;
+            try{
+                hl.Point1 = double.Parse(dgv_Diem.Rows[index].Cells["diem_1"].Value.ToString());
+            }catch
+            {
+                hl.Point1 = -1;
+            }
+
+            try
+            {
+                hl.Point2 = double.Parse(dgv_Diem.Rows[index].Cells["diem_2"].Value.ToString());
+            }
+            catch
+            {
+                hl.Point2 = -1;
+            }
+
+
+            if (dgv_Diem.Rows[index].Cells["danhgia"].Value.ToString() == "Đạt" && dgv_Diem.Rows[index].Cells["diem_do_an"].Value != null && dgv_Diem.Rows[index].Cells["diem_do_an"].Value.ToString() != "")
+            {
+                try
+                {
+                    hl.PointFinal = double.Parse(dgv_Diem.Rows[index].Cells["diem_do_an"].Value.ToString());
+                } catch(Exception e)
+                {
+                    hl.PointFinal = -1;
+                }
+            }
+            else
+                hl.PointFinal = -1;
             return hl;
         }
         private void Cb_chonDiem_SelectedIndexChanged(object sender, EventArgs e)
@@ -129,22 +225,44 @@ namespace main_GUI
             dgv_Diem.Columns["xeploai"].ReadOnly = true;
             dgv_Diem.Columns["xet_tot_nghiep"].ReadOnly = true;
             dgv_Diem.Columns["ghichu_HVLH"].ReadOnly = true;
+            dgv_Diem.Columns["dtb"].ReadOnly = true;
 
             string chonDiem = cb_chonDiem.Text;
             foreach (DataGridViewRow r in dgv_Diem.Rows)
             {
-                if (chonDiem == "Điểm 1" && r.Cells["diem_do_an"].Value.ToString() == "")
+                if (chonDiem == "Điểm 1")
                 {
-                    r.Cells["diem_1"].ReadOnly = false;
-                    r.Cells["diem_2"].ReadOnly = true;
-                    r.Cells["diem_do_an"].ReadOnly = true;
+                    try
+                    {
+                        double.Parse(r.Cells["diem_do_an"].Value.ToString());
+                        r.Cells["diem_1"].ReadOnly = true;
+                        r.Cells["diem_2"].ReadOnly = true;
+                        r.Cells["diem_do_an"].ReadOnly = true;
+                    }
+                    catch (Exception e)
+                    {
+                        r.Cells["diem_1"].ReadOnly = false;
+                        r.Cells["diem_2"].ReadOnly = true;
+                        r.Cells["diem_do_an"].ReadOnly = true;
+                    }
                 }
                         
-                else if(chonDiem == "Điểm 2" && r.Cells["diem_do_an"].Value.ToString() == "")
+                else if(chonDiem == "Điểm 2")
                 {
-                    r.Cells["diem_1"].ReadOnly = true;
-                    r.Cells["diem_2"].ReadOnly = false;
-                    r.Cells["diem_do_an"].ReadOnly = true;
+                    try
+                    {
+                        double.Parse(r.Cells["diem_do_an"].Value.ToString());
+                        r.Cells["diem_1"].ReadOnly = true;
+                        r.Cells["diem_2"].ReadOnly = true;
+                        r.Cells["diem_do_an"].ReadOnly = true;
+                    }
+                    catch (Exception e)
+                    {
+                        r.Cells["diem_1"].ReadOnly = true;
+                        r.Cells["diem_2"].ReadOnly = false;
+                        r.Cells["diem_do_an"].ReadOnly = true;
+                    }
+                    
                 }
                 else if(chonDiem == "Điểm đồ án")
                 {
@@ -166,7 +284,9 @@ namespace main_GUI
                 }
                 else
                 {
-                    dgv_Diem.ReadOnly = true;
+                    dgv_Diem.Columns["diem_1"].ReadOnly = true;
+                    dgv_Diem.Columns["diem_2"].ReadOnly = true;
+                    dgv_Diem.Columns["diem_do_an"].ReadOnly = true;
                 }
             }
         }
@@ -207,7 +327,6 @@ namespace main_GUI
 
         private void Bt_Huy_Click(object sender, EventArgs e)
         {
-
             reloadControl();
             ChangeCollumnColorActive();
             hienThiGrid();
@@ -216,7 +335,6 @@ namespace main_GUI
 
         private void reloadControl()
         {
-            dgv_Diem.ReadOnly = true;
             cb_chonDiem.Enabled = true;
             cb_chonDiem.SelectedIndex = -1;
             bt_Huy.Visible = false;
@@ -228,51 +346,40 @@ namespace main_GUI
         private void Bt_xacNhanDiem_Click(object sender, EventArgs e)
         {
             string point = cb_chonDiem.Text;
-            int pointType;
+            int pointType = 0;
             if (point == "Điểm 1")
                 pointType = 1;
             else if (point == "Điểm 2")
                 pointType = 2;
-            else
+            else if(point == "Điểm đồ án")
                 pointType = 3;
 
-
             int i = 0;
-            string error = "";
             foreach(DataGridViewRow r in dgv_Diem.Rows)
             {
-                if(pointType == 1 && r.Cells["diem_1"].Value.ToString() != "" || pointType == 2 && r.Cells["diem_2"].Value.ToString() != "" || pointType == 3 && r.Cells["danhgia"].Value.ToString() == "Đạt" && r.Cells["diem_do_an"].Value.ToString() != "")
-                {
-                    HocVienLopHocDTO hl = getHVLHfromGridRowIndex(i);
-                    
+                HocVienLopHocDTO hl = getHVLHfromGridRowIndex(i);
+                if (pointType == 1 && (r.Cells["diem_do_an"].Value.ToString() == "" || r.Cells["diem_do_an"].Value.ToString() == "------") || pointType == 2 && (r.Cells["diem_do_an"].Value.ToString() == "" || r.Cells["diem_do_an"].Value.ToString() == "------") || pointType == 3 && r.Cells["danhgia"].Value.ToString() == "Đạt")
+                {                    
                     if (HocVienLopHocBLL.Instance.setPoint(hl, pointType))
                     {
-                        if ((pointType == 1 || pointType == 2) && r.Cells["diem_1"].Value.ToString() != "" && r.Cells["diem_2"].Value.ToString() != "")
+                        if (pointType == 1 || pointType == 2)
                         {
-                            setRate(hl);
-                            //if(r.Cells["diem_do_an"].Value.ToString() != "" && r.Cells["danhgia"].Value.ToString() != "Đạt")
-                            //{
-                            //    hl.PointFinal = -1;
-                            //    HocVienLopHocBLL.Instance.setPoint(hl, 3);
-                            //    hl.
-                            //    setTotNghiepAndXepLoai(hl);
-                            //}
-
-
+                            if (r.Cells["diem_1"].Value != null && r.Cells["diem_2"].Value != null && r.Cells["diem_1"].Value.ToString() != "" && r.Cells["diem_2"].Value.ToString() != "")
+                            {
+                                setRate(hl);
+                            } 
+                            else if((r.Cells["diem_1"].Value == null || r.Cells["diem_2"].Value == null) && r.Cells["danhgia"].Value.ToString() != "Chưa đánh giá")
+                            {
+                                Console.WriteLine("d1d2 rong. rate khac chuadanhgia");
+                                setRate(hl);
+                            }
                         }
-                            
-                        else if(pointType == 3)
+                        else if (pointType == 3)
                             setTotNghiepAndXepLoai(hl);
                     }
-                    else{
-                        error += hl.StudentName + "\n";
-                    }
-                } 
-                    i++;
+                }
+                i++;
             }
-
-            if (error != "")
-                MessageBox.Show("Các học viên sau chưa được nhập điểm thành công:\n" + error, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             reloadControl();
             ChangeCollumnColorActive();
@@ -282,6 +389,7 @@ namespace main_GUI
 
         private bool setRate(HocVienLopHocDTO hl)
         {
+            Console.WriteLine("trong ham rate: " + hl.Point1 + ";" + hl.Point2);
             bool rate = false;
             if (hl.Point1 >= 5 && hl.Point2 >= 5)
                 rate = true;
@@ -293,12 +401,12 @@ namespace main_GUI
         {
             bool totNghiep = false;
             string xepLoai = "Không xếp loại";
-            if (hl.PointFinal >= 7)
+            if (hl.PointFinal >= 5)
                 totNghiep = true;
 
             if(totNghiep == true)
             {
-                double diemTB = (((hl.Point1 + hl.Point2) / 2) + hl.PointFinal) / 3;
+                double diemTB = double.Parse(hl.getDTB());
                 if (diemTB >= 5 && diemTB <= 7)
                     xepLoai = "Trung bình";
                 else if (diemTB < 8.5)
@@ -329,12 +437,12 @@ namespace main_GUI
         {
             TextBox txb = e.Control as TextBox;
             txb.KeyUp += (S, E) => {
-                if(E.KeyCode >= Keys.D0 && E.KeyCode <= Keys.D9)
+                if (E.KeyCode >= Keys.D0 && E.KeyCode <= Keys.D9)
                 {
-                    if(int.Parse(txb.Text) > 10)
+                    if(double.Parse(txb.Text) > 10)
                         txb.Text = txb.Text.Remove(txb.TextLength - 1, 1);
                 }
-                else if(E.KeyCode != Keys.Back && txb.Text.Length <= 2)
+                else if(E.KeyCode >= Keys.A && E.KeyCode <= Keys.Z && txb.Text.Length >= 1)
                 {
                     //txb.Clear();
                     txb.Text = txb.Text.Remove(txb.TextLength - 1, 1);
