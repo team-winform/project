@@ -14,6 +14,7 @@ namespace main_GUI
 {
     public partial class DiemGUI : Form
     {
+        private List<HocVienLopHocDTO> hvlhs;
         public DiemGUI()
         {
             InitializeComponent();
@@ -26,6 +27,7 @@ namespace main_GUI
                 bt_selectLop.Enabled = true;
             }
             dgv_Diem.ReadOnly = true;
+            unableThongKe();
         }
 
         private bool loadDataForComboBox()
@@ -52,12 +54,94 @@ namespace main_GUI
             bt_nhapDiem.Enabled = false;
             bt_Huy.Visible = false;
             bt_xacNhanDiem.Visible = false;
+            thongKe();
         }
+
+        private void unableThongKe()
+        {
+            lb_dat.Visible = false;
+            lb_khongdat.Visible = false;
+            lb_totng.Visible = false;
+            lb_truot.Visible = false;
+            lb_gioi.Visible = false;
+            lb_kha.Visible = false;
+            lb_tb.Visible = false;
+
+            tb_dat.Visible = false;
+            tb_kdat.Visible = false;
+            tb_tn.Visible = false;
+            tb_truot.Visible = false;
+            tb_gioi.Visible = false;
+            tb_kha.Visible = false;
+            tb_tb.Visible = false;
+
+        }
+
+        private void visibleThongKe()
+        {
+            lb_dat.Visible = true;
+            lb_khongdat.Visible = true;
+            lb_totng.Visible = true;
+            lb_truot.Visible = true;
+            lb_gioi.Visible = true;
+            lb_kha.Visible = true;
+            lb_tb.Visible = true;
+
+            tb_dat.Visible = true;
+            tb_kdat.Visible = true;
+            tb_tn.Visible = true;
+            tb_truot.Visible = true;
+            tb_gioi.Visible = true;
+            tb_kha.Visible = true;
+            tb_tb.Visible = true;
+        }
+
+        private void thongKe()
+        {
+            visibleThongKe();
+
+            int tongDat = 0;
+            int tongKDat = 0;
+            int tongTN = 0;
+            int tongTruot = 0;
+            int tongGioi = 0;
+            int tongKha = 0;
+            int tongTB = 0;
+
+            foreach (HocVienLopHocDTO hl in hvlhs)
+            {
+                if (hl.Rate == true)
+                    ++tongDat;
+                if (hl.Graduating == true)
+                    ++tongTN;
+                if (hl.Rank == "Giỏi")
+                    ++tongGioi;
+                if (hl.Rank == "Khá")
+                    ++tongKha;
+                if (hl.Rank == "Trung bình")
+                    ++tongTB;
+                if (hl.Rate == false && (hl.Point1 != -1 && hl.Point2 != -1))
+                    ++tongKDat;
+                if ((hl.Rate == true && hl.PointFinal != -1 && hl.Point1 != -1 && hl.Point2 != -1 && hl.Graduating == false))
+                    ++tongTruot;
+            }
+
+            tb_dat.Text = tongDat.ToString();
+            tb_kdat.Text = tongKDat.ToString();
+            tb_tn.Text = tongTN.ToString();
+            tb_truot.Text =(tongKDat + tongTruot).ToString();
+            tb_gioi.Text = tongGioi.ToString();
+            tb_kha.Text = tongKha.ToString();
+            tb_tb.Text = tongTB.ToString();
+
+        }
+
+        
 
         private void hienThiGrid()
         {
             string className = cb_listClass.Text;
-            List<HocVienLopHocDTO> hvlhs = HocVienLopHocBLL.Instance.getsByClassName(className);
+            hvlhs = HocVienLopHocBLL.Instance.getsByClassName(className);
 
             dgv_Diem.Rows.Clear();
             int i = 0;
@@ -385,6 +469,7 @@ namespace main_GUI
             ChangeCollumnColorActive();
             hienThiGrid();
             cellVisiable();
+            thongKe();
         }
 
         private bool setRate(HocVienLopHocDTO hl)
@@ -432,21 +517,69 @@ namespace main_GUI
             
         }
 
-        // Xu ly input nhap diem
+        // Xu ly input nhap diem. 
         private void Dgv_Diem_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
-            TextBox txb = e.Control as TextBox;
-            txb.KeyUp += (S, E) => {
-                if (E.KeyCode >= Keys.D0 && E.KeyCode <= Keys.D9)
+            TextBox tbx = e.Control as TextBox;
+            bool notNumber = false;
+
+            // Kiem tra phim nhap vao co phai la so
+            tbx.KeyDown += (S, E) =>
+            {
+                if (E.KeyCode < Keys.D0 || E.KeyCode > Keys.D9)
                 {
-                    if(double.Parse(txb.Text) > 10)
-                        txb.Text = txb.Text.Remove(txb.TextLength - 1, 1);
+                    Console.WriteLine("Khac k0-9");
+                    if (E.KeyCode < Keys.NumPad0 || E.KeyCode > Keys.NumPad9)
+                    {
+                        Console.WriteLine("khac n0-9");
+                        if (E.KeyCode != Keys.Back && E.KeyCode != Keys.OemPeriod)
+                        {
+                            Console.WriteLine("Khac back");
+                            if (E.KeyCode != Keys.Up && E.KeyCode != Keys.Right && E.KeyCode != Keys.Down && E.KeyCode != Keys.Left)
+                            {
+                                Console.WriteLine("Khac muiten");
+                                Console.WriteLine(E.KeyData);
+                                notNumber = true;
+                            }
+                        }
+                    }
                 }
-                else if(E.KeyCode >= Keys.A && E.KeyCode <= Keys.Z && txb.Text.Length >= 1)
+                else if (Control.ModifierKeys == Keys.Shift)
                 {
-                    //txb.Clear();
-                    txb.Text = txb.Text.Remove(txb.TextLength - 1, 1);
+                    Console.WriteLine("La shift");
+                    notNumber = true;
                 }
+                else
+                {
+                    Console.WriteLine("la so");
+                    notNumber = false;
+                }
+            };
+
+            tbx.KeyPress += (S, E) =>
+            {
+                //Neu khong la so. Khong nhap.
+                if (notNumber)
+                {
+                    E.Handled = true;
+                }
+            };
+
+            tbx.KeyUp += (S, E) =>
+            {
+                // Nếu điểm > 10 thì điểm = 10;
+                try
+                {
+                    double diem = double.Parse(tbx.Text);
+                    if (diem > 10)
+                    {
+                        tbx.Text = "10";
+                        //Đặt con trỏ về cuối dòng text mỗi khi có thay đổi text
+                        tbx.SelectionStart = tbx.Text.Length;
+                        tbx.SelectionLength = 0;
+                    }
+                }
+                catch { }
             };
         }
     }

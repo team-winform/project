@@ -21,6 +21,10 @@ namespace DTOs
 
         public HocPhiDTO()
         {
+
+            complete = 0;
+            pay1 = 0;
+            pay2 = 0;
         }
 
         public HocPhiDTO(string studentId, string studentName, string className, string classId, double tuition, double pay1, DateTime date1, double pay2, DateTime date2, double complete)
@@ -50,7 +54,7 @@ namespace DTOs
 
         public double getOwed()
         {
-            return (double) complete - tuition;
+            return (double) tuition - complete;
         }
     }
 }

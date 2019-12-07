@@ -23,7 +23,7 @@ namespace DTOs
             }
             catch
             {
-                hp.Pay1 = -1;
+                hp.Pay1 = 0;
             }
 
             //Pay2
@@ -33,7 +33,7 @@ namespace DTOs
             }
             catch
             {
-                hp.Pay2 = -1;
+                hp.Pay2 = 0;
             }
 
             //Date1
@@ -63,7 +63,17 @@ namespace DTOs
             }
             catch
             {
-                hp.Complete = -1;
+                hp.Complete = 0;
+            }
+
+            //hoc phi
+            try
+            {
+                hp.Tuition = double.Parse(dr["hocphi"].ToString());
+            }
+            catch
+            {
+                hp.Tuition = 0;
             }
 
             return hp;

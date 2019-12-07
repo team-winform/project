@@ -378,7 +378,7 @@ namespace DALs
             conn.Open();
 
             List<LopHocDTO> lhs = new List<LopHocDTO>();
-            string sql = "select id_LH, ten_LH from lophoc";
+            string sql = "select id_LH, ten_LH, hocphi from lophoc";
             SqlCommand cmd = new SqlCommand(sql, conn);
             SqlDataReader dr = cmd.ExecuteReader();
             while (dr.Read())
@@ -386,7 +386,14 @@ namespace DALs
                 LopHocDTO lh = new LopHocDTO();
                 lh.id_LH = dr["id_LH"].ToString();
                 lh.ten_LH = dr["ten_LH"].ToString();
-                Console.WriteLine(lh.id_LH + "; " + lh.ten_LH);
+                try
+                {
+                    lh.hocPhi = double.Parse(dr["hocphi"].ToString());
+                }
+                catch
+                {
+                    lh.hocPhi = -1;
+                }
                 lhs.Add(lh);
             }
 

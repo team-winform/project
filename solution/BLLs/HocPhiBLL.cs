@@ -30,5 +30,26 @@ namespace BLLs
         {
             return HocPhiDAL.Instance.insertHocVien(hp);
         }
+
+        public bool payTuition(HocPhiDTO hp, int payTime)
+        {
+            if (payTime == 1 && hp.Pay1 != 0)
+                hp.Date1 = DateTime.Now;
+            else if (payTime == 1 && hp.Pay1 == 0)
+                hp.Date1 = null;
+            else if (payTime == 2 && hp.Pay2 != 0)
+                hp.Date2 = DateTime.Now;
+            else if (payTime == 2 && hp.Pay2 == 0)
+                hp.Date2 = null;
+            hp.Complete = hp.Pay1 + hp.Pay2;
+            
+            if (hp.Complete > hp.Tuition)
+            {
+                Console.WriteLine("com > hp");
+                return false;
+            }
+            Console.WriteLine("com <= hp");
+            return HocPhiDAL.Instance.payTuition(hp, payTime);
+        }
     }
 }
