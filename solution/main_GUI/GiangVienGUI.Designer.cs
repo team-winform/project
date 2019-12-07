@@ -42,6 +42,7 @@
             this.dgv_GV = new System.Windows.Forms.DataGridView();
             this.id_GV = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ten_GV = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.username = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ngaysinh_GV = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.sodt_GV = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.diachi_GV = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -185,6 +186,7 @@
             this.dgv_GV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.id_GV,
             this.ten_GV,
+            this.username,
             this.ngaysinh_GV,
             this.sodt_GV,
             this.diachi_GV,
@@ -218,6 +220,16 @@
             this.ten_GV.MinimumWidth = 6;
             this.ten_GV.Name = "ten_GV";
             this.ten_GV.ReadOnly = true;
+            // 
+            // username
+            // 
+            this.username.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.username.DataPropertyName = "username";
+            this.username.HeaderText = "Username";
+            this.username.MaxInputLength = 20;
+            this.username.MinimumWidth = 6;
+            this.username.Name = "username";
+            this.username.ReadOnly = true;
             // 
             // ngaysinh_GV
             // 
@@ -302,17 +314,18 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.DataGridView dgv_GV;
+        private System.Windows.Forms.ComboBox cb_sortType;
+        private System.Windows.Forms.ComboBox cb_sortBy;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridViewTextBoxColumn id_GV;
         private System.Windows.Forms.DataGridViewTextBoxColumn ten_GV;
+        private System.Windows.Forms.DataGridViewTextBoxColumn username;
         private System.Windows.Forms.DataGridViewTextBoxColumn ngaysinh_GV;
         private System.Windows.Forms.DataGridViewTextBoxColumn sodt_GV;
         private System.Windows.Forms.DataGridViewTextBoxColumn diachi_GV;
         private System.Windows.Forms.DataGridViewTextBoxColumn ngaytao;
         private System.Windows.Forms.DataGridViewTextBoxColumn ngaysua;
         private System.Windows.Forms.DataGridViewTextBoxColumn ghichu_GV;
-        private System.Windows.Forms.ComboBox cb_sortType;
-        private System.Windows.Forms.ComboBox cb_sortBy;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
     }
 }

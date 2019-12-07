@@ -62,5 +62,10 @@ namespace BLLs
         {
             return GiangVienDAL.Instance.getClassList(gv);
         }
+
+        public List<string> getFreeUsername()
+        {
+            return GiangVienDAL.Instance.getFreeUsername();
+        }
     }
 }

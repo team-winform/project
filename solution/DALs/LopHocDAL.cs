@@ -165,8 +165,8 @@ namespace DALs
         {
             conn.Open();
             string query = "insert into LOPHOC " +
-                "(id_LH, id_KH, ngaybatdau, ngayketthuc, thoigian, id_GV, ten_LH, id_PH, ghichu_LH, siso_LH) values " +
-                "(@id_LH, @id_KH, @ngaybatdau, @ngayketthuc, @thoigian, @id_GV, @ten_LH, @id_PH, @ghichu_LH, @siso_LH) ";
+                "(hocphi, id_LH, id_KH, ngaybatdau, ngayketthuc, thoigian, id_GV, ten_LH, id_PH, ghichu_LH, siso_LH) values " +
+                "(@hp, @id_LH, @id_KH, @ngaybatdau, @ngayketthuc, @thoigian, @id_GV, @ten_LH, @id_PH, @ghichu_LH, @siso_LH) ";
             SqlCommand cmd = new SqlCommand(query, conn);
             cmd.Parameters.AddWithValue("id_LH", lopHocDTO.id_LH);
             cmd.Parameters.AddWithValue("id_KH", lopHocDTO.id_KH);
@@ -178,6 +178,7 @@ namespace DALs
             cmd.Parameters.AddWithValue("id_PH", lopHocDTO.id_PH);
             cmd.Parameters.AddWithValue("ghichu_LH", lopHocDTO.ghiChu_LH);
             cmd.Parameters.AddWithValue("siso_LH", 0);
+            cmd.Parameters.AddWithValue("hp", lopHocDTO.hocPhi);
             try
             {
                 cmd.ExecuteNonQuery();
@@ -362,6 +363,7 @@ namespace DALs
                 dto.ten_PH = rd["ten_PH"].ToString();
                 dto.ten_KH = rd["ten_KH"].ToString();
                 dto.sucChua = int.Parse(rd["succhua_PH"].ToString());
+                dto.hocPhi = double.Parse(rd["hocphi"].ToString());
                 lstLopHocDTOs.Add(dto);
             }
             return lstLopHocDTOs;

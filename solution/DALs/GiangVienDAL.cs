@@ -72,10 +72,11 @@ namespace DALs
             try {
                 conn.Open();
 
-                string sql = "insert into giangvien values (@id, @name, @dob, @sdt, @addr, @note, @created, @updated)";
+                string sql = "insert into giangvien values (@id, @name, @un, @dob, @sdt, @addr, @note, @created, @updated)";
                 SqlCommand cmd = new SqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("id", gv.Id);
                 cmd.Parameters.AddWithValue("name", gv.Name);
+                cmd.Parameters.AddWithValue("un", gv.Username);
                 cmd.Parameters.AddWithValue("dob", gv.DayOfBirth);
                 cmd.Parameters.AddWithValue("sdt", gv.Phone);
                 cmd.Parameters.AddWithValue("addr", gv.Address);
@@ -102,10 +103,11 @@ namespace DALs
             {
                 conn.Open();
 
-                string sql = "update giangvien set ten_GV = @name, ngaysinh_GV = @dob, sodt_GV = @sdt, diachi_GV = @addr, ghichu_GV = @note, ngaysua = @updated where id_GV = @id";
+                string sql = "update giangvien set ten_GV = @name, username = @un, ngaysinh_GV = @dob, sodt_GV = @sdt, diachi_GV = @addr, ghichu_GV = @note, ngaysua = @updated where id_GV = @id";
                 SqlCommand cmd = new SqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("id", gv.Id);
                 cmd.Parameters.AddWithValue("name", gv.Name);
+                cmd.Parameters.AddWithValue("un", gv.Username);
                 cmd.Parameters.AddWithValue("dob", gv.DayOfBirth);
                 cmd.Parameters.AddWithValue("sdt", gv.Phone);
                 cmd.Parameters.AddWithValue("addr", gv.Address);
@@ -215,5 +217,23 @@ namespace DALs
             return lhs;
         }
 
+
+        public List<string> getFreeUsername()
+        {
+            List<string> freeUNs = new List<string>();
+
+            conn.Open();
+            string sql = "select username from ACCOUNT where username not in (select giangvien.username from giangvien inner join ACCOUNT on giangvien.username = ACCOUNT.username ) and level = 2";
+            SqlCommand cmd = new SqlCommand(sql, conn);
+            SqlDataReader dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                string un = dr["username"].ToString();
+                freeUNs.Add(un);
+            }
+
+            conn.Close();
+            return freeUNs;
+        }
     }
 }

@@ -75,7 +75,7 @@ namespace main_GUI
         private void DisplayButton()
         {
             
-            if (dgv_GV.Rows[0].Cells[0].Value == null)
+            if (dgv_GV.Rows.Count > 0 && dgv_GV.Rows[0].Cells[0].Value == null )
             {
                 bt_sua.Enabled = false;
                 bt_xoa.Enabled = false;
@@ -102,6 +102,7 @@ namespace main_GUI
         private void hienThi()
         {
             dgv_GV.DataSource = GiangVienBLL.Instance.getAll(getSortedByValue(), getSortTypeValue());
+            
         }
 
         private string getSortedByValue()

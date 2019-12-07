@@ -10,6 +10,7 @@ namespace DTOs
     {
         private string id;
         private string name;
+        private string username;
         private DateTime dayOfBirth;
         private string phone;
         private string address;
@@ -19,10 +20,11 @@ namespace DTOs
         
 
         public GiangVienDTO() { }
-        public GiangVienDTO(string id, string name, DateTime dayOfBirth, string phone, string address, string note, DateTime created, DateTime updated)
+        public GiangVienDTO(string id, string name, string un,  DateTime dayOfBirth, string phone, string address, string note, DateTime created, DateTime updated)
         {
             this.id = id;
             this.name = name;
+            this.username = un;
             this.dayOfBirth = dayOfBirth;
             this.phone = phone;
             this.address = address;
@@ -33,6 +35,7 @@ namespace DTOs
 
         public string Id { get => id; set => id = value; }
         public string Name { get => name; set => name = value; }
+        public string Username { get => username; set => username = value; }
         public DateTime DayOfBirth { get => dayOfBirth; set => dayOfBirth = value; }
         public string Phone { get => phone; set => phone = value; }
         public string Address { get => address; set => address = value; }

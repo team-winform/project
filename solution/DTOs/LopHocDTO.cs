@@ -13,6 +13,7 @@ namespace DTOs
             ghiChu_LH = "";
             thoiGian = -1;
             sucChua = 0;
+            hocPhi = -1;
         }
 
         public string id_LH { get; set; }
@@ -22,6 +23,8 @@ namespace DTOs
         public string ten_LH { get; set; }
         public string id_PH { get; set; }
         public int siSo { get; set; }
+
+        public double hocPhi { get; set; }
 
         public DateTime ngayBatDau { get; set; }
         public DateTime ngayKetThuc { get; set; }

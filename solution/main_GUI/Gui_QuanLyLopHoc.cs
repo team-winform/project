@@ -90,13 +90,14 @@ namespace main_GUI
                 grdLopHoc.Rows[index].Cells["id_lh"].Value = dto.id_LH;
                 grdLopHoc.Rows[index].Cells[1].Value = dto.ten_LH;
                 grdLopHoc.Rows[index].Cells[2].Value = dto.ten_KH;
-                grdLopHoc.Rows[index].Cells[3].Value = dto.ten_GV;
-                grdLopHoc.Rows[index].Cells[4].Value = dto.ten_PH;
-                grdLopHoc.Rows[index].Cells[5].Value = dto.ngayBatDau.Day + "/" + dto.ngayBatDau.Month + "/" + dto.ngayBatDau.Year;
-                grdLopHoc.Rows[index].Cells[6].Value = dto.ngayKetThuc.Day + "/" + dto.ngayKetThuc.Month + "/" + dto.ngayKetThuc.Year; ;
+                grdLopHoc.Rows[index].Cells[3].Value = string.Format("{0:0,##}", dto.hocPhi);
+                grdLopHoc.Rows[index].Cells[4].Value = dto.ten_GV;
+                grdLopHoc.Rows[index].Cells[5].Value = dto.ten_PH;
+                grdLopHoc.Rows[index].Cells[6].Value = dto.ngayBatDau.Day + "/" + dto.ngayBatDau.Month + "/" + dto.ngayBatDau.Year;
+                grdLopHoc.Rows[index].Cells[7].Value = dto.ngayKetThuc.Day + "/" + dto.ngayKetThuc.Month + "/" + dto.ngayKetThuc.Year; ;
                 //grdLopHoc.Rows[index].Cells[5].Value = dto.ngayBatDau.ToShortDateString();
                 //grdLopHoc.Rows[index].Cells[6].Value = dto.ngayKetThuc.ToShortDateString();
-                grdLopHoc.Rows[index].Cells[7].Value = dto.siSo + "/" + dto.sucChua;
+                grdLopHoc.Rows[index].Cells[8].Value = dto.siSo + "/" + dto.sucChua;
                 index++;
             }
         }
@@ -181,6 +182,20 @@ namespace main_GUI
             {
                 hienThongBaoLoi("Tên lớp học không được để trống");
                 return null;
+            }
+
+            if(tb_hocphi.Text.Trim() == "")
+            {
+                hienThongBaoLoi("Học phí không được để trống");
+                return null;
+            }
+            try
+            {
+                dto.hocPhi = double.Parse(tb_hocphi.Text.Trim());
+            }
+            catch
+            {
+                dto.hocPhi = -1;
             }
 
             dto.id_LH = lbMaLop.Text;

@@ -15,6 +15,7 @@ namespace DTOs
             
             dto.Id = dr["id_GV"].ToString();
             dto.Name = dr["ten_GV"].ToString();
+            dto.Username = dr["username"].ToString();
             dto.DayOfBirth = DateTime.Parse(dr["ngaysinh_GV"].ToString());
             dto.Phone = dr["sodt_GV"].ToString();
             dto.Address = dr["diachi_GV"].ToString();

@@ -53,6 +53,7 @@ namespace main_GUI
             {
                 GiangVienDTO gv = new GiangVienDTO();
                 gv.Name = tb_ten.Text.Trim();
+                gv.Username = cb_username.Text;
                 gv.Note = tb_ghichu.Text;
                 gv.Phone = tb_sdt.Text;
                 gv.Address = tb_diachi.Text;
@@ -68,6 +69,7 @@ namespace main_GUI
                 GiangVienDTO gv = new GiangVienDTO();
                 gv.Id = ma;
                 gv.Name = tb_ten.Text.Trim();
+                gv.Username = cb_username.Text;
                 gv.Note = tb_ghichu.Text;
                 gv.Phone = tb_sdt.Text;
                 gv.Address = tb_diachi.Text;
@@ -114,11 +116,26 @@ namespace main_GUI
         {
             dateTimePicker1.Format = DateTimePickerFormat.Custom;
             dateTimePicker1.CustomFormat = "dd/MM/yyyy";
-            
+
+            List<string> freeUsername = GiangVienBLL.Instance.getFreeUsername();
+
             if (type == 0)
             {
                 this.lb_title.Text = "Thêm giảng viên";
                 bt_ok.Text = "Thêm";
+                if (freeUsername.Count == 0)
+                {
+                    MessageBox.Show("Hiện tại chưa thể thêm giảng viên mới. Vui lòng thêm mới Username trước!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    this.Close();
+                }
+                else
+                {
+                    foreach (string un in freeUsername)
+                    {
+                        cb_username.Items.Add(un);
+                    }
+                    cb_username.SelectedIndex = 0;
+                }
             }
             else
             {
@@ -132,8 +149,17 @@ namespace main_GUI
                 tb_ghichu.Text = gv.Note;
                 tb_diachi.Text = gv.Address;
 
-
+                cb_username.Items.Add(gv.Username);
+                cb_username.SelectedIndex = 0;
+                
+                foreach (string un in freeUsername)
+                {
+                    cb_username.Items.Add(un);
+                }
             }
+
+            
+           
         }
 
         private void DateTimePicker1_ValueChanged(object sender, EventArgs e)
