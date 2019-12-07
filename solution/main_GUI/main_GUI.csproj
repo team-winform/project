@@ -134,6 +134,12 @@
     <Compile Include="GUI_HocVien.Designer.cs">
       <DependentUpon>GUI_HocVien.cs</DependentUpon>
     </Compile>
+    <Compile Include="HocPhiGui.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HocPhiGui.Designer.cs">
+      <DependentUpon>HocPhiGui.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -243,6 +249,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI_HocVien.resx">
       <DependentUpon>GUI_HocVien.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HocPhiGui.resx">
+      <DependentUpon>HocPhiGui.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>Form1.cs</DependentUpon>

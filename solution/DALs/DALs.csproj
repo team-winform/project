@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="DataProvider.cs" />
     <Compile Include="AccountDAL.cs" />
+    <Compile Include="HocPhiDAL.cs" />
     <Compile Include="HocVienDAL.cs" />
     <Compile Include="HocVienLopHocDAL.cs" />
     <Compile Include="LopHocDAL.cs" />
