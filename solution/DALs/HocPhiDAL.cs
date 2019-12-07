@@ -44,5 +44,20 @@ namespace DALs
             conn.Close();
             return hps;
         }
+
+        public bool insertHocVien(HocPhiDTO hp)
+        {
+            conn.Open();
+            string sql = "insert into hocphi (id_HV, id_LH) values (@idhv, @idlh)";
+            SqlCommand cmd = new SqlCommand(sql, conn);
+            cmd.Parameters.AddWithValue("idhv", hp.StudentId);
+            cmd.Parameters.AddWithValue("idlh", hp.ClassId);
+
+            int rowEffect = cmd.ExecuteNonQuery();
+            conn.Close();
+            if (rowEffect == 0)
+                return false;
+            return true;
+        }
     }
 }

@@ -190,12 +190,10 @@ namespace DALs
         public void insertHV_LH(HocVienLopHocDTO hvlh)
         {
             conn.Open();
-            Console.WriteLine("da vao inseert hvlh");
             string query = "insert into HOCVIEN_LOPHOC" +
                 "(id_LH, id_HV, diem_1, diem_2, danhgia, diem_do_an, xet_tot_nghiep, xeploai, ghichu_HVLH) values" +
                 "(@id_LH, @id_HV, @diem1, @diem2, @danhgia, @diemdoan, @xtn, @xl, @ghichu_HVLH)";
             SqlCommand cmd = new SqlCommand(query, conn);
-            Console.WriteLine("insert hvlh " + hvlh.ClassId + hvlh.StudentId + hvlh.Point1 + hvlh.Point2 + hvlh.PointFinal + hvlh.Rate + hvlh.Graduating + hvlh.Rank + hvlh.Note);
             cmd.Parameters.AddWithValue("id_LH", hvlh.ClassId);
             cmd.Parameters.AddWithValue("id_HV", hvlh.StudentId);
             cmd.Parameters.AddWithValue("diem1", -1);

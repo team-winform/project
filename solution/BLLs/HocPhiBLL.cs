@@ -25,5 +25,10 @@ namespace BLLs
         {
             return HocPhiDAL.Instance.getsByClassId(classId);
         }
+
+        public bool insertHocVien(HocPhiDTO hp)
+        {
+            return HocPhiDAL.Instance.insertHocVien(hp);
+        }
     }
 }

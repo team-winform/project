@@ -33,10 +33,14 @@ namespace BLLs
                 if (findHocVienInDSHV(lstHVLH, maHV) == null && lstHVLH.Count < currentLopHoc.sucChua)
                 {
                     HocVienLopHocDTO hvlh = new HocVienLopHocDTO();
+                    HocPhiDTO hp = new HocPhiDTO();
+                    hp.ClassId = maLop;
+                    hp.StudentId = maHV;
                     hvlh.StudentId = maHV;
                     hvlh.ClassId = maLop;
 
                     hocVienLopHocDAL.insertHV_LH(hvlh);
+                    HocPhiBLL.Instance.insertHocVien(hp);
                 }
                 else if (lstHVLH.Count >= currentLopHoc.sucChua)
                 {
