@@ -163,9 +163,10 @@ namespace DALs
                     HocVienLopHocDTO hvlh = new HocVienLopHocDTO();
                     hvlh.StudentId = rd["id_HV"].ToString();
                     hvlh.StudentName = rd["ten_HV"].ToString();
-                    hvlh.Point1 = int.Parse(rd["diem_1"].ToString());
-                    hvlh.Point2 = int.Parse(rd["diem_2"].ToString());
-                    hvlh.PointFinal = int.Parse(rd["diem_do_an"].ToString());
+                    
+                    hvlh.Point1 = double.Parse(rd["diem_1"].ToString());
+                    hvlh.Point2 = double.Parse(rd["diem_2"].ToString());
+                    hvlh.PointFinal = double.Parse(rd["diem_do_an"].ToString());
                     hvlh.Note = rd["ghiChu_HVLH"].ToString();
                     hvlh.Graduating = bool.Parse( rd["xet_tot_nghiep"].ToString());
                     hvlh.Rank =rd["xeploai"].ToString();
