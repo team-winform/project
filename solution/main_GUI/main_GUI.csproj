@@ -34,7 +34,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="itextsharp">
-      <HintPath>..\..\..\..\..\Downloads\itextsharp.dll</HintPath>
+      <HintPath>..\itextsharp.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -91,6 +91,24 @@
     </Compile>
     <Compile Include="GUI_HocVien.Designer.cs">
       <DependentUpon>GUI_HocVien.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Gui_QuanLyLopHoc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Gui_QuanLyLopHoc.Designer.cs">
+      <DependentUpon>Gui_QuanLyLopHoc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Gui_QuanLyTaiKhoan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Gui_QuanLyTaiKhoan.Designer.cs">
+      <DependentUpon>Gui_QuanLyTaiKhoan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI_TaiKhoanCuaToi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI_TaiKhoanCuaToi.Designer.cs">
+      <DependentUpon>GUI_TaiKhoanCuaToi.cs</DependentUpon>
     </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
@@ -174,6 +192,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI_HocVien.resx">
       <DependentUpon>GUI_HocVien.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gui_QuanLyLopHoc.resx">
+      <DependentUpon>Gui_QuanLyLopHoc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gui_QuanLyTaiKhoan.resx">
+      <DependentUpon>Gui_QuanLyTaiKhoan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI_TaiKhoanCuaToi.resx">
+      <DependentUpon>GUI_TaiKhoanCuaToi.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>Form1.cs</DependentUpon>

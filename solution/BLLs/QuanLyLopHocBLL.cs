@@ -59,8 +59,12 @@ namespace BLLs
 
         private string getNewID_LH()
         {
-            int soLuongLop = lopHocDAL.getSoLuongLop();
-            return "LH" + (soLuongLop + 1).ToString().PadLeft(4, '0');
+            string lastID = lopHocDAL.getLastID();
+
+            int id = int.Parse(lastID.Substring(2));
+            int new_id = id + 1;
+            return "LH" + (new_id).ToString().PadLeft(3, '0');
+            
         }
 
         public void deleteLopHoc(string maLop)
@@ -69,6 +73,16 @@ namespace BLLs
                 lopHocDAL.deleteLopHoc(maLop);
             else
                 MessageBox.Show("Lớp này không trống. Không được xoá!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        }
+
+        public LopHocDTO findLopHocInList(string maString, List<LopHocDTO> lstLopHocs)
+        {
+            foreach (LopHocDTO dto in lstLopHocs)
+            {
+                if (dto.id_LH == maString)
+                    return dto;
+            }
+            return null;
         }
     }
 }
