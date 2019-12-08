@@ -22,7 +22,8 @@ namespace main_GUI
 
         private void DiemGUI_Load(object sender, EventArgs e)
         {
-            if (loadDataForComboBox())
+            loadDataForComboBox();
+            if (cb_listClass.Items.Count > 0)
             {
                 bt_selectLop.Enabled = true;
             }
@@ -32,17 +33,20 @@ namespace main_GUI
 
         private bool loadDataForComboBox()
         {
-            QuanLyLopHocBLL lhBBLL = new QuanLyLopHocBLL();
-            cb_listClass.DataSource = lhBBLL.getsIdAndName();
-            cb_listClass.DisplayMember = "ten_LH";
-            cb_listClass.ValueMember = "id_LH";
-            if (cb_listClass.Items.Count > 0)
+            AccountDTO accLogged = GlobalInfo.accountGlobal;
+            try
             {
+                QuanLyLopHocBLL lhBBLL = new QuanLyLopHocBLL();
+                cb_listClass.DataSource = lhBBLL.getsIdAndNameByUsername(accLogged.username);
+                cb_listClass.DisplayMember = "ten_LH";
+                cb_listClass.ValueMember = "id_LH";
                 return true;
             }
-               
-            else
+            catch
+            {
                 return false;
+            }
+            
         }
 
         private void Bt_selectLop_Click(object sender, EventArgs e)
@@ -581,6 +585,14 @@ namespace main_GUI
                 }
                 catch { }
             };
+        }
+
+        private void Cb_listClass_Click(object sender, EventArgs e)
+        {
+            if(cb_listClass.Items.Count == 0)
+            {
+                MessageBox.Show("Hiện bạn chưa dạy lớp nào", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
     }
 }

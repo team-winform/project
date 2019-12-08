@@ -373,13 +373,14 @@ namespace DALs
         /// function created by Giangboy. use for HocVienLopHoc Module
         /// /////
         /// 
-        public List<LopHocDTO> getsIdAndName()
+        public List<LopHocDTO> getsIdAndNameByUsername(string username)
         {
             conn.Open();
 
             List<LopHocDTO> lhs = new List<LopHocDTO>();
-            string sql = "select id_LH, ten_LH, hocphi from lophoc";
+            string sql = "select lophoc.id_LH, lophoc.ten_LH, lophoc.hocphi from lophoc inner join giangvien on lophoc.id_GV = giangvien.id_GV where giangvien.username = @un";
             SqlCommand cmd = new SqlCommand(sql, conn);
+            cmd.Parameters.AddWithValue("un", username);
             SqlDataReader dr = cmd.ExecuteReader();
             while (dr.Read())
             {
@@ -399,6 +400,32 @@ namespace DALs
 
             conn.Close();
 
+            return lhs;
+        }
+
+        public List<LopHocDTO> getsIdAndName()
+        {
+            conn.Open();
+            List<LopHocDTO> lhs = new List<LopHocDTO>();
+            string sql = "select id_LH, ten_LH, hocphi from lophoc";
+            SqlCommand cmd = new SqlCommand(sql, conn);
+            SqlDataReader dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                LopHocDTO lh = new LopHocDTO();
+                lh.id_LH = dr["id_LH"].ToString();
+                lh.ten_LH = dr["ten_LH"].ToString();
+                try
+                {
+                    lh.hocPhi = double.Parse(dr["hocphi"].ToString());
+                }
+                catch
+                {
+                    lh.hocPhi = -1;
+                }
+                lhs.Add(lh);
+            }
+            conn.Close();
             return lhs;
         }
     }

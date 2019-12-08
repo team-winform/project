@@ -23,7 +23,8 @@ namespace main_GUI
         private List<HocPhiDTO> hps;
         private void HocPhiGui_Load(object sender, EventArgs e)
         {
-            if (loadDataForComboBox())
+            loadDataForComboBox();
+            if (cb_listClass.Items.Count > 0)
             {
                 bt_selectLop.Enabled = true;
             }
@@ -32,19 +33,23 @@ namespace main_GUI
 
         private bool loadDataForComboBox()
         {
-            QuanLyLopHocBLL lhBBLL = new QuanLyLopHocBLL();
-            lhs = lhBBLL.getsIdAndName();
-
-            cb_listClass.DataSource = lhs;
-            cb_listClass.DisplayMember = "ten_LH";
-            cb_listClass.ValueMember = "id_LH";
-            if (cb_listClass.Items.Count > 0)
+            
+            try
             {
+                QuanLyLopHocBLL lhBBLL = new QuanLyLopHocBLL();
+                lhs = lhBBLL.getsIdAndName();
+
+                cb_listClass.DataSource = lhs;
+                cb_listClass.DisplayMember = "ten_LH";
+                cb_listClass.ValueMember = "id_LH";
                 return true;
             }
-
-            else
+            catch
+            {
                 return false;
+            }
+            
+            
         }
 
         private void Bt_selectLop_Click(object sender, EventArgs e)
@@ -422,6 +427,14 @@ namespace main_GUI
                 }
                 catch { }
             };
+        }
+
+        private void Cb_listClass_Click(object sender, EventArgs e)
+        {
+            if(cb_listClass.Items.Count == 0)
+            {
+                MessageBox.Show("Hiện chưa có lớp nào hoạt động", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
     }
 }

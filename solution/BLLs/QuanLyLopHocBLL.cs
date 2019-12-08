@@ -100,6 +100,11 @@ namespace BLLs
         ////////////////////
         /// function created by Giangboy. use for HocVienLopHoc Module
         /// /////
+        public List<LopHocDTO> getsIdAndNameByUsername(string username)
+        {
+            return lopHocDAL.getsIdAndNameByUsername(username);
+        }
+
         public List<LopHocDTO> getsIdAndName()
         {
             return lopHocDAL.getsIdAndName();

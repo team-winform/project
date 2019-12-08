@@ -38,6 +38,22 @@
             this.cb_chonDiem = new System.Windows.Forms.ComboBox();
             this.bt_nhapDiem = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.tb_tb = new System.Windows.Forms.TextBox();
+            this.tb_kha = new System.Windows.Forms.TextBox();
+            this.tb_gioi = new System.Windows.Forms.TextBox();
+            this.lb_tb = new System.Windows.Forms.Label();
+            this.lb_kha = new System.Windows.Forms.Label();
+            this.lb_gioi = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.tb_truot = new System.Windows.Forms.TextBox();
+            this.tb_tn = new System.Windows.Forms.TextBox();
+            this.tb_kdat = new System.Windows.Forms.TextBox();
+            this.tb_dat = new System.Windows.Forms.TextBox();
+            this.lb_truot = new System.Windows.Forms.Label();
+            this.lb_totng = new System.Windows.Forms.Label();
+            this.lb_khongdat = new System.Windows.Forms.Label();
+            this.lb_dat = new System.Windows.Forms.Label();
             this.bt_xacNhanDiem = new System.Windows.Forms.Button();
             this.bt_Huy = new System.Windows.Forms.Button();
             this.dgv_Diem = new System.Windows.Forms.DataGridView();
@@ -51,32 +67,17 @@
             this.xet_tot_nghiep = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xeploai = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ghichu_HVLH = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.lb_dat = new System.Windows.Forms.Label();
-            this.lb_khongdat = new System.Windows.Forms.Label();
-            this.lb_totng = new System.Windows.Forms.Label();
-            this.lb_truot = new System.Windows.Forms.Label();
-            this.lb_gioi = new System.Windows.Forms.Label();
-            this.lb_kha = new System.Windows.Forms.Label();
-            this.lb_tb = new System.Windows.Forms.Label();
-            this.tb_dat = new System.Windows.Forms.TextBox();
-            this.tb_kdat = new System.Windows.Forms.TextBox();
-            this.tb_tn = new System.Windows.Forms.TextBox();
-            this.tb_truot = new System.Windows.Forms.TextBox();
-            this.tb_gioi = new System.Windows.Forms.TextBox();
-            this.tb_kha = new System.Windows.Forms.TextBox();
-            this.tb_tb = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_Diem)).BeginInit();
-            this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_Diem)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(43, 44);
@@ -87,6 +88,7 @@
             // 
             // cb_listClass
             // 
+            this.cb_listClass.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.cb_listClass.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cb_listClass.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cb_listClass.FormattingEnabled = true;
@@ -95,9 +97,11 @@
             this.cb_listClass.Name = "cb_listClass";
             this.cb_listClass.Size = new System.Drawing.Size(379, 33);
             this.cb_listClass.TabIndex = 1;
+            this.cb_listClass.Click += new System.EventHandler(this.Cb_listClass_Click);
             // 
             // bt_selectLop
             // 
+            this.bt_selectLop.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.bt_selectLop.Enabled = false;
             this.bt_selectLop.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bt_selectLop.Location = new System.Drawing.Point(592, 35);
@@ -125,6 +129,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.groupBox1.Controls.Add(this.cb_chonDiem);
             this.groupBox1.Controls.Add(this.bt_nhapDiem);
             this.groupBox1.Location = new System.Drawing.Point(814, 12);
@@ -175,8 +180,174 @@
             this.panel2.Size = new System.Drawing.Size(1220, 71);
             this.panel2.TabIndex = 4;
             // 
+            // groupBox3
+            // 
+            this.groupBox3.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.groupBox3.Controls.Add(this.tb_tb);
+            this.groupBox3.Controls.Add(this.tb_kha);
+            this.groupBox3.Controls.Add(this.tb_gioi);
+            this.groupBox3.Controls.Add(this.lb_tb);
+            this.groupBox3.Controls.Add(this.lb_kha);
+            this.groupBox3.Controls.Add(this.lb_gioi);
+            this.groupBox3.Location = new System.Drawing.Point(792, 6);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(416, 54);
+            this.groupBox3.TabIndex = 8;
+            this.groupBox3.TabStop = false;
+            // 
+            // tb_tb
+            // 
+            this.tb_tb.Location = new System.Drawing.Point(323, 16);
+            this.tb_tb.Name = "tb_tb";
+            this.tb_tb.ReadOnly = true;
+            this.tb_tb.Size = new System.Drawing.Size(69, 22);
+            this.tb_tb.TabIndex = 5;
+            this.tb_tb.Visible = false;
+            // 
+            // tb_kha
+            // 
+            this.tb_kha.Location = new System.Drawing.Point(195, 17);
+            this.tb_kha.Name = "tb_kha";
+            this.tb_kha.ReadOnly = true;
+            this.tb_kha.Size = new System.Drawing.Size(58, 22);
+            this.tb_kha.TabIndex = 4;
+            this.tb_kha.Visible = false;
+            // 
+            // tb_gioi
+            // 
+            this.tb_gioi.Location = new System.Drawing.Point(50, 16);
+            this.tb_gioi.Name = "tb_gioi";
+            this.tb_gioi.ReadOnly = true;
+            this.tb_gioi.Size = new System.Drawing.Size(51, 22);
+            this.tb_gioi.TabIndex = 3;
+            this.tb_gioi.Visible = false;
+            // 
+            // lb_tb
+            // 
+            this.lb_tb.AutoSize = true;
+            this.lb_tb.Location = new System.Drawing.Point(286, 18);
+            this.lb_tb.Name = "lb_tb";
+            this.lb_tb.Size = new System.Drawing.Size(30, 17);
+            this.lb_tb.TabIndex = 2;
+            this.lb_tb.Text = "TB:";
+            this.lb_tb.Visible = false;
+            // 
+            // lb_kha
+            // 
+            this.lb_kha.AutoSize = true;
+            this.lb_kha.Location = new System.Drawing.Point(151, 18);
+            this.lb_kha.Name = "lb_kha";
+            this.lb_kha.Size = new System.Drawing.Size(37, 17);
+            this.lb_kha.TabIndex = 1;
+            this.lb_kha.Text = "Khá:";
+            this.lb_kha.Visible = false;
+            // 
+            // lb_gioi
+            // 
+            this.lb_gioi.AutoSize = true;
+            this.lb_gioi.Location = new System.Drawing.Point(6, 18);
+            this.lb_gioi.Name = "lb_gioi";
+            this.lb_gioi.Size = new System.Drawing.Size(37, 17);
+            this.lb_gioi.TabIndex = 0;
+            this.lb_gioi.Text = "Giỏi:";
+            this.lb_gioi.Visible = false;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.groupBox2.Controls.Add(this.tb_truot);
+            this.groupBox2.Controls.Add(this.tb_tn);
+            this.groupBox2.Controls.Add(this.tb_kdat);
+            this.groupBox2.Controls.Add(this.tb_dat);
+            this.groupBox2.Controls.Add(this.lb_truot);
+            this.groupBox2.Controls.Add(this.lb_totng);
+            this.groupBox2.Controls.Add(this.lb_khongdat);
+            this.groupBox2.Controls.Add(this.lb_dat);
+            this.groupBox2.Location = new System.Drawing.Point(3, 5);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(454, 55);
+            this.groupBox2.TabIndex = 7;
+            this.groupBox2.TabStop = false;
+            // 
+            // tb_truot
+            // 
+            this.tb_truot.Location = new System.Drawing.Point(412, 17);
+            this.tb_truot.Name = "tb_truot";
+            this.tb_truot.ReadOnly = true;
+            this.tb_truot.Size = new System.Drawing.Size(36, 22);
+            this.tb_truot.TabIndex = 7;
+            this.tb_truot.Visible = false;
+            // 
+            // tb_tn
+            // 
+            this.tb_tn.Location = new System.Drawing.Point(312, 18);
+            this.tb_tn.Name = "tb_tn";
+            this.tb_tn.ReadOnly = true;
+            this.tb_tn.Size = new System.Drawing.Size(38, 22);
+            this.tb_tn.TabIndex = 6;
+            this.tb_tn.Visible = false;
+            // 
+            // tb_kdat
+            // 
+            this.tb_kdat.Location = new System.Drawing.Point(176, 19);
+            this.tb_kdat.Name = "tb_kdat";
+            this.tb_kdat.ReadOnly = true;
+            this.tb_kdat.Size = new System.Drawing.Size(35, 22);
+            this.tb_kdat.TabIndex = 5;
+            this.tb_kdat.Visible = false;
+            // 
+            // tb_dat
+            // 
+            this.tb_dat.Location = new System.Drawing.Point(45, 19);
+            this.tb_dat.Name = "tb_dat";
+            this.tb_dat.ReadOnly = true;
+            this.tb_dat.Size = new System.Drawing.Size(38, 22);
+            this.tb_dat.TabIndex = 4;
+            this.tb_dat.Visible = false;
+            // 
+            // lb_truot
+            // 
+            this.lb_truot.AutoSize = true;
+            this.lb_truot.Location = new System.Drawing.Point(360, 18);
+            this.lb_truot.Name = "lb_truot";
+            this.lb_truot.Size = new System.Drawing.Size(46, 17);
+            this.lb_truot.TabIndex = 3;
+            this.lb_truot.Text = "Trượt:";
+            this.lb_truot.Visible = false;
+            // 
+            // lb_totng
+            // 
+            this.lb_totng.AutoSize = true;
+            this.lb_totng.Location = new System.Drawing.Point(226, 19);
+            this.lb_totng.Name = "lb_totng";
+            this.lb_totng.Size = new System.Drawing.Size(80, 17);
+            this.lb_totng.TabIndex = 2;
+            this.lb_totng.Text = "Tốt nghiệp:";
+            this.lb_totng.Visible = false;
+            // 
+            // lb_khongdat
+            // 
+            this.lb_khongdat.AutoSize = true;
+            this.lb_khongdat.Location = new System.Drawing.Point(93, 20);
+            this.lb_khongdat.Name = "lb_khongdat";
+            this.lb_khongdat.Size = new System.Drawing.Size(77, 17);
+            this.lb_khongdat.TabIndex = 1;
+            this.lb_khongdat.Text = "Không đạt:";
+            this.lb_khongdat.Visible = false;
+            // 
+            // lb_dat
+            // 
+            this.lb_dat.AutoSize = true;
+            this.lb_dat.Location = new System.Drawing.Point(9, 21);
+            this.lb_dat.Name = "lb_dat";
+            this.lb_dat.Size = new System.Drawing.Size(30, 17);
+            this.lb_dat.TabIndex = 0;
+            this.lb_dat.Text = "Đạt";
+            this.lb_dat.Visible = false;
+            // 
             // bt_xacNhanDiem
             // 
+            this.bt_xacNhanDiem.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.bt_xacNhanDiem.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bt_xacNhanDiem.Location = new System.Drawing.Point(495, 22);
             this.bt_xacNhanDiem.Name = "bt_xacNhanDiem";
@@ -189,6 +360,7 @@
             // 
             // bt_Huy
             // 
+            this.bt_Huy.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.bt_Huy.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bt_Huy.Location = new System.Drawing.Point(650, 21);
             this.bt_Huy.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -323,169 +495,6 @@
             this.ghichu_HVLH.Name = "ghichu_HVLH";
             this.ghichu_HVLH.ReadOnly = true;
             // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.tb_truot);
-            this.groupBox2.Controls.Add(this.tb_tn);
-            this.groupBox2.Controls.Add(this.tb_kdat);
-            this.groupBox2.Controls.Add(this.tb_dat);
-            this.groupBox2.Controls.Add(this.lb_truot);
-            this.groupBox2.Controls.Add(this.lb_totng);
-            this.groupBox2.Controls.Add(this.lb_khongdat);
-            this.groupBox2.Controls.Add(this.lb_dat);
-            this.groupBox2.Location = new System.Drawing.Point(3, 5);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(454, 55);
-            this.groupBox2.TabIndex = 7;
-            this.groupBox2.TabStop = false;
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.tb_tb);
-            this.groupBox3.Controls.Add(this.tb_kha);
-            this.groupBox3.Controls.Add(this.tb_gioi);
-            this.groupBox3.Controls.Add(this.lb_tb);
-            this.groupBox3.Controls.Add(this.lb_kha);
-            this.groupBox3.Controls.Add(this.lb_gioi);
-            this.groupBox3.Location = new System.Drawing.Point(792, 6);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(416, 54);
-            this.groupBox3.TabIndex = 8;
-            this.groupBox3.TabStop = false;
-            // 
-            // lb_dat
-            // 
-            this.lb_dat.AutoSize = true;
-            this.lb_dat.Location = new System.Drawing.Point(9, 21);
-            this.lb_dat.Name = "lb_dat";
-            this.lb_dat.Size = new System.Drawing.Size(30, 17);
-            this.lb_dat.TabIndex = 0;
-            this.lb_dat.Text = "Đạt";
-            this.lb_dat.Visible = false;
-            // 
-            // lb_khongdat
-            // 
-            this.lb_khongdat.AutoSize = true;
-            this.lb_khongdat.Location = new System.Drawing.Point(93, 20);
-            this.lb_khongdat.Name = "lb_khongdat";
-            this.lb_khongdat.Size = new System.Drawing.Size(77, 17);
-            this.lb_khongdat.TabIndex = 1;
-            this.lb_khongdat.Text = "Không đạt:";
-            this.lb_khongdat.Visible = false;
-            // 
-            // lb_totng
-            // 
-            this.lb_totng.AutoSize = true;
-            this.lb_totng.Location = new System.Drawing.Point(226, 19);
-            this.lb_totng.Name = "lb_totng";
-            this.lb_totng.Size = new System.Drawing.Size(80, 17);
-            this.lb_totng.TabIndex = 2;
-            this.lb_totng.Text = "Tốt nghiệp:";
-            this.lb_totng.Visible = false;
-            // 
-            // lb_truot
-            // 
-            this.lb_truot.AutoSize = true;
-            this.lb_truot.Location = new System.Drawing.Point(360, 18);
-            this.lb_truot.Name = "lb_truot";
-            this.lb_truot.Size = new System.Drawing.Size(46, 17);
-            this.lb_truot.TabIndex = 3;
-            this.lb_truot.Text = "Trượt:";
-            this.lb_truot.Visible = false;
-            // 
-            // lb_gioi
-            // 
-            this.lb_gioi.AutoSize = true;
-            this.lb_gioi.Location = new System.Drawing.Point(6, 18);
-            this.lb_gioi.Name = "lb_gioi";
-            this.lb_gioi.Size = new System.Drawing.Size(37, 17);
-            this.lb_gioi.TabIndex = 0;
-            this.lb_gioi.Text = "Giỏi:";
-            this.lb_gioi.Visible = false;
-            // 
-            // lb_kha
-            // 
-            this.lb_kha.AutoSize = true;
-            this.lb_kha.Location = new System.Drawing.Point(151, 18);
-            this.lb_kha.Name = "lb_kha";
-            this.lb_kha.Size = new System.Drawing.Size(37, 17);
-            this.lb_kha.TabIndex = 1;
-            this.lb_kha.Text = "Khá:";
-            this.lb_kha.Visible = false;
-            // 
-            // lb_tb
-            // 
-            this.lb_tb.AutoSize = true;
-            this.lb_tb.Location = new System.Drawing.Point(286, 18);
-            this.lb_tb.Name = "lb_tb";
-            this.lb_tb.Size = new System.Drawing.Size(30, 17);
-            this.lb_tb.TabIndex = 2;
-            this.lb_tb.Text = "TB:";
-            this.lb_tb.Visible = false;
-            // 
-            // tb_dat
-            // 
-            this.tb_dat.Location = new System.Drawing.Point(45, 19);
-            this.tb_dat.Name = "tb_dat";
-            this.tb_dat.ReadOnly = true;
-            this.tb_dat.Size = new System.Drawing.Size(38, 22);
-            this.tb_dat.TabIndex = 4;
-            this.tb_dat.Visible = false;
-            // 
-            // tb_kdat
-            // 
-            this.tb_kdat.Location = new System.Drawing.Point(176, 19);
-            this.tb_kdat.Name = "tb_kdat";
-            this.tb_kdat.ReadOnly = true;
-            this.tb_kdat.Size = new System.Drawing.Size(35, 22);
-            this.tb_kdat.TabIndex = 5;
-            this.tb_kdat.Visible = false;
-            // 
-            // tb_tn
-            // 
-            this.tb_tn.Location = new System.Drawing.Point(312, 18);
-            this.tb_tn.Name = "tb_tn";
-            this.tb_tn.ReadOnly = true;
-            this.tb_tn.Size = new System.Drawing.Size(38, 22);
-            this.tb_tn.TabIndex = 6;
-            this.tb_tn.Visible = false;
-            // 
-            // tb_truot
-            // 
-            this.tb_truot.Location = new System.Drawing.Point(412, 17);
-            this.tb_truot.Name = "tb_truot";
-            this.tb_truot.ReadOnly = true;
-            this.tb_truot.Size = new System.Drawing.Size(36, 22);
-            this.tb_truot.TabIndex = 7;
-            this.tb_truot.Visible = false;
-            // 
-            // tb_gioi
-            // 
-            this.tb_gioi.Location = new System.Drawing.Point(50, 16);
-            this.tb_gioi.Name = "tb_gioi";
-            this.tb_gioi.ReadOnly = true;
-            this.tb_gioi.Size = new System.Drawing.Size(51, 22);
-            this.tb_gioi.TabIndex = 3;
-            this.tb_gioi.Visible = false;
-            // 
-            // tb_kha
-            // 
-            this.tb_kha.Location = new System.Drawing.Point(195, 17);
-            this.tb_kha.Name = "tb_kha";
-            this.tb_kha.ReadOnly = true;
-            this.tb_kha.Size = new System.Drawing.Size(58, 22);
-            this.tb_kha.TabIndex = 4;
-            this.tb_kha.Visible = false;
-            // 
-            // tb_tb
-            // 
-            this.tb_tb.Location = new System.Drawing.Point(323, 16);
-            this.tb_tb.Name = "tb_tb";
-            this.tb_tb.ReadOnly = true;
-            this.tb_tb.Size = new System.Drawing.Size(69, 22);
-            this.tb_tb.TabIndex = 5;
-            this.tb_tb.Visible = false;
-            // 
             // DiemGUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -502,11 +511,11 @@
             this.panel1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_Diem)).EndInit();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_Diem)).EndInit();
             this.ResumeLayout(false);
 
         }
