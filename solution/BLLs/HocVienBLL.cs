@@ -55,5 +55,20 @@ namespace BLLs
         {
             return this.hocVienDal.getHocVien(ma);
         }
+
+        public DataTable findHocVienById(string maHocVien)
+        {
+            return hocVienDal.findHocVienById(maHocVien);
+        }
+
+        public DataTable findHocVienByTen(string tenHocVien)
+        {
+            return hocVienDal.findHocVienByTen(tenHocVien);
+        }
+
+        public DataTable findHocVienBySDT(string sdt)
+        {
+            return hocVienDal.findHocVienBySDT(sdt);
+        }
     }
 }

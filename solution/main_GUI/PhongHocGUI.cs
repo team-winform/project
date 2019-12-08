@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BLLs;
+using DTOs;
 
 namespace main_GUI
 {
@@ -71,6 +72,19 @@ namespace main_GUI
         {
             new PhongHocDialog_search().Show();
             hienThi();
+        }
+
+        private void Dgv_ph_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            PhongHocDTO ph = new PhongHocDTO();
+            int index = dgv_ph.CurrentCell.RowIndex;
+            ph.Id = dgv_ph.Rows[index].Cells["id_PH"].Value.ToString();
+            ph.Name = dgv_ph.Rows[index].Cells["ten_PH"].Value.ToString();
+            ph.Note = dgv_ph.Rows[index].Cells["ghichu_PH"].Value.ToString();
+            ph.Created = DateTime.Parse(dgv_ph.Rows[index].Cells["ngaytao"].Value.ToString());
+            ph.Updated = DateTime.Parse(dgv_ph.Rows[index].Cells["ngaysua"].Value.ToString());
+            ph.MaxSeat = int.Parse(dgv_ph.Rows[index].Cells["succhua_PH"].Value.ToString());
+            new PhongHocDialog_ChiTiet(ph).ShowDialog();
         }
     }
 }

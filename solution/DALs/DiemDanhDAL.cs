@@ -48,6 +48,20 @@ namespace DALs
             return tb;
         }
 
+        public DataTable getLopHocByGiangVien(String username)
+        {
+            SqlConnection conn = new SqlConnection(connectString);
+            conn.Open();
+
+            String sql = "select lh.* from LOPHOC lh inner join GiANGVIEN gv on gv.ID_GV=lh.ID_GV where gv.username=@us";
+            SqlCommand command = new SqlCommand(sql, conn);
+            command.Parameters.AddWithValue("us", username);
+            SqlDataReader rd = command.ExecuteReader();
+            DataTable tb = new DataTable();
+            tb.Load(rd);
+            conn.Close();
+            return tb;
+        }
 
         public int diemDanh(String maHV, String maLH, DateTime date)
         {

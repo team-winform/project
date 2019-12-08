@@ -120,5 +120,50 @@ namespace DALs
             con.Close();
             return result;
         }
+
+        public DataTable findHocVienById(String maHocVien)
+        {
+            SqlConnection con = new SqlConnection(conString);
+            con.Open();
+
+            String sql = "select top 15 id_HV, ten_HV, ngaysinh_HV, sodt_HV from HOCVIEN where id_HV like concat('%', @id_HV, '%')";
+            SqlCommand cmd = new SqlCommand(sql, con);
+            cmd.Parameters.AddWithValue("id_HV", maHocVien);
+            SqlDataReader rd = cmd.ExecuteReader();
+            DataTable tb = new DataTable();
+            tb.Load(rd);
+            con.Close();
+            return tb;
+        }
+
+        public DataTable findHocVienByTen(String tenHocVien)
+        {
+            SqlConnection con = new SqlConnection(conString);
+            con.Open();
+
+            String sql = "select  top 15 id_HV, ten_HV, ngaysinh_HV, sodt_HV from HOCVIEN where ten_HV like concat('%', @ten_HV, '%')";
+            SqlCommand cmd = new SqlCommand(sql, con);
+            cmd.Parameters.AddWithValue("ten_HV", tenHocVien);
+            SqlDataReader rd = cmd.ExecuteReader();
+            DataTable tb = new DataTable();
+            tb.Load(rd);
+            con.Close();
+            return tb;
+        }
+
+        public DataTable findHocVienBySDT(String sdt)
+        {
+            SqlConnection con = new SqlConnection(conString);
+            con.Open();
+
+            String sql = "select  top 15 select id_HV, ten_HV, ngaysinh_HV, sodt_HV from HOCVIEN where sodt_HV like concat('%', @sdt, '%')";
+            SqlCommand cmd = new SqlCommand(sql, con);
+            cmd.Parameters.AddWithValue("sdt_HV", sdt);
+            SqlDataReader rd = cmd.ExecuteReader();
+            DataTable tb = new DataTable();
+            tb.Load(rd);
+            con.Close();
+            return tb;
+        }
     }
 }

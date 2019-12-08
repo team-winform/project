@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnReloadGrdAccount = new System.Windows.Forms.Button();
             this.grdTaiKhoan = new System.Windows.Forms.DataGridView();
             this.username = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -47,6 +48,8 @@
             this.txtMatKhau = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
+            this.txtHoTen = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.grdTaiKhoan)).BeginInit();
             this.groupBox5.SuspendLayout();
             this.SuspendLayout();
@@ -66,6 +69,14 @@
             // 
             this.grdTaiKhoan.AllowUserToAddRows = false;
             this.grdTaiKhoan.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.grdTaiKhoan.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.grdTaiKhoan.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grdTaiKhoan.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.username,
@@ -73,19 +84,19 @@
             this.level,
             this.hoten,
             this.phone});
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.grdTaiKhoan.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.grdTaiKhoan.DefaultCellStyle = dataGridViewCellStyle2;
             this.grdTaiKhoan.Location = new System.Drawing.Point(80, 263);
             this.grdTaiKhoan.Name = "grdTaiKhoan";
             this.grdTaiKhoan.ReadOnly = true;
             this.grdTaiKhoan.Size = new System.Drawing.Size(691, 223);
-            this.grdTaiKhoan.TabIndex = 2;
+            this.grdTaiKhoan.TabIndex = 1;
             this.grdTaiKhoan.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdTaiKhoan_CellClick);
             // 
             // username
@@ -123,6 +134,8 @@
             // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.txtHoTen);
+            this.groupBox5.Controls.Add(this.label1);
             this.groupBox5.Controls.Add(this.btnClearAccount);
             this.groupBox5.Controls.Add(this.btXoaTaiKhoan);
             this.groupBox5.Controls.Add(this.btCapNhatTaiKhoan);
@@ -133,9 +146,9 @@
             this.groupBox5.Controls.Add(this.txtMatKhau);
             this.groupBox5.Controls.Add(this.label13);
             this.groupBox5.Controls.Add(this.label12);
-            this.groupBox5.Location = new System.Drawing.Point(172, 38);
+            this.groupBox5.Location = new System.Drawing.Point(172, 12);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(470, 175);
+            this.groupBox5.Size = new System.Drawing.Size(470, 213);
             this.groupBox5.TabIndex = 9;
             this.groupBox5.TabStop = false;
             // 
@@ -143,10 +156,10 @@
             // 
             this.btnClearAccount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClearAccount.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnClearAccount.Location = new System.Drawing.Point(394, 29);
+            this.btnClearAccount.Location = new System.Drawing.Point(386, 29);
             this.btnClearAccount.Name = "btnClearAccount";
             this.btnClearAccount.Size = new System.Drawing.Size(70, 28);
-            this.btnClearAccount.TabIndex = 6;
+            this.btnClearAccount.TabIndex = 9;
             this.btnClearAccount.Text = "Clear";
             this.btnClearAccount.UseVisualStyleBackColor = true;
             this.btnClearAccount.Click += new System.EventHandler(this.btnClearAccount_Click);
@@ -155,7 +168,7 @@
             // 
             this.btXoaTaiKhoan.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btXoaTaiKhoan.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btXoaTaiKhoan.Location = new System.Drawing.Point(327, 132);
+            this.btXoaTaiKhoan.Location = new System.Drawing.Point(319, 171);
             this.btXoaTaiKhoan.Name = "btXoaTaiKhoan";
             this.btXoaTaiKhoan.Size = new System.Drawing.Size(70, 28);
             this.btXoaTaiKhoan.TabIndex = 8;
@@ -167,10 +180,10 @@
             // 
             this.btCapNhatTaiKhoan.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btCapNhatTaiKhoan.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btCapNhatTaiKhoan.Location = new System.Drawing.Point(203, 132);
+            this.btCapNhatTaiKhoan.Location = new System.Drawing.Point(201, 171);
             this.btCapNhatTaiKhoan.Name = "btCapNhatTaiKhoan";
             this.btCapNhatTaiKhoan.Size = new System.Drawing.Size(70, 28);
-            this.btCapNhatTaiKhoan.TabIndex = 4;
+            this.btCapNhatTaiKhoan.TabIndex = 7;
             this.btCapNhatTaiKhoan.Text = "Cập nhật";
             this.btCapNhatTaiKhoan.UseVisualStyleBackColor = true;
             this.btCapNhatTaiKhoan.Click += new System.EventHandler(this.btCapNhatTaiKhoan_Click);
@@ -179,10 +192,10 @@
             // 
             this.btThemTaiKhoan.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btThemTaiKhoan.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btThemTaiKhoan.Location = new System.Drawing.Point(83, 132);
+            this.btThemTaiKhoan.Location = new System.Drawing.Point(75, 171);
             this.btThemTaiKhoan.Name = "btThemTaiKhoan";
             this.btThemTaiKhoan.Size = new System.Drawing.Size(70, 28);
-            this.btThemTaiKhoan.TabIndex = 3;
+            this.btThemTaiKhoan.TabIndex = 6;
             this.btThemTaiKhoan.Text = "Thêm";
             this.btThemTaiKhoan.UseVisualStyleBackColor = true;
             this.btThemTaiKhoan.Click += new System.EventHandler(this.btThemTaiKhoan_Click);
@@ -197,15 +210,15 @@
             "Quản lý",
             "Giảng viên",
             "Nhân viên"});
-            this.cbLevel.Location = new System.Drawing.Point(177, 93);
+            this.cbLevel.Location = new System.Drawing.Point(171, 132);
             this.cbLevel.Name = "cbLevel";
             this.cbLevel.Size = new System.Drawing.Size(193, 24);
-            this.cbLevel.TabIndex = 2;
+            this.cbLevel.TabIndex = 3;
             // 
             // txtTaiKhoan
             // 
             this.txtTaiKhoan.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTaiKhoan.Location = new System.Drawing.Point(177, 29);
+            this.txtTaiKhoan.Location = new System.Drawing.Point(171, 29);
             this.txtTaiKhoan.Name = "txtTaiKhoan";
             this.txtTaiKhoan.Size = new System.Drawing.Size(193, 22);
             this.txtTaiKhoan.TabIndex = 0;
@@ -215,7 +228,7 @@
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label14.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label14.Location = new System.Drawing.Point(94, 93);
+            this.label14.Location = new System.Drawing.Point(91, 132);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(59, 16);
             this.label14.TabIndex = 4;
@@ -224,7 +237,7 @@
             // txtMatKhau
             // 
             this.txtMatKhau.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMatKhau.Location = new System.Drawing.Point(177, 61);
+            this.txtMatKhau.Location = new System.Drawing.Point(171, 63);
             this.txtMatKhau.Name = "txtMatKhau";
             this.txtMatKhau.Size = new System.Drawing.Size(193, 22);
             this.txtMatKhau.TabIndex = 1;
@@ -235,7 +248,7 @@
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label13.Location = new System.Drawing.Point(94, 61);
+            this.label13.Location = new System.Drawing.Point(91, 63);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(62, 16);
             this.label13.TabIndex = 3;
@@ -246,11 +259,30 @@
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label12.Location = new System.Drawing.Point(94, 29);
+            this.label12.Location = new System.Drawing.Point(91, 29);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(68, 16);
             this.label12.TabIndex = 2;
             this.label12.Text = "Tài khoản";
+            // 
+            // txtHoTen
+            // 
+            this.txtHoTen.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtHoTen.Location = new System.Drawing.Point(171, 95);
+            this.txtHoTen.Name = "txtHoTen";
+            this.txtHoTen.Size = new System.Drawing.Size(193, 22);
+            this.txtHoTen.TabIndex = 2;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label1.Location = new System.Drawing.Point(91, 95);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(47, 16);
+            this.label1.TabIndex = 10;
+            this.label1.Text = "Họ tên";
             // 
             // Gui_QuanLyTaiKhoan
             // 
@@ -290,5 +322,7 @@
         private System.Windows.Forms.TextBox txtMatKhau;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox txtHoTen;
+        private System.Windows.Forms.Label label1;
     }
 }

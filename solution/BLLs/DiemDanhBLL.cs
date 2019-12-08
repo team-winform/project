@@ -46,5 +46,10 @@ namespace BLLs
         {
             return this.diemDanhDAL.thongKeDiemDanh(maLop);
         }
+
+        public DataTable getLopHocByGiangVien(String username)
+        {
+            return this.diemDanhDAL.getLopHocByGiangVien(username);
+        }
     }
 }

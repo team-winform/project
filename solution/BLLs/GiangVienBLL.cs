@@ -22,14 +22,14 @@ namespace BLLs
             }
         }
 
-        public List<GiangVienDTO> getAll()
+        public List<GiangVienDTO> getAll(string sortBy = null, string sortType = null)
         {
-            return GiangVienDAL.Instance.getAll();
+            return GiangVienDAL.Instance.getAll(sortBy, sortType);
         }
 
         public bool insert(GiangVienDTO gv)
         {
-            string ma = "GV" + DateTime.Now.Ticks;
+            string ma = "GV_" + TimingDTO.getTimeString("dd", "MM", "yy", "HH", "mm", "ss");
             gv.Id = ma;
             gv.Created = DateTime.Now;
             gv.Updated = gv.Created;
@@ -56,6 +56,16 @@ namespace BLLs
         public List<GiangVienDTO> findByName(string ten)
         {
             return GiangVienDAL.Instance.findByName(ten);
+        }
+
+        public List<LopHocDTO> getClassList(GiangVienDTO gv)
+        {
+            return GiangVienDAL.Instance.getClassList(gv);
+        }
+
+        public List<string> getFreeUsername()
+        {
+            return GiangVienDAL.Instance.getFreeUsername();
         }
     }
 }

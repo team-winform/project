@@ -26,7 +26,7 @@ namespace main_GUI
             label1.Text += " ngày " + now.ToString("MM/dd/yyyy");
 
             dataGridView1.Font = new Font("Tahoma", 10);
-            comboBox1.DataSource = this.diemDanhBLL.getAllLopHoc();
+            comboBox1.DataSource = this.diemDanhBLL.getLopHocByGiangVien(GlobalInfo.accountGlobal.username);
             comboBox1.DisplayMember = "ten_LH";
             comboBox1.ValueMember = "id_LH";
 

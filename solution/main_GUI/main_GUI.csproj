@@ -68,11 +68,17 @@
     <Compile Include="Dialog_KhoaHOC.Designer.cs">
       <DependentUpon>Dialog_KhoaHOC.cs</DependentUpon>
     </Compile>
-    <Compile Include="Dialog_QuanLyLichHocLopHoc.cs">
+    <Compile Include="DiemDialog_nhapDiem.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Dialog_QuanLyLichHocLopHoc.Designer.cs">
-      <DependentUpon>Dialog_QuanLyLichHocLopHoc.cs</DependentUpon>
+    <Compile Include="DiemDialog_nhapDiem.Designer.cs">
+      <DependentUpon>DiemDialog_nhapDiem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialog_LichHoc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialog_LichHoc.Designer.cs">
+      <DependentUpon>Dialog_LichHoc.cs</DependentUpon>
     </Compile>
     <Compile Include="Dialog_ThongKeDiemDanh.cs">
       <SubType>Form</SubType>
@@ -85,6 +91,24 @@
     </Compile>
     <Compile Include="Dialog_ThongTinKhoaHoc.Designer.cs">
       <DependentUpon>Dialog_ThongTinKhoaHoc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DiemGUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DiemGUI.Designer.cs">
+      <DependentUpon>DiemGUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GiangVienDialog_chiTiet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GiangVienDialog_chiTiet.Designer.cs">
+      <DependentUpon>GiangVienDialog_chiTiet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Gui_ChiTietLopHoc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Gui_ChiTietLopHoc.Designer.cs">
+      <DependentUpon>Gui_ChiTietLopHoc.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI_HocVien.cs">
       <SubType>Form</SubType>
@@ -109,6 +133,12 @@
     </Compile>
     <Compile Include="GUI_TaiKhoanCuaToi.Designer.cs">
       <DependentUpon>GUI_TaiKhoanCuaToi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HocPhiGui.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HocPhiGui.Designer.cs">
+      <DependentUpon>HocPhiGui.cs</DependentUpon>
     </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
@@ -152,6 +182,12 @@
     <Compile Include="LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="PhongHocDialog_ChiTiet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PhongHocDialog_ChiTiet.Designer.cs">
+      <DependentUpon>PhongHocDialog_ChiTiet.cs</DependentUpon>
+    </Compile>
     <Compile Include="PhongHocDialog_insertupdate.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -181,14 +217,26 @@
     <EmbeddedResource Include="Dialog_KhoaHOC.resx">
       <DependentUpon>Dialog_KhoaHOC.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Dialog_QuanLyLichHocLopHoc.resx">
-      <DependentUpon>Dialog_QuanLyLichHocLopHoc.cs</DependentUpon>
+    <EmbeddedResource Include="DiemDialog_nhapDiem.resx">
+      <DependentUpon>DiemDialog_nhapDiem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialog_LichHoc.resx">
+      <DependentUpon>Dialog_LichHoc.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Dialog_ThongKeDiemDanh.resx">
       <DependentUpon>Dialog_ThongKeDiemDanh.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Dialog_ThongTinKhoaHoc.resx">
       <DependentUpon>Dialog_ThongTinKhoaHoc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DiemGUI.resx">
+      <DependentUpon>DiemGUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GiangVienDialog_chiTiet.resx">
+      <DependentUpon>GiangVienDialog_chiTiet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gui_ChiTietLopHoc.resx">
+      <DependentUpon>Gui_ChiTietLopHoc.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI_HocVien.resx">
       <DependentUpon>GUI_HocVien.cs</DependentUpon>
@@ -201,6 +249,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI_TaiKhoanCuaToi.resx">
       <DependentUpon>GUI_TaiKhoanCuaToi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HocPhiGui.resx">
+      <DependentUpon>HocPhiGui.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -222,6 +273,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PhongHocDialog_ChiTiet.resx">
+      <DependentUpon>PhongHocDialog_ChiTiet.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PhongHocDialog_insertupdate.resx">
       <DependentUpon>PhongHocDialog_insertupdate.cs</DependentUpon>

@@ -78,9 +78,14 @@ namespace main_GUI
 
         private AccountDTO getTaiKhoanOnForm()
         {
-            if (txtTaiKhoan.Text == "" || txtMatKhau.Text == "")
+            if (txtTaiKhoan.Text.Trim() == "" || txtMatKhau.Text == "")
             {
                 hienThongBaoLoi("Tài khoản, mật khẩu không được để trống");
+                return null;
+            }
+            else if (txtHoTen.Text.Trim() == "")
+            {
+                hienThongBaoLoi("Họ tên không được để trống");
                 return null;
             }
             else
@@ -88,7 +93,9 @@ namespace main_GUI
                 AccountDTO acc = new AccountDTO();
                 acc.username = txtTaiKhoan.Text;
                 acc.password = txtMatKhau.Text;
+                acc.fullname = txtHoTen.Text;
                 acc.level = cbLevel.SelectedIndex;
+                clearFormQLTaiKhoan();
                 return acc;
             }
         }
@@ -97,7 +104,8 @@ namespace main_GUI
         {
             txtTaiKhoan.Text = "";
             txtMatKhau.Text = "";
-            cbLevel.SelectedIndex = 2;
+            txtHoTen.Text = "";
+            cbLevel.SelectedIndex = cbLevel.Items.Count - 1;
         }
 
         private void btnClearAccount_Click(object sender, EventArgs e)
@@ -114,14 +122,12 @@ namespace main_GUI
         {
             quanLyTaiKhoanBLL.addAccount(getTaiKhoanOnForm());
             hienThiGrdAccount();
-            clearFormQLTaiKhoan();
         }
 
         private void btCapNhatTaiKhoan_Click(object sender, EventArgs e)
         {
             quanLyTaiKhoanBLL.updateAccount(getTaiKhoanOnForm());
             hienThiGrdAccount();
-            clearFormQLTaiKhoan();
         }
 
         private void btXoaTaiKhoan_Click(object sender, EventArgs e)

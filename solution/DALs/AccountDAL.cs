@@ -98,15 +98,13 @@ namespace DALs
             conn.Close();
         }
 
-        public void changeInfo(AccountDTO account, string fullname, string phone)
+        public void changeInfo(AccountDTO account, string phone)
         {
             conn.Open();
             string query = "update account set " +
-                "fullname = @fullname," +
                 "phone = @phone " +
                 "where username = @username";
             SqlCommand cmd = new SqlCommand(query, conn);
-            cmd.Parameters.AddWithValue("fullname", fullname);
             cmd.Parameters.AddWithValue("phone", phone);
             cmd.Parameters.AddWithValue("username", account.username);
 

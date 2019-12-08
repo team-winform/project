@@ -28,6 +28,7 @@ namespace main_GUI
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
+            
             string username = txtUsername.Text;
             string password = Utils.MD5Hash(txtPassword.Text);
 
@@ -39,10 +40,11 @@ namespace main_GUI
             else
             {
                 clearTextBox();
-                this.Hide();
+                //this.Hide();
                 new MainForm().ShowDialog();
-                //this.Close();
+                this.Close();
             }
+
         }
 
         private void txtUsername_KeyDown(object sender, KeyEventArgs e)

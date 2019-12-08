@@ -43,6 +43,8 @@
             this.bt_cancel = new System.Windows.Forms.Button();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cb_username = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -61,7 +63,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(50, 76);
+            this.label2.Location = new System.Drawing.Point(102, 77);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(178, 29);
             this.label2.TabIndex = 1;
@@ -71,7 +73,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(103, 121);
+            this.label3.Location = new System.Drawing.Point(155, 184);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(125, 29);
             this.label3.TabIndex = 2;
@@ -81,7 +83,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(68, 166);
+            this.label4.Location = new System.Drawing.Point(120, 229);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(160, 29);
             this.label4.TabIndex = 3;
@@ -91,7 +93,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(136, 211);
+            this.label5.Location = new System.Drawing.Point(188, 274);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(92, 29);
             this.label5.TabIndex = 4;
@@ -101,7 +103,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(128, 256);
+            this.label6.Location = new System.Drawing.Point(180, 319);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(100, 29);
             this.label6.TabIndex = 5;
@@ -114,34 +116,38 @@
             this.tb_ten.Name = "tb_ten";
             this.tb_ten.Size = new System.Drawing.Size(237, 34);
             this.tb_ten.TabIndex = 6;
+            this.tb_ten.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Tb_ten_KeyUp);
             // 
             // tb_sdt
             // 
             this.tb_sdt.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_sdt.Location = new System.Drawing.Point(304, 164);
+            this.tb_sdt.Location = new System.Drawing.Point(304, 226);
             this.tb_sdt.Name = "tb_sdt";
             this.tb_sdt.Size = new System.Drawing.Size(237, 34);
             this.tb_sdt.TabIndex = 8;
+            this.tb_sdt.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Tb_sdt_KeyUp);
             // 
             // tb_diachi
             // 
             this.tb_diachi.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_diachi.Location = new System.Drawing.Point(304, 208);
+            this.tb_diachi.Location = new System.Drawing.Point(304, 270);
             this.tb_diachi.Name = "tb_diachi";
             this.tb_diachi.Size = new System.Drawing.Size(237, 34);
             this.tb_diachi.TabIndex = 9;
+            this.tb_diachi.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Tb_diachi_KeyUp);
             // 
             // tb_ghichu
             // 
             this.tb_ghichu.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_ghichu.Location = new System.Drawing.Point(304, 252);
+            this.tb_ghichu.Location = new System.Drawing.Point(304, 314);
             this.tb_ghichu.Name = "tb_ghichu";
             this.tb_ghichu.Size = new System.Drawing.Size(237, 34);
             this.tb_ghichu.TabIndex = 10;
+            this.tb_ghichu.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Tb_ghichu_KeyUp);
             // 
             // bt_ok
             // 
-            this.bt_ok.Location = new System.Drawing.Point(163, 347);
+            this.bt_ok.Location = new System.Drawing.Point(163, 385);
             this.bt_ok.Name = "bt_ok";
             this.bt_ok.Size = new System.Drawing.Size(128, 53);
             this.bt_ok.TabIndex = 11;
@@ -151,7 +157,7 @@
             // 
             // bt_cancel
             // 
-            this.bt_cancel.Location = new System.Drawing.Point(413, 347);
+            this.bt_cancel.Location = new System.Drawing.Point(413, 385);
             this.bt_cancel.Name = "bt_cancel";
             this.bt_cancel.Size = new System.Drawing.Size(128, 53);
             this.bt_cancel.TabIndex = 12;
@@ -166,17 +172,40 @@
             // dateTimePicker1
             // 
             this.dateTimePicker1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker1.Location = new System.Drawing.Point(304, 121);
+            this.dateTimePicker1.Location = new System.Drawing.Point(304, 183);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(237, 30);
-            this.dateTimePicker1.TabIndex = 13;
+            this.dateTimePicker1.TabIndex = 7;
             this.dateTimePicker1.ValueChanged += new System.EventHandler(this.DateTimePicker1_ValueChanged);
+            this.dateTimePicker1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.DateTimePicker1_KeyUp);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(172, 135);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(108, 25);
+            this.label1.TabIndex = 13;
+            this.label1.Text = "Username:";
+            // 
+            // cb_username
+            // 
+            this.cb_username.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cb_username.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cb_username.FormattingEnabled = true;
+            this.cb_username.Location = new System.Drawing.Point(304, 134);
+            this.cb_username.Name = "cb_username";
+            this.cb_username.Size = new System.Drawing.Size(237, 33);
+            this.cb_username.TabIndex = 14;
             // 
             // GiangVienDialog_InsertUpdate
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(645, 450);
+            this.Controls.Add(this.cb_username);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.bt_cancel);
             this.Controls.Add(this.bt_ok);
@@ -215,5 +244,7 @@
         private System.Windows.Forms.Button bt_cancel;
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.ComboBox cb_username;
+        private System.Windows.Forms.Label label1;
     }
 }

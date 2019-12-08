@@ -43,12 +43,17 @@
   <ItemGroup>
     <Compile Include="GiangVienDTO.cs" />
     <Compile Include="GiangVienMapper.cs" />
+    <Compile Include="HocPhiDTO.cs" />
+    <Compile Include="HocPhiMapper.cs" />
+    <Compile Include="HocVienLopHocDTO.cs" />
+    <Compile Include="HocVienLopHocMapper.cs" />
     <Compile Include="PhongHocDTO.cs" />
     <Compile Include="PhongHocMapper.cs" />
     <Compile Include="AccountDTO.cs" />
     <Compile Include="LichHocDTO.cs" />
     <Compile Include="LopHocDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TimingDTO.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

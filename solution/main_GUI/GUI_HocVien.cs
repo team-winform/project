@@ -48,19 +48,31 @@ namespace main_GUI
 
         private void button1_Click(object sender, EventArgs e)
         {
-            String maLop = comboBox1.SelectedValue.ToString();
-            new Dialog_HocVien(true, null,maLop).ShowDialog();     
-            dataGridView1.DataSource = hocVienBll.getListHocVien(maLop);
+            try
+            {
+                String maLop = comboBox1.SelectedValue.ToString();
+                new Dialog_HocVien(true, null, maLop).ShowDialog();
+                dataGridView1.DataSource = hocVienBll.getListHocVien(maLop);
+            }
+            catch
+            {
+                MessageBox.Show("Hãy chọn lớp");
+            }
+            
             
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            int index = dataGridView1.CurrentCell.RowIndex;
-            String maLop = comboBox1.SelectedValue.ToString();
-            String maHV = dataGridView1.Rows[index].Cells["id_HV"].Value.ToString();
-            new Dialog_HocVien(false, maHV,null).ShowDialog();
-            dataGridView1.DataSource = hocVienBll.getListHocVien(maLop);
+            try
+            {
+                int index = dataGridView1.CurrentCell.RowIndex;
+                String maLop = comboBox1.SelectedValue.ToString();
+                String maHV = dataGridView1.Rows[index].Cells["id_HV"].Value.ToString();
+                new Dialog_HocVien(false, maHV, null).ShowDialog();
+                dataGridView1.DataSource = hocVienBll.getListHocVien(maLop);
+            }
+            catch { }
         }
 
         private void button3_Click(object sender, EventArgs e)
