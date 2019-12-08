@@ -44,6 +44,7 @@ namespace main_GUI
                         loadTabQuanLyKhoaHoc();
                         loadTabQuanLyPhongHoc();
                         loadTabQuanLyGiangVien();
+                        loadTabQuanLyHocVien();
                         loadTabQuanLyLopHoc();
                         loadTabQuanLyTaiKhoan();
                         break;
@@ -52,6 +53,7 @@ namespace main_GUI
                         loadTabQuanLyKhoaHoc();
                         loadTabQuanLyPhongHoc();
                         loadTabQuanLyGiangVien();
+                        loadTabQuanLyHocVien();
                         loadTabQuanLyLopHoc();
                         break;
                     // Giảng viên
@@ -66,6 +68,19 @@ namespace main_GUI
                 }
             }
             loadTabTaiKhoanCuaToi();
+        }
+
+        private void loadTabQuanLyHocVien()
+        {
+            TabPage tabQLHV = new TabPage();
+            GUI_HocVien guiHV = new GUI_HocVien();
+            guiHV.TopLevel = false;
+            guiHV.FormBorderStyle = FormBorderStyle.None;
+            guiHV.Visible = true;
+            tabQLHV.Controls.Add(guiHV);
+            guiHV.Dock = DockStyle.Fill;
+            tabQLHV.Text = "Quản lý học viên";
+            tabControl.TabPages.Add(tabQLHV);
         }
 
         private void loadTabQuanLyPhongHoc()
