@@ -16,7 +16,7 @@ namespace main_GUI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new GUI_HocVien());
+            Application.Run(new LoginForm());
         }
     }
 }

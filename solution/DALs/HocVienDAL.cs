@@ -84,13 +84,14 @@ namespace DALs
             return result;
         }
 
-        public int delete(String ma)
+        public int delete(String ma,String maLop)
         {
             SqlConnection con = new SqlConnection(conString);
             con.Open();
 
-            String sql = "delete from HocVien where id_HV=@ma";
+            String sql = "delete from HocVien_LopHoc where id_HV=@ma and id_LH=@maLop";
             SqlCommand cmd = new SqlCommand(sql, con);
+            cmd.Parameters.AddWithValue("maLop", maLop);
             cmd.Parameters.AddWithValue("ma", ma);
 
             int result = cmd.ExecuteNonQuery();

@@ -79,15 +79,18 @@ namespace main_GUI
         {
             try
             {
+                String maLop = comboBox1.SelectedValue.ToString();
                 int index = dataGridView1.CurrentCell.RowIndex;
                 String ma = dataGridView1.Rows[index].Cells["id_HV"].Value.ToString();
                 DialogResult result = MessageBox.Show("bạn có muốn xóa", "xác nhận xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (result == DialogResult.Yes)
                 {
-                    int rowUpdate = hocVienBll.delete(ma);
-                    if (rowUpdate != 0) MessageBox.Show("Xóa học viên thành công");
+                    int rowUpdate = hocVienBll.delete(ma,maLop);
+                    if (rowUpdate != 0) MessageBox.Show("Xóa học viên thành công");                 
                 }
-            }catch(Exception ex)
+                dataGridView1.DataSource = hocVienBll.getListHocVien(maLop);
+            }
+            catch(Exception ex)
             {
                 MessageBox.Show("Xóa học viên thất bại");
                 Console.WriteLine(ex.StackTrace);

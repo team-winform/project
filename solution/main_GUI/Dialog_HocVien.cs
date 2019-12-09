@@ -58,6 +58,9 @@ namespace main_GUI
                 String sdt = txtSdt.Text.Trim();
                 DateTime ngaySinh = dtpNgaySinh.Value;
                 String diaChi = txtDiaChi.Text.Trim();
+                if (ten == String.Empty) throw new Exception("chưa nhập tên");
+                if (sdt == String.Empty) throw new Exception("Chưa nhập sdt");
+                if (diaChi == String.Empty) throw new Exception("Chưa nhập địa chỉ");
                 int rowUpdate=0;
                 if (isThem)
                 {
@@ -74,11 +77,11 @@ namespace main_GUI
                 }
                 else
                 {
-                    MessageBox.Show("Thao tác thất bại");
+                    MessageBox.Show("Thao tác thất bại: ");
                 }
             }catch(Exception ex)
             {
-                MessageBox.Show("Thêm học viên thất bại");
+                MessageBox.Show(ex.Message);
                 Console.WriteLine(ex.StackTrace);
             }
         }

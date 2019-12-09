@@ -33,7 +33,7 @@ namespace BLLs
                 return 1;
             }catch(Exception ex)
             {
-                this.hocVienDal.delete(ma);
+                
                 Console.WriteLine(ex.StackTrace);
                 return 0;
             }
@@ -46,9 +46,9 @@ namespace BLLs
             return this.hocVienDal.update(ma, ten, sdt, ngaySinh, diaChi, ngaySua);
         }
 
-        public int delete(String ma)
+        public int delete(String ma,String maLop)
         {
-            return this.hocVienDal.delete(ma);
+            return this.hocVienDal.delete(ma,maLop);
         }
 
         public Dictionary<String,String> getHocVien(String ma)
